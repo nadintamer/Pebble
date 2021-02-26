@@ -46,24 +46,19 @@ export default function AppNavigation() {
         }}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
-
-            if (route.name === 'Home') {
-              iconName = 'home';
-            } else if (route.name === 'Explore') {
-              iconName = 'search';
-            } else if (route.name === 'Tasks') {
-              iconName = 'checkbox';
-            } else if (route.name === 'Profile') {
-              iconName = 'penguin';
-              return <CustomTabBarIcon name={iconName} size={38} color={color} />;
-            }
+            //let iconName;
+            const icons = {
+              Home: 'home',
+              Explore: 'search',
+              Tasks: 'checkbox',
+              Profile: 'penguin',
+            };
 
             // You can return any component that you like here!
-            return <CustomTabBarIcon name={iconName} size={28} color={color} />;
+            return <CustomTabBarIcon name={icons[route.name]} size={28} color={color} style={{ height: 28, width: 38 }} />;
           },
         })}
-        >
+      >
         <TabNav.Screen name="Home" component={HomeStackComponent} />
         <TabNav.Screen name="Explore" component={ExploreStackComponent} />
         <TabNav.Screen name="Tasks" component={TasksStackComponent} />
