@@ -46,7 +46,6 @@ export default function AppNavigation() {
         }}
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
-            //let iconName;
             const icons = {
               Home: 'home',
               Explore: 'search',

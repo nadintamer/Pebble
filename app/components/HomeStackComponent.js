@@ -1,66 +1,17 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
-import { Colors } from '../themes/Colors.js';
 
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
 
+import HomeScreen from '../screens/HomeScreen';
+
+const HomeStack = createStackNavigator();
 export default function HomeStackComponent() {
   return (
-
-    <View style={styles.homeContainer}>
-      <View style={styles.progressContainer}>
-        <ProgressBar progress={0.5} color={Colors.darkPurple} styles={{ position: 'absolute' }} />
-      </View>
-
-      <View style={styles.actionCardContainer}>
-        <View style={styles.actionCard}>
-          <Text>This Week's Tasks</Text>
-        </View>
-
-        <View style={styles.actionCard}>
-          <Text>Info</Text>
-        </View>
-
-      </View>
-    </View>
+    <HomeStack.Navigator
+      headerMode="float"
+      initialRouteName="Home">
+      <HomeStack.Screen name="Home" component={HomeScreen}/>
+    </HomeStack.Navigator>
   );
 }
-
-
-const styles = StyleSheet.create({
-
-  homeContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-
-  progressContainer: {
-    flex: 0.1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: windowHeight * 0.3,
-    width: windowWidth * 0.8,
-
-  },
-
-  actionCardContainer: {
-    flex: 0.7,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-
-  actionCard: {
-    alignItems: 'stretch',
-    flexDirection: 'column',
-    backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.3,
-    width: windowWidth * 0.8,
-    borderRadius: 20,
-  },
-});
-//    position: 'absolute', left: windowWidth/2, height: windowHeight/2, justifyContent:'center',alignItems:'center'
