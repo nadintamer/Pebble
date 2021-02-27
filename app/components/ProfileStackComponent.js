@@ -5,14 +5,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 import ProfileScreen from '../screens/ProfileScreen';
-const ProfileStack = createStackNavigator();
 
+const ProfileStack = createStackNavigator();
 export default function ProfileStackComponent() {
   return (
-          <ProfileStack.Navigator
-            headerMode="float"
-            initialRouteName="Profile">
-            <ProfileStack.Screen name="Profile" component={ProfileScreen}/>
-          </ProfileStack.Navigator>
+    <ProfileStack.Navigator
+      initialRouteName="Profile">
+      <ProfileStack.Screen name="Profile" component={ProfileScreen}/>
+    </ProfileStack.Navigator>
   );
 }

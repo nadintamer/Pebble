@@ -9,7 +9,6 @@ const HomeStack = createStackNavigator();
 export default function HomeStackComponent() {
   return (
     <HomeStack.Navigator
-      headerMode="float"
       initialRouteName="Home">
       <HomeStack.Screen name="Home" component={HomeScreen}/>
     </HomeStack.Navigator>

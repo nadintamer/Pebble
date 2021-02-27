@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: windowHeight * 0.3,
     width: windowWidth * 0.8,
+    backgroundColor: 'red',
   },
   actionCardContainer: {
     flex: 0.7,

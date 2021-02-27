@@ -15,7 +15,7 @@ import ProfileStackComponent from '../components/ProfileStackComponent.js';
 
 const TabNav = createBottomTabNavigator();
 export default function AppNavigation() {
-  let [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   async function loadFont() {
     await Font.loadAsync({

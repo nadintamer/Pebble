@@ -8,19 +8,18 @@ const windowHeight = Dimensions.get('window').height;
 export default function ProfileScreen() {
   return (
     <View style={styles.homeContainer}>
-
-    <Button
-        title="Emergency"
-        onPress={() => Alert.alert('Emergency Button pressed')}
-    />
-    <Button
-        title="Settings"
-        onPress={() => Alert.alert('Settings Button pressed')}
-    />
-    <Button
-        title="Saved"
-        onPress={() => Alert.alert('Saved Button pressed')}
-    />
+      <Button
+          title="Emergency"
+          onPress={() => Alert.alert('Emergency Button pressed')}
+      />
+      <Button
+          title="Settings"
+          onPress={() => Alert.alert('Settings Button pressed')}
+      />
+      <Button
+          title="Saved"
+          onPress={() => Alert.alert('Saved Button pressed')}
+      />
     </View>
   );
 }
@@ -39,4 +38,3 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 });
-
