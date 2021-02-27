@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
-import CustomTabBarIcon from '../components/CustomTabBarIcon.js'
+import CustomIcon from '../components/CustomIcon'
 import * as Font from 'expo-font';
 
 import HomeStackComponent from '../components/HomeStackComponent.js';
@@ -54,7 +54,7 @@ export default function AppNavigation() {
             };
 
             // You can return any component that you like here!
-            return <CustomTabBarIcon name={icons[route.name]} size={28} color={color} style={{ height: 28, width: 38 }} />;
+            return <CustomIcon name={icons[route.name]} size={28} color={color} style={{ height: 28, width: 38 }} />;
           },
         })}
       >

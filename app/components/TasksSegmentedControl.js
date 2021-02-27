@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
   },
   tabTextStyle: {
      color: '#818181',
-     fontSize: 14,
+     fontFamily: 'NunitoSans_400Regular',
+     fontSize: 16,
   },
   activeTabStyle: {
      backgroundColor: 'white',
@@ -57,7 +58,8 @@ const styles = StyleSheet.create({
      borderRadius: 20,
   },
   activeTabTextStyle: {
-     color: 'black',
-     fontSize: 14,
+     color: '#949BA6',
+     fontFamily: 'NunitoSans_400Regular',
+     fontSize: 16,
   },
 });

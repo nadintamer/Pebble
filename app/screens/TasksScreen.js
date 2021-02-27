@@ -14,7 +14,7 @@ export default function TasksScreen() {
   const [myTasks, setMyTasks] = useState(["Task 3", "Task 4"]);
 
   const renderTask = ({ index, item }) => {
-    return <Task text={item}/>;
+    return <Task text={item} completed="notCompleted"/>;
   };
 
   const keyExtractor = (index) => {
