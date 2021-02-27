@@ -8,6 +8,8 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@expo-google-fonts/nunito": "^0.1.0",
+    "@expo-google-fonts/nunito-sans": "^0.1.0",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-segmented-control/segmented-control": "^2.3.0",
     "@react-navigation/bottom-tabs": "^5.11.8",

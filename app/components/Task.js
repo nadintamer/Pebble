@@ -29,5 +29,6 @@ const styles = StyleSheet.create({
   },
   taskText: {
     margin: 10,
+    fontFamily: 'Nunito_400Regular',
   }
 });

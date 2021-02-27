@@ -8,7 +8,6 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function HomeScreen() {
   return (
-
     <View style={styles.homeContainer}>
       <View style={styles.progressContainer}>
         <ProgressBar progress={0.5} color={Colors.darkPurple} />
@@ -22,12 +21,10 @@ export default function HomeScreen() {
         <View style={styles.actionCard}>
           <Text>Info</Text>
         </View>
-
       </View>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   homeContainer: {
@@ -43,7 +40,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: windowHeight * 0.3,
     width: windowWidth * 0.8,
-    backgroundColor: 'red',
   },
   actionCardContainer: {
     flex: 0.7,

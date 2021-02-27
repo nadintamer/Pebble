@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   segmentedControlContainer: {
     width: '90%',
     height: '6%',
+    margin: 5,
   },
   listContainer: {
     width: '90%',
