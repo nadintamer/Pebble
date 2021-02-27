@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions } from 'react-native';
-import { ProgressBar, Colors } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
+import { Colors } from '../themes/Colors.js';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -10,7 +11,7 @@ export default function HomeStackComponent() {
 
     <View style={styles.homeContainer}>
       <View style={styles.progressContainer}>
-        <ProgressBar progress={0.5} color={Colors.red800} styles={{ position: 'absolute' }} />
+        <ProgressBar progress={0.5} color={Colors.darkPurple} styles={{ position: 'absolute' }} />
       </View>
 
       <View style={styles.actionCardContainer}>
@@ -21,7 +22,7 @@ export default function HomeStackComponent() {
         <View style={styles.actionCard}>
           <Text>Info</Text>
         </View>
-        
+
       </View>
     </View>
   );
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
   actionCard: {
     alignItems: 'stretch',
     flexDirection: 'column',
-    backgroundColor: 'rgba(50, 49, 177, 0.1)',
+    backgroundColor: Colors.lightPurple,
     height: windowHeight * 0.3,
     width: windowWidth * 0.8,
     borderRadius: 20,
