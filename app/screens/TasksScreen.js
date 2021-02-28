@@ -73,6 +73,7 @@ export default function TasksScreen() {
             data={addedTasks}
             renderItem={(obj) => renderWeeklyTask(obj, "added")}
             keyExtractor={(item, index) => keyExtractor(index)}
+            style={{ marginBottom: 44 }}
         />
         <Text style={styles.subheading}>Not Added to My Tasks</Text>
         <FlatList
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
   },
   segmentedControlContainer: {
     width: '90%',
-    height: '6%',
+    height: 52,
     margin: 5,
   },
   listContainer: {

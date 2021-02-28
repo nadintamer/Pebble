@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, Image, Button } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+
 import Colors from '../themes/Colors';
+import ProfileButton from '../components/ProfileButton';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -8,18 +10,24 @@ const windowHeight = Dimensions.get('window').height;
 export default function ProfileScreen() {
   return (
     <View style={styles.homeContainer}>
-      <Button
-          title="Emergency"
-          onPress={() => Alert.alert('Emergency Button pressed')}
-      />
-      <Button
-          title="Settings"
-          onPress={() => Alert.alert('Settings Button pressed')}
-      />
-      <Button
-          title="Saved"
-          onPress={() => Alert.alert('Saved Button pressed')}
-      />
+      <View style={styles.profilePictureContainer}>
+        <Image
+          source={require("../../assets/images/penguin-avatar.png")}
+          style={{ width: 165, height: 165}}
+        />
+      </View>
+      <View style={styles.nameContainer}>
+        <Text style={styles.name}>Brian Lewis</Text>
+      </View>
+      <TouchableOpacity style={styles.emergencyButton}>
+          <Text style={styles.emergencyText}>EMERGENCY</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.profileButton}>
+        <ProfileButton text="Saved" image="saved"/>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.profileButton}>
+        <ProfileButton text="FAQ" image="faq"/>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -30,11 +38,43 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    backgroundColor: Colors.white,
   },
   profilePictureContainer: {
-    flex: 0.7,
+    marginTop: 80,
+    marginBottom: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  nameContainer: {
+    marginBottom: 44,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  name: {
+    fontFamily: 'Nunito_700Bold',
+    fontSize: 30,
+  },
+  emergencyButton: {
+    width: '90%',
+    height: 52,
+    marginBottom: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: Colors.coral,
+    borderRadius: 20,
+  },
+  emergencyText: {
+    fontFamily: 'Nunito_700Bold',
+    fontSize: 16,
+    color: Colors.white,
+  },
+  profileButton: {
+    width: '90%',
+    height: 126,
+    marginBottom: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });

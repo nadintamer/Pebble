@@ -43,6 +43,7 @@ export default function App() {
     Nunito_900Black,
     NunitoSans_400Regular,
     NunitoSans_700Bold,
+    Nunito_700Bold,
   });
 
   if (!fontsLoaded) {

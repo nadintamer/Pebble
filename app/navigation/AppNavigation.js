@@ -49,7 +49,7 @@ export default function AppNavigation() {
             const icons = {
               Home: 'home',
               Explore: 'search',
-              Tasks: 'checkbox',
+              Tasks: 'checkbox-circle',
               Profile: 'penguin',
             };
 

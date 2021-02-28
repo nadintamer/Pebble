@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   task: {
     flexDirection: 'row',
     width: '100%',
-    height: 50,
+    height: 84,
     backgroundColor: 'white',
     borderWidth: 2,
     borderColor: 'transparent',

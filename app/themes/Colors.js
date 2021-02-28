@@ -6,6 +6,8 @@ const colors = {
   coral: "#F67E7D",
   grey: "#8E91AD",
   lightGrey: "#F4F4F7",
+  settingsLightGrey: "#DDDEE6",
+  settingsDarkGrey: "#C1C2D0",
 };
 
 export default colors;
