@@ -22,12 +22,13 @@ export default function ProfileScreen() {
       <TouchableOpacity style={styles.emergencyButton}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton}>
+          <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('SavedCardsScreen')}>
         <ProfileButton text="Saved" image="saved"/>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton}>
+    <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQScreen')}>
         <ProfileButton text="FAQ" image="faq"/>
       </TouchableOpacity>
+
     </View>
   );
 }

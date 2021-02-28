@@ -10,7 +10,7 @@
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.1.0",
     "@expo-google-fonts/nunito-sans": "^0.1.0",
-    "@react-native-community/masked-view": "^0.1.10",
+    "@react-native-community/masked-view": "0.1.10",
     "@react-native-segmented-control/segmented-control": "^2.3.0",
     "@react-navigation/bottom-tabs": "^5.11.8",
     "@react-navigation/native": "^5.9.3",
@@ -21,14 +21,14 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-gesture-handler": "^1.8.0",
+    "react-native-gesture-handler": "~1.8.0",
     "react-native-paper": "^4.7.2",
-    "react-native-reanimated": "^1.13.2",
+    "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
-    "react-native-screens": "^2.15.2",
+    "react-native-screens": "~2.15.2",
     "react-native-segmented-control-tab": "^3.4.1",
     "react-native-vector-icons": "^8.1.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "^0.15.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
