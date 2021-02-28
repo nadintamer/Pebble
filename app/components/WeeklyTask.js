@@ -9,36 +9,34 @@ import {
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
 
-export default function Task(props) {
-  const [done, setDone] = useState(props.completed);
+export default function WeeklyTask(props) {
   const icons = {
-    completed: {
-      name: 'completed',
-      size: 30,
+    added: {
+      name: 'minus',
+      size: 24,
       color: Colors.darkPurple,
     },
-    notCompleted: {
-      name: 'not-completed',
-      size: 30,
-      color: Colors.grey,
+    notAdded: {
+      name: 'plus',
+      size: 24,
+      color: Colors.darkPurple,
     },
   };
 
-  const [checkboxIcon, setCheckboxIcon] = useState(icons[done]);
+  const addIcon = icons[props.added];
 
-  const toggleIcon = () => {
-    if (done === "completed") {
-      setDone("notCompleted");
+  const toggleAdded = () => {
+    if (props.added === "added") {
+      props.removeFromTasks();
     } else {
-      setDone("completed");
+      props.addToTasks();
     }
-    setCheckboxIcon(icons[done]);
   };
 
   return (
-    <TouchableOpacity onPress={toggleIcon}>
+    <TouchableOpacity onPress={toggleAdded}>
       <View style={styles.task}>
-        <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
+        <CustomIcon name={addIcon.name} size={addIcon.size} color={addIcon.color}/>
         <Text style={styles.taskText}>{props.text}</Text>
       </View>
     </TouchableOpacity>
@@ -64,3 +62,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   }
 });
+
+//         <CustomIcon name={addIcon.name} size={addIcon.size} color={addIcon.color}/>
