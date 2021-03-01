@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
 import Colors from '../themes/Colors';
 import ProfileButton from '../components/ProfileButton';
@@ -9,7 +9,7 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.homeContainer}>
+    <SafeAreaView style={styles.homeContainer}>
       <View style={styles.profilePictureContainer}>
         <Image
           source={require("../../assets/images/penguin-avatar.png")}
@@ -28,7 +28,7 @@ export default function ProfileScreen() {
       <TouchableOpacity style={styles.profileButton}>
         <ProfileButton text="FAQ" image="faq"/>
       </TouchableOpacity>
-    </View>
+    </SafeAreaView>
   );
 }
 

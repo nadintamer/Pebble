@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, Dimensions, Image, Button, FlatList } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList } from 'react-native';
 import Colors from '../themes/Colors';
 
 import TasksSegmentedControl from "../components/TasksSegmentedControl";
 import WeeklyTask from "../components/WeeklyTask"
 import MyTask from "../components/MyTask"
+import AddNewTask from "../components/AddNewTask"
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -14,6 +15,7 @@ export default function TasksScreen() {
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
   const [myTasks, setMyTasks] = useState(["Task 5", "Task 6"]);
+  const flatListRef = useRef(null);
 
   const renderWeeklyTask = ({ item, index }, added) => {
     return (
@@ -34,17 +36,26 @@ export default function TasksScreen() {
     return index.toString();
   };
 
+  const addNewTask = (text) => {
+    if (text !== "") {
+      let newMyTasks = [...myTasks];
+      newMyTasks.unshift(text);
+      setMyTasks(newMyTasks);
+      flatListRef.current.scrollToIndex({animated: true, index: 0});
+    }
+  };
+
   const addToMyTasks = (index, item) => {
     let newNotAddedTasks = [...notAddedTasks];
     newNotAddedTasks.splice(index, 1);
     setNotAddedTasks(newNotAddedTasks);
 
     let newAddedTasks = [...addedTasks];
-    newAddedTasks.push(item);
+    newAddedTasks.unshift(item);
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    newMyTasks.push(item);
+    newMyTasks.unshift(item);
     setMyTasks(newMyTasks);
   };
 
@@ -59,7 +70,7 @@ export default function TasksScreen() {
     setMyTasks(newMyTasks);
 
     let newNotAddedTasks = [...notAddedTasks];
-    newNotAddedTasks.push(item);
+    newNotAddedTasks.unshift(item);
     setNotAddedTasks(newNotAddedTasks);
   };
 
@@ -84,13 +95,17 @@ export default function TasksScreen() {
       </View>
 
     } else {
-      viewToReturn = <View>
-        <Text style={styles.subheading}>Current Tasks</Text>
-        <FlatList
-            data={myTasks}
-            renderItem={renderMyTask}
-            keyExtractor={(item, index) => keyExtractor(index)}
-        />
+      viewToReturn = <View style={{flex: 1}}>
+        <Text style={styles.subheading}>Added to My Tasks</Text>
+        <AddNewTask addNewTask={addNewTask}/>
+        <View style={{ flex: 1 }}>
+          <FlatList
+              data={myTasks}
+              renderItem={renderMyTask}
+              keyExtractor={(item, index) => keyExtractor(index)}
+              ref={flatListRef}
+          />
+        </View>
       </View>
     }
 
@@ -98,7 +113,7 @@ export default function TasksScreen() {
   }
 
   return (
-    <View style={styles.homeContainer}>
+    <SafeAreaView style={styles.homeContainer}>
       <View style={styles.segmentedControlContainer}>
         <TasksSegmentedControl
           index={index}
@@ -107,7 +122,7 @@ export default function TasksScreen() {
       <View style={styles.listContainer}>
         {getTasksList()}
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -126,6 +141,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   listContainer: {
+    flex: 1,
     width: '90%',
   },
   subheading: {
@@ -134,3 +150,4 @@ const styles = StyleSheet.create({
     marginTop: 15,
   }
 });
+//style={{ flex: 1, width: '100%', height: '100%'}}>
