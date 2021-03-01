@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList, TouchableOpacity } from 'react-native';
+import { SwipeListView } from "react-native-swipe-list-view";
 import Colors from '../themes/Colors';
 
 import TasksSegmentedControl from "../components/TasksSegmentedControl";
@@ -15,7 +16,7 @@ export default function TasksScreen() {
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
   const [myTasks, setMyTasks] = useState(["Task 5", "Task 6"]);
-  const flatListRef = useRef(null);
+  const listRef = useRef(null);
 
   const renderWeeklyTask = ({ item, index }, added) => {
     return (
@@ -32,16 +33,31 @@ export default function TasksScreen() {
     return <MyTask text={item} />;
   };
 
+  const renderHiddenItem = ({ index }, rowMap) => {
+    return (
+      <View style={styles.rowBack}>
+          <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
+            <TouchableOpacity onPress={() => deleteTask(rowMap, index)}>
+              <Text style={styles.backTextWhite}>Delete</Text>
+            </TouchableOpacity>
+          </View>
+      </View>
+    );
+  }
+
   const keyExtractor = (index) => {
     return index.toString();
   };
 
   const addNewTask = (text) => {
-    if (text !== "") {
+    if (text !== "" && !myTasks.includes(text)) {
       let newMyTasks = [...myTasks];
       newMyTasks.unshift(text);
       setMyTasks(newMyTasks);
-      flatListRef.current.scrollToIndex({animated: true, index: 0});
+
+      if (myTasks.length > 0) {
+        listRef.current.scrollToIndex({animated: true, index: 0});
+      }
     }
   };
 
@@ -74,6 +90,34 @@ export default function TasksScreen() {
     setNotAddedTasks(newNotAddedTasks);
   };
 
+  // Close a row before deleting
+  const closeRow = (rowMap, rowKey) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
+
+  // Delete a row by swiping left
+  const deleteTask = (rowMap, index) => {
+    let item = myTasks[index];
+
+    closeRow(rowMap, index);
+    let newTasks = [...myTasks];
+    newTasks.splice(index, 1);
+    setMyTasks(newTasks);
+
+    if (addedTasks.includes(item)) {
+      let newAddedTasks = [...addedTasks];
+      let addedTasksIndex = newAddedTasks.indexOf(item);
+      newAddedTasks.splice(addedTasksIndex, 1);
+      setAddedTasks(newAddedTasks);
+
+      let newNotAddedTasks = [...notAddedTasks];
+      newNotAddedTasks.unshift(item);
+      setNotAddedTasks(newNotAddedTasks);
+    }
+  };
+
   const getTasksList = () => {
     let viewToReturn;
 
@@ -99,11 +143,15 @@ export default function TasksScreen() {
         <Text style={styles.subheading}>Added to My Tasks</Text>
         <AddNewTask addNewTask={addNewTask}/>
         <View style={{ flex: 1 }}>
-          <FlatList
-              data={myTasks}
-              renderItem={renderMyTask}
-              keyExtractor={(item, index) => keyExtractor(index)}
-              ref={flatListRef}
+          <SwipeListView
+            disableRightSwipe
+            recalculateHiddenLayout
+            data={myTasks}
+            renderItem={renderMyTask}
+            renderHiddenItem={renderHiddenItem}
+            keyExtractor={(item, index) => keyExtractor(index, item)}
+            listViewRef={listRef}
+            rightOpenValue={-150}
           />
         </View>
       </View>
@@ -148,6 +196,37 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSans_700Bold",
     fontSize: 24,
     marginTop: 15,
-  }
+  },
+  backTextWhite: {
+    color: 'white',
+    fontSize: 18,
+  },
+  rowBack: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 15,
+    marginVertical: 5,
+  },
+  backRightBtn: {
+    alignItems: 'center',
+    height: '100%',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: 150,
+  },
+  backRightBtnRight: {
+    right: 0,
+    backgroundColor: 'red',
+  },
 });
-//style={{ flex: 1, width: '100%', height: '100%'}}>
+
+/*
+<FlatList
+    data={myTasks}
+    renderItem={renderMyTask}
+    keyExtractor={(item, index) => keyExtractor(index)}
+    ref={flatListRef}
+/>
+*/

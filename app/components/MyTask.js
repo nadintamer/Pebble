@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 
 import Colors from '../themes/Colors';
@@ -38,12 +39,14 @@ export default function MyTask(props) {
   };
 
   return (
-    <TouchableOpacity onPress={toggleIcon}>
+    <TouchableHighlight
+      onPress={toggleIcon}
+      underlayColor='white'>
       <View style={styles.task}>
         <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
         <Text style={styles.taskText}>{props.text}</Text>
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 }
 
