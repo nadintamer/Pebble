@@ -7,7 +7,7 @@ import ProfileButton from '../components/ProfileButton';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.homeContainer}>
       <View style={styles.profilePictureContainer}>
@@ -22,10 +22,10 @@ export default function ProfileScreen() {
       <TouchableOpacity style={styles.emergencyButton}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton}>
+          <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
         <ProfileButton text="Saved" image="saved"/>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton}>
+    <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
         <ProfileButton text="FAQ" image="faq"/>
       </TouchableOpacity>
     </SafeAreaView>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   profilePictureContainer: {
-    marginTop: 80,
+    marginTop: 50,
     marginBottom: 15,
     alignItems: 'center',
     justifyContent: 'space-between',
