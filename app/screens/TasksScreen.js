@@ -140,7 +140,7 @@ export default function TasksScreen() {
 
     } else {
       viewToReturn = <View style={{flex: 1}}>
-        <Text style={styles.subheading}>Added to My Tasks</Text>
+        <Text style={styles.subheading}>Current Tasks</Text>
         <AddNewTask addNewTask={addNewTask}/>
         <View style={{ flex: 1 }}>
           <SwipeListView
@@ -221,12 +221,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'red',
   },
 });
-
-/*
-<FlatList
-    data={myTasks}
-    renderItem={renderMyTask}
-    keyExtractor={(item, index) => keyExtractor(index)}
-    ref={flatListRef}
-/>
-*/
