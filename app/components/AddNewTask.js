@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.lightGrey,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    margin: 5,
+    marginHorizontal: 5,
   },
   taskInput: {
     width: '100%',

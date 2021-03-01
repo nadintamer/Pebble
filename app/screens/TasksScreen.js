@@ -7,6 +7,8 @@ import TasksSegmentedControl from "../components/TasksSegmentedControl";
 import WeeklyTask from "../components/WeeklyTask"
 import MyTask from "../components/MyTask"
 import AddNewTask from "../components/AddNewTask"
+import CustomIcon from "../components/CustomIcon"
+import { Ionicons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -36,12 +38,24 @@ export default function TasksScreen() {
   const renderHiddenItem = ({ index }, rowMap) => {
     return (
       <View style={styles.rowBack}>
-          <View style={[styles.backRightBtn, styles.backRightBtnRight]}>
-            <TouchableOpacity onPress={() => deleteTask(rowMap, index)}>
+            <TouchableOpacity
+              style={[styles.backRightBtn, styles.backRightBtnLeft]}
+              onPress={() => {
+                closeRow(rowMap, index);
+                console.log("edit button pressed");
+              }}
+            >
+              <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
+              <Text style={styles.backTextWhite}>Edit</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.backRightBtn, styles.backRightBtnRight]}
+              onPress={() => deleteTask(rowMap, index)}
+            >
+              <Ionicons name="trash-outline" size={20} color={Colors.white} style={{ margin: 5 }}/>
               <Text style={styles.backTextWhite}>Delete</Text>
             </TouchableOpacity>
-          </View>
-      </View>
+        </View>
     );
   }
 
@@ -151,7 +165,7 @@ export default function TasksScreen() {
             renderHiddenItem={renderHiddenItem}
             keyExtractor={(item, index) => keyExtractor(index, item)}
             listViewRef={listRef}
-            rightOpenValue={-150}
+            rightOpenValue={-180}
           />
         </View>
       </View>
@@ -199,22 +213,32 @@ const styles = StyleSheet.create({
   },
   backTextWhite: {
     color: 'white',
-    fontSize: 18,
+    fontSize: 16,
+    fontFamily: 'NunitoSans_400Regular'
   },
   rowBack: {
     alignItems: 'center',
+    backgroundColor: Colors.white,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingLeft: 15,
-    marginVertical: 5,
+    borderWidth: 2,
+    borderColor: 'transparent',
+    borderBottomColor: Colors.lightGrey,
   },
   backRightBtn: {
     alignItems: 'center',
     height: '100%',
+    bottom: 0,
     justifyContent: 'center',
     position: 'absolute',
-    width: 150,
+    top: 0,
+    width: 85,
+  },
+  backRightBtnLeft: {
+    right: 85,
+    backgroundColor: Colors.darkPurple,
   },
   backRightBtnRight: {
     right: 0,
