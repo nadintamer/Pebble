@@ -38,24 +38,24 @@ export default function TasksScreen() {
   const renderHiddenItem = ({ index }, rowMap) => {
     return (
       <View style={styles.rowBack}>
-            <TouchableOpacity
-              style={[styles.backRightBtn, styles.backRightBtnLeft]}
-              onPress={() => {
-                closeRow(rowMap, index);
-                console.log("edit button pressed");
-              }}
-            >
-              <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
-              <Text style={styles.backTextWhite}>Edit</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.backRightBtn, styles.backRightBtnRight]}
-              onPress={() => deleteTask(rowMap, index)}
-            >
-              <Ionicons name="trash-outline" size={20} color={Colors.white} style={{ margin: 5 }}/>
-              <Text style={styles.backTextWhite}>Delete</Text>
-            </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={[styles.backRightBtn, styles.backRightBtnLeft]}
+          onPress={() => {
+            closeRow(rowMap, index);
+            console.log("edit button pressed");
+          }}
+        >
+          <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
+          <Text style={styles.backTextWhite}>Edit</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.backRightBtn, styles.backRightBtnRight]}
+          onPress={() => deleteTask(rowMap, index)}
+        >
+          <Ionicons name="trash-outline" size={20} color={Colors.white} style={{ margin: 5 }}/>
+          <Text style={styles.backTextWhite}>Delete</Text>
+        </TouchableOpacity>
+      </View>
     );
   }
 
