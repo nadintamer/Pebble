@@ -32,7 +32,7 @@ export default function MyTask(props) {
       underlayColor='white'>
       <View style={styles.task}>
         <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
-        <Text style={styles.taskText}>{props.task.task}</Text>
+        <Text style={styles.taskText}>{props.task.text}</Text>
       </View>
     </TouchableHighlight>
   );

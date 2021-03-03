@@ -17,7 +17,7 @@ export default function TasksScreen() {
   const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
-  const [myTasks, setMyTasks] = useState([{task: "Task 5", status: "notCompleted"}, {task: "Task 6", status: "notCompleted"}]);
+  const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted"}, {text: "Task 6", status: "notCompleted"}]);
   const listRef = useRef(null);
 
   const renderWeeklyTask = ({ item, index }, added) => {
@@ -80,10 +80,10 @@ export default function TasksScreen() {
   };
 
   const addNewTask = (text) => {
-    let myTasksText = myTasks.map(task => task.task);
+    let myTasksText = myTasks.map(task => task.text);
     if (text !== "" && !myTasksText.includes(text)) {
       let newMyTasks = [...myTasks];
-      newMyTasks.unshift({task: text, status: "notCompleted"});
+      newMyTasks.unshift({text: text, status: "notCompleted"});
       setMyTasks(newMyTasks);
 
       if (myTasks.length > 0) {
@@ -102,7 +102,7 @@ export default function TasksScreen() {
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    newMyTasks.unshift({task: item, status: "notCompleted"});
+    newMyTasks.unshift({text: item, status: "notCompleted"});
     setMyTasks(newMyTasks);
   };
 
@@ -112,7 +112,7 @@ export default function TasksScreen() {
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    let myTasksIndex = newMyTasks.indexOf(item);
+    let myTasksIndex = myTasks.map(function(task) { return task.text; }).indexOf(item);
     newMyTasks.splice(myTasksIndex, 1);
     setMyTasks(newMyTasks);
 
@@ -130,7 +130,7 @@ export default function TasksScreen() {
 
   // Delete a row by swiping left
   const deleteTask = (rowMap, index) => {
-    let item = myTasks[index].task;
+    let item = myTasks[index].text;
 
     closeRow(rowMap, index);
     let newTasks = [...myTasks];
