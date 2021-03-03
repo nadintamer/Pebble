@@ -22,10 +22,10 @@ export default function ProfileScreen({ navigation }) {
       <TouchableOpacity style={styles.emergencyButton}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
-          <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
+      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
         <ProfileButton text="Saved" image="saved"/>
       </TouchableOpacity>
-    <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
+      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
         <ProfileButton text="FAQ" image="faq"/>
       </TouchableOpacity>
     </SafeAreaView>

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList, TouchableOpacity, TextInput, TouchableHighlight } from 'react-native';
 import { SwipeListView } from "react-native-swipe-list-view";
 import Colors from '../themes/Colors';
 
@@ -17,7 +17,7 @@ export default function TasksScreen() {
   const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
-  const [myTasks, setMyTasks] = useState(["Task 5", "Task 6"]);
+  const [myTasks, setMyTasks] = useState([{task: "Task 5", status: "notCompleted"}, {task: "Task 6", status: "notCompleted"}]);
   const listRef = useRef(null);
 
   const renderWeeklyTask = ({ item, index }, added) => {
@@ -32,7 +32,7 @@ export default function TasksScreen() {
   };
 
   const renderMyTask = ({ index, item }) => {
-    return <MyTask text={item} />;
+    return <MyTask task={item} completeTask={completeTask}/>;
   };
 
   const renderHiddenItem = ({ index }, rowMap) => {
@@ -63,10 +63,27 @@ export default function TasksScreen() {
     return index.toString();
   };
 
+  const completeTask = (item) => {
+    let index = myTasks.indexOf(item);
+    let newTask = myTasks[index];
+    let done = newTask.status;
+
+    if (done === "completed") {
+      newTask.status = "notCompleted";
+    } else {
+      newTask.status = "completed";
+    }
+
+    let newMyTasks = [...myTasks];
+    newMyTasks[index] = newTask;
+    setMyTasks(newMyTasks);
+  };
+
   const addNewTask = (text) => {
-    if (text !== "" && !myTasks.includes(text)) {
+    let myTasksText = myTasks.map(task => task.task);
+    if (text !== "" && !myTasksText.includes(text)) {
       let newMyTasks = [...myTasks];
-      newMyTasks.unshift(text);
+      newMyTasks.unshift({task: text, status: "notCompleted"});
       setMyTasks(newMyTasks);
 
       if (myTasks.length > 0) {
@@ -85,7 +102,7 @@ export default function TasksScreen() {
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    newMyTasks.unshift(item);
+    newMyTasks.unshift({task: item, status: "notCompleted"});
     setMyTasks(newMyTasks);
   };
 
@@ -113,7 +130,7 @@ export default function TasksScreen() {
 
   // Delete a row by swiping left
   const deleteTask = (rowMap, index) => {
-    let item = myTasks[index];
+    let item = myTasks[index].task;
 
     closeRow(rowMap, index);
     let newTasks = [...myTasks];

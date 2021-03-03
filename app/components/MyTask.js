@@ -11,7 +11,6 @@ import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
 
 export default function MyTask(props) {
-  const [done, setDone] = useState("notCompleted");
   const icons = {
     completed: {
       name: 'completed',
@@ -25,26 +24,15 @@ export default function MyTask(props) {
     },
   };
 
-  const [checkboxIcon, setCheckboxIcon] = useState(icons["notCompleted"]);
-
-  const toggleIcon = () => {
-    let status;
-    if (done === "completed") {
-      status = "notCompleted";
-    } else {
-      status = "completed";
-    }
-    setDone(status);
-    setCheckboxIcon(icons[status]);
-  };
+  const checkboxIcon = icons[props.task.status];
 
   return (
     <TouchableHighlight
-      onPress={toggleIcon}
+      onPress={() => { props.completeTask(props.task) }}
       underlayColor='white'>
       <View style={styles.task}>
         <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
-        <Text style={styles.taskText}>{props.text}</Text>
+        <Text style={styles.taskText}>{props.task.task}</Text>
       </View>
     </TouchableHighlight>
   );
