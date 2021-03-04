@@ -10,16 +10,24 @@ const windowHeight = Dimensions.get('window').height;
 export default function EmergencyScreen() {
   return (
     <SafeAreaView style={styles.homeContainer}>
-
+          <Image
+            source={require("../../assets/images/Divider.png")}
+            style={{ width: 430, height: 5}}
+          />
     <View style={styles.callDoctor}>
     <View style={styles.pictureContainer}>
       <Image
         source={require("../../assets/images/CallDoctorIcon.png")}
-        style={{ width: 60, height: 60}}
+        style={{ width: 25, height: 25}}
       />
     </View>
     <Text style={styles.boldedText}> Call Doctor </Text>
     </View>
+          
+          <Image
+            source={require("../../assets/images/Divider.png")}
+            style={{ width: 430, height: 5}}
+          />
 
     <View style={styles.hospitalDirections}>
     <View style={styles.pictureContainer}>
@@ -28,8 +36,12 @@ export default function EmergencyScreen() {
         style={{ width: 60, height: 60}}
       />
     </View>
-    <Text style={styles.boldedText}> Directions to Nearest Hospital </Text>
+          <Text style={styles.boldedText}> {"\n"} Directions to Nearest Hospital </Text>
     </View>
+          <Image
+            source={require("../../assets/images/Divider.png")}
+            style={{ width: 430, height: 5}}
+          />
 
     <View style={styles.textFriends}>
     <View style={styles.pictureContainer}>
@@ -38,31 +50,40 @@ export default function EmergencyScreen() {
         style={{ width: 60, height: 60}}
       />
     </View>
-    <Text style={styles.boldedText}> Text Family & Friends </Text>
+          <Text style={styles.boldedText}> {"\n"}Text Family & Friends </Text>
     </View>
-
+          <Image
+            source={require("../../assets/images/Divider.png")}
+            style={{ width: 430, height: 5}}
+          />
     </SafeAreaView>
   );
 
 }
 const styles = StyleSheet.create({
 homeContainer: {
-  flex: 1,
+  flex: 0.5,
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'space-between',
   backgroundColor: Colors.white,
 },
 boldedText: {
-  fontWeight: "bold"
+  fontWeight: "bold",
+  fontSize: 18,
+fontFamily: 'NunitoSans_400Regular'
+
 },
 callDoctor: {
-
+flexDirection: "row",
+    justifyContent: "space-evenly"
 },
     hospitalDirections : {
-
+    flexDirection: "row",
+    justifyContent: "space-evenly"
     },
     textFriends : {
-
+    flexDirection: "row",
+    justifyContent: "space-evenly"
     },
 });
