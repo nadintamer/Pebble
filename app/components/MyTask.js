@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,8 +12,6 @@ import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
 
 export default function MyTask(props) {
-  const [userInput, setUserInput] = useState(props.task.text);
-
   const icons = {
     completed: {
       name: 'completed',
@@ -33,7 +31,7 @@ export default function MyTask(props) {
     props.setEditing(props.index, false);
 
     // call callback function to update the todos state in TasksScreen.js
-    props.editToDo(props.index, userInput)
+    props.editToDo(props.index, props.userInput)
   }
 
   return (
@@ -43,8 +41,10 @@ export default function MyTask(props) {
         <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
         <TextInput
           style={styles.taskText}
-          onChangeText={text => setUserInput(text)}
-          value={userInput}
+          onChangeText={(text) => {
+            props.setUserInput(text);
+          }}
+          value={props.userInput}
           onSubmitEditing={() => editItem()}
           onEndEditing={() => editItem()}
           autoFocus={true}
@@ -52,7 +52,10 @@ export default function MyTask(props) {
       </View>
       :
       <TouchableHighlight
-        onPress={() => { props.completeTask(props.task) }}
+        onPress={() => {
+          console.log(props);
+          props.completeTask(props.task);
+        }}
         underlayColor='white'>
         <View style={styles.task}>
           <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>

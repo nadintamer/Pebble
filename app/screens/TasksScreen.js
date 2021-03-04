@@ -21,6 +21,7 @@ export default function TasksScreen({ route, navigation }) {
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
   const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted", editing: false}, {text: "Task 6", status: "notCompleted", editing: false}]);
+  const [userInput, setUserInput] = useState('');
   const listRef = useRef(null);
   const taskRef = useRef(null);
 
@@ -42,7 +43,15 @@ export default function TasksScreen({ route, navigation }) {
   };
 
   const renderMyTask = ({ index, item }) => {
-    return <MyTask task={item} completeTask={completeTask} index={index} editToDo={editTask} setEditing={setEditing}/>;
+    return <MyTask
+              task={item}
+              completeTask={completeTask}
+              index={index}
+              editToDo={editTask}
+              setEditing={setEditing}
+              userInput={userInput}
+              setUserInput={setUserInput}
+            />;
   };
 
   const renderHiddenItem = ({ index }, rowMap) => {
@@ -52,6 +61,7 @@ export default function TasksScreen({ route, navigation }) {
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => {
             closeRow(rowMap, index);
+            setUserInput(myTasks[index].text);
             setEditing(index, true);
           }}
         >
@@ -81,6 +91,7 @@ export default function TasksScreen({ route, navigation }) {
 
   // New editing ToDo list function
   const editTask = (index, newItem) => {
+    setEditing(index, false);
     let newMyTasks = [...myTasks];
     let oldTask = newMyTasks[index].text;
     if (addedTasks.includes(oldTask)) {
@@ -113,7 +124,7 @@ export default function TasksScreen({ route, navigation }) {
     let myTasksText = myTasks.map(task => task.text);
     if (text !== "" && !myTasksText.includes(text)) {
       let newMyTasks = [...myTasks];
-      newMyTasks.unshift({text: text, status: "notCompleted"});
+      newMyTasks.unshift({text: text, status: "notCompleted", editing: false});
       setMyTasks(newMyTasks);
 
       if (myTasks.length > 0) {
@@ -132,7 +143,7 @@ export default function TasksScreen({ route, navigation }) {
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    newMyTasks.unshift({text: item, status: "notCompleted"});
+    newMyTasks.unshift({text: item, status: "notCompleted", editing: false});
     setMyTasks(newMyTasks);
   };
 
