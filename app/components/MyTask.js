@@ -46,6 +46,7 @@ export default function MyTask(props) {
           onChangeText={text => setUserInput(text)}
           value={userInput}
           onSubmitEditing={() => editItem()}
+          onEndEditing={() => editItem()}
           autoFocus={true}
         />
       </View>
