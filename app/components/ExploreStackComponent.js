@@ -6,6 +6,8 @@ import { NavigationContainer } from '@react-navigation/native'
 import Colors from '../themes/Colors';
 
 import ExploreScreen from '../screens/ExploreScreen';
+import SearchScreen from '../screens/SearchScreen';
+import ResultsScreen from '../screens/ResultsScreen';
 const ExploreStack = createStackNavigator();
 
 export default function ExploreStackComponent() {
@@ -21,6 +23,20 @@ export default function ExploreStackComponent() {
         component={ExploreScreen}
         options={{
           title: "Explore",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+    }}/>
+    <ExploreStack.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          title: "Search",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
