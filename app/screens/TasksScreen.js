@@ -20,8 +20,9 @@ export default function TasksScreen({ route, navigation }) {
   const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
-  const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted"}, {text: "Task 6", status: "notCompleted"}]);
+  const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted", editing: false}, {text: "Task 6", status: "notCompleted", editing: false}]);
   const listRef = useRef(null);
+  const taskRef = useRef(null);
 
   useEffect(() => {
     setIndex(startingTab);
@@ -39,7 +40,7 @@ export default function TasksScreen({ route, navigation }) {
   };
 
   const renderMyTask = ({ index, item }) => {
-    return <MyTask task={item} completeTask={completeTask} index={index} editToDo={editTask}/>;
+    return <MyTask task={item} completeTask={completeTask} index={index} editToDo={editTask} setEditing={setEditing}/>;
   };
 
   const renderHiddenItem = ({ index }, rowMap) => {
@@ -49,12 +50,7 @@ export default function TasksScreen({ route, navigation }) {
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => {
             closeRow(rowMap, index);
-            console.log(rowMap[index]);
-            rowMap[index].setEditing(true);
-            // conditionally render text / textinput based on editing state
-            // need callback function to edit list array
-            // setMyTasks(editedTasks);
-            console.log("edit button pressed");
+            setEditing(index, true);
           }}
         >
           <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
@@ -75,10 +71,16 @@ export default function TasksScreen({ route, navigation }) {
     return index.toString();
   };
 
+  const setEditing = (index, val) => {
+    let newMyTasks = [...myTasks];
+    newMyTasks[index].editing = val;
+    setMyTasks(newMyTasks);
+  };
+
   // New editing ToDo list function
   const editTask = (index, newItem) => {
     let newMyTasks = [...myTasks];
-    newMyTasks[index] = newItem; // update individual item in the list
+    newMyTasks[index].text = newItem; // update individual item in the list
     setMyTasks(newMyTasks);
   };
 

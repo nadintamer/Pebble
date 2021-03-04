@@ -12,7 +12,6 @@ import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
 
 export default function MyTask(props) {
-  const [editing, setEditing] = useState(false);
   const [userInput, setUserInput] = useState(props.task.text);
 
   const icons = {
@@ -31,7 +30,7 @@ export default function MyTask(props) {
   const checkboxIcon = icons[props.task.status];
 
   const editItem = () => {
-    setEditing(false);
+    props.setEditing(props.index, false);
 
     // call callback function to update the todos state in TasksScreen.js
     props.editToDo(props.index, userInput)
@@ -39,14 +38,15 @@ export default function MyTask(props) {
 
   return (
     <View>
-    { editing ?
+    { props.task.editing ?
       <View style={styles.task}>
+        <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
         <TextInput
           style={styles.taskText}
           onChangeText={text => setUserInput(text)}
           value={userInput}
           onSubmitEditing={() => editItem()}
-          //focused=true
+          autoFocus={true}
         />
       </View>
       :
