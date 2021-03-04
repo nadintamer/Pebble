@@ -8,36 +8,58 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function ResultScreen() {
     return (
-      <ScrollView>
         <SafeAreaView style={styles.homeContainer}>
-              <Image style={styles.image} source={require("../../assets/images/communication.png")}></Image>
+        <View style={styles.actionCard}>
+            <Text style={styles.cardText}>{"\n"}
+            <Text style={styles.boldedText}>  Morning Sickness {"\n"}{"\n"}</Text>
+            <Text>  Despite its name, morning sickness does not {"\n"}  only occur in the morning.</Text>
+          </Text>
+        </View>
   
-      <Text style={styles.content}>The b yourself, and recruit a support network.</Text>
-  </SafeAreaView>
-  </ScrollView>
+        <View style={styles.actionCard}>
+            <Text style={styles.cardText}>{"\n"}
+            <Text style={styles.boldedText}>  Nausea Symptoms {"\n"}{"\n"}</Text>
+          <Text>  Morning sickness, vomiting, and more</Text>
+            </Text>
+        </View>
+  
+        <View style={styles.actionCard}>
+            <Text style={styles.cardText}>{"\n"}
+            <Text style={styles.boldedText}>  Covaude Syndrome {"\n"}{"\n"}</Text>
+          <Text>  The manifestation of pregnancy in men</Text>
+          </Text>
+        </View>
+  
+        <View style={styles.actionCard}>
+            <Text style={styles.cardText}>{"\n"}
+            <Text style={styles.boldedText}>  Hyperemis Gravidarum {"\n"}{"\n"}</Text>
+            <Text>  Extreme Morning Sickness: dehydration, {"\n"}  weight loss, and more</Text>
+          </Text>
+        </View>
+      </SafeAreaView>
   
     );
   }
   
   const styles = StyleSheet.create({
     homeContainer: {
-      flex: 1,
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      backgroundColor: Colors.white,
-  },
-  image: {
-    alignItems: 'stretch',
-    flexDirection: 'column',
-    backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.25,
-    width: windowWidth,
-  },
-  content: {
-      color: 'black',
-      fontSize: 16,
-      fontFamily: 'NunitoSans_400Regular'
-  }
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        backgroundColor: Colors.white,
+      },
+      actionCard: {
+        alignItems: 'stretch',
+        flexDirection: 'column',
+        backgroundColor: Colors.lightPurple,
+        height: windowHeight * 0.15,
+        width: windowWidth * 0.9,
+        borderRadius: 20,
+        marginTop: 30
+      },
+      boldedText: {
+        fontWeight: "bold"
+      },
   });
   
