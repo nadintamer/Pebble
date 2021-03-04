@@ -10,8 +10,6 @@ const windowHeight = Dimensions.get('window').height;
 export default function ExploreScreen({ navigation }) {
     const [search, updateSearch] = useState('');
     const [text, setText] = useState("");
-    console.log(windowWidth);
-    console.log(windowHeight);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -78,7 +76,9 @@ const styles = StyleSheet.create({
         flex: 1
     }, 
     exploreCardRowContainer: {
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     homeContainer: {
         flex: 1,
@@ -94,7 +94,8 @@ const styles = StyleSheet.create({
         height: windowHeight * 0.17,
         width: windowWidth * 0.37,
         borderRadius: 20,
-        marginTop: 30
+        marginTop: 30,
+        marginRight: 20
     },
     cardHeading: {
         fontFamily: "Nunito_700Bold",
