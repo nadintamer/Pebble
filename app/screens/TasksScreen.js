@@ -82,6 +82,13 @@ export default function TasksScreen({ route, navigation }) {
   // New editing ToDo list function
   const editTask = (index, newItem) => {
     let newMyTasks = [...myTasks];
+    let oldTask = newMyTasks[index].text;
+    if (addedTasks.includes(oldTask)) {
+      let addedIndex = addedTasks.indexOf(oldTask);
+      let newAddedTasks = [...addedTasks];
+      newAddedTasks[addedIndex] = newItem;
+      setAddedTasks(newAddedTasks);
+    }
     newMyTasks[index].text = newItem; // update individual item in the list
     setMyTasks(newMyTasks);
   };

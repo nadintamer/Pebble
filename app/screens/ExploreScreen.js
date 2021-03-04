@@ -26,17 +26,15 @@ export default function ExploreScreen({ navigation }) {
           keyboardShouldPersistTaps='never'
         />
       </View>
-    <Text>
-        explore haha
-    </Text>
+
+      <Text style={styles.subheading}>
+          You might be interested in... 
+      </Text>
 
     <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                <View style={styles.actionCard}>
-                    <Text style={styles.cardText}>{"\n"}
-                        <Text style={styles.subheading}>  What You Should Know: Paternity Leave {"\n"}</Text>
-                        <Text>  Your employer's policies, alternatives, and more</Text>
-                    </Text>
+                <View style={styles.exploreCard}>
                 </View>
+                <Text> Morning Sickness </Text>
     </TouchableOpacity>
 
     </SafeAreaView>
@@ -57,20 +55,24 @@ const styles = StyleSheet.create({
     homeContainer: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center',
+        alignItems: 'center', 
         justifyContent: 'flex-start',
         backgroundColor: Colors.white,
     },
-    actionCard: {
+    exploreCard: {
         alignItems: 'stretch',
         flexDirection: 'column',
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.17,
-        width: windowWidth * 0.9,
+        width: windowWidth * 0.45,
         borderRadius: 20,
         marginTop: 30
     },
-
+    cardHeading: {
+        fontFamily: "Nunito_700Bold",
+        fontSize: 16,
+        textAlign: 'center',
+    },
     image: {
         alignItems: 'stretch',
         flexDirection: 'column',
@@ -80,8 +82,9 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     subheading: {
+        textAlign: 'left',
         fontFamily: "NunitoSans_700Bold",
-        fontSize: 20,
+        fontSize: 24,
         marginTop: 15,
       },
 });

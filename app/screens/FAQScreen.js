@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.25,
-    width: windowWidth * 0.8,
+    height: windowHeight * 0.15,
+    width: windowWidth * 0.9,
     borderRadius: 20,
     marginTop: 10
   },
@@ -110,7 +110,10 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
 scrollView: {
+<<<<<<< HEAD
   marginHorizontal: 0,
+=======
+>>>>>>> 533521ce55af2850de3498693dd0ee96ca95726d
 },
   searchbar: {
     width: "100%",
