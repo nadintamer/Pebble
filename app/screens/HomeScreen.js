@@ -16,8 +16,10 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.actionCardContainer}>
         <View style={styles.actionCard}>
           <Text style={styles.subheading}>This Week's Tasks</Text>
-          <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
-          <Text style={styles.bodyText}>Schedule tour of hospital </Text>
+          <View style={styles.textView}>
+            <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
+            <Text style={styles.bodyText}>Schedule tour of hospital </Text>
+          </View>
           <View style={styles.appButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Tasks', { startingTab: 0 })} style={styles.appButton}>
               <Text style={styles.appButtonText}>Go To Tasks</Text>
@@ -28,8 +30,10 @@ export default function HomeScreen({ navigation }) {
 
         <View style={styles.actionCard}>
           <Text style={styles.subheading}>Info</Text>
-          <Text style={styles.bodyText}>Communication Tips</Text>
-          <Text style={styles.bodyText}>Paternity Leave </Text>
+          <View style={styles.textView}>
+            <Text style={styles.bodyText}>Communication Tips</Text>
+            <Text style={styles.bodyText}>Paternity Leave </Text>
+          </View>
           <View style={styles.appButtonContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
               <Text style={styles.appButtonText}>Learn More</Text>
@@ -57,13 +61,13 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.8,
   },
   actionCardContainer: {
-    flex: 0.7,
+    flex: 1,
     width: '90%',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   actionCard: {
-    alignItems: 'stretch',
+    alignItems: 'center',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
     height: 240,
@@ -75,22 +79,25 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSans_700Bold",
     fontSize: 24,
     marginTop: 15,
+    marginBottom: 15,
   },
   bodyText: {
-    margin: 10,
     fontFamily: 'Nunito_400Regular',
     fontSize: 16,
+    marginTop: 5,
+    marginBottom: 5,
   },
   appButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   appButton: {
-    width: '85%',
+    width: '100%',
     backgroundColor: Colors.coral,
     borderRadius: 20,
     paddingVertical: 10,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    marginTop: 30,
   },
   appButtonText: {
     fontSize: 18,

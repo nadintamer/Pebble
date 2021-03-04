@@ -12,27 +12,27 @@ export default function WeekInfoScreen({ navigation }) {
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
-                    <Text style={styles.cardText}>{"\n"}
-                        <Text style={styles.subheading}>  Week 30 Symptoms {"\n"}</Text>
-                        <Text>  Fatigue, morning sickness, and more</Text>
-                    </Text>
+                    <View style={styles.textView}>
+                        <Text style={styles.subheading}>Week 30 Symptoms</Text>
+                        <Text style={styles.bodyText}>Fatigue, morning sickness, and more</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
-                    <Text style={styles.cardText}>{"\n"}
-                        <Text style={styles.subheading}>  What You Should Know: Paternity Leave {"\n"}</Text>
-                        <Text>  Your employer's policies, alternatives, and more</Text>
-                    </Text>
+                    <View style={styles.textView}>
+                        <Text style={styles.subheading}>What You Should Know: Paternity Leave</Text>
+                        <Text style={styles.bodyText}>Your employer's policies, alternatives, and more</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
-                    <Text style={styles.cardText}>{"\n"}
-                        <Text style={styles.subheading}>  Communicating With Your Partner {"\n"}</Text>
-                    </Text>
+                    <View style={styles.textView}>
+                        <Text style={styles.subheading}>Communicating With Your Partner</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
         </SafeAreaView>
@@ -71,5 +71,18 @@ const styles = StyleSheet.create({
         fontFamily: "NunitoSans_700Bold",
         fontSize: 20,
         marginTop: 15,
-      },
+    },
+    bodyText: {
+        fontSize: 16,
+        fontFamily: 'NunitoSans_400Regular',
+        marginTop: 10,
+    },
+    textView: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginLeft: 20,
+        marginRight: 20,
+    },
 });

@@ -17,7 +17,7 @@ export default function EmergencyScreen() {
     <View style={styles.callDoctor}>
     <View style={styles.pictureContainer}>
       <Image
-        source={require("../../assets/images/CallDoctorIcon.png")}
+        source={require("../../assets/images/call-doctor-icon.png")}
         style={{ width: 25, height: 25}}
       />
     </View>
@@ -32,7 +32,7 @@ export default function EmergencyScreen() {
     <View style={styles.hospitalDirections}>
     <View style={styles.pictureContainer}>
       <Image
-        source={require("../../assets/images/HospitalDirections.png")}
+        source={require("../../assets/images/hospital-directions.png")}
         style={{ width: 60, height: 60}}
       />
     </View>
@@ -46,7 +46,7 @@ export default function EmergencyScreen() {
     <View style={styles.textFriends}>
     <View style={styles.pictureContainer}>
       <Image
-        source={require("../../assets/images/TextFamilyIcon.png")}
+        source={require("../../assets/images/text-family-icon.png")}
         style={{ width: 60, height: 60}}
       />
     </View>
