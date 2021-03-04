@@ -12,21 +12,25 @@ export default function FAQScreen() {
   const [text, setText] = useState("");
 
   return (
-    <ScrollView style={styles.scrollView}>
-      <SafeAreaView style={styles.homeContainer}>
-        <View style={styles.searchContainer}>
-          <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
-            onPress={() => { console.log("search") }} />
-          <TextInput
+    <SafeAreaView style={styles.homeContainer}>
+      <View style={styles.searchContainer}>
+        <Feather.Button
+          name="search"
+          size={24}
+          color={Colors.darkPurple}
+          backgroundColor='transparent'
+          onPress={() => { console.log("search") }} />
+        <TextInput
             style={styles.textinput}
             placeholder={'Search by topic...'}
             clearButtonMode={'always'}
             onChangeText={(text) => setText(text)}
             value={text}
             keyboardShouldPersistTaps='never'
-          />
-        </View>
+        />
+      </View>
 
+      <ScrollView style={styles.scrollView}>
         <View style={styles.actionCard}>
           <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  How do I use the tasks feature? {"\n"}{"\n"}</Text>
@@ -54,8 +58,8 @@ export default function FAQScreen() {
           <Text>  Pebble leverages intelligent AI {"\n"}  algorithms that can analyze articles  {"\n"}  and tasks you spend the most time on  {"\n"}  and provides suggestions accordingly. </Text>
           </Text>
         </View>
-      </SafeAreaView>
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -91,8 +95,8 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.15,
-    width: windowWidth * 0.9,
+    height: windowHeight * 0.17,
+    width: '100%',
     borderRadius: 20,
     flex: 3,
     marginTop: 10
@@ -112,6 +116,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   scrollView: {
+    width: '90%',
     backgroundColor: Colors.white,
   },
 });
