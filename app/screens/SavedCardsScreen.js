@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, ScrollView, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
 import Colors from '../themes/Colors';
 import ProfileButton from '../components/ProfileButton';
@@ -74,12 +74,38 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: Colors.lightPurple,
     height: windowHeight * 0.15,
-    width: windowWidth * 0.9,
+    width: '100%',
     borderRadius: 20,
     marginTop: 30,
   },
+  rowContainer: {
+    flexDirection: 'row',
+  },
+  imageContainer: {
+    flex: 1,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textContainer: {
+    flex: 4,
+    marginRight: 10,
+  },
   boldedText: {
-    fontWeight: "bold"
+    fontFamily: 'NunitoSans_700Bold',
+  },
+  cardText: {
+    fontFamily: 'NunitoSans_400Regular',
+  },
+  pictureContainer: {
+    marginTop: 50,
+    marginBottom: 15,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  scrollView: {
+    width: '90%',
+    backgroundColor: Colors.white,
   },
   cardText: {
     flex: 1,

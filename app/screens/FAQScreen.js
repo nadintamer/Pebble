@@ -12,58 +12,61 @@ export default function FAQScreen() {
   const [text, setText] = useState("");
 
   return (
-          <ScrollView style={styles.scrollView}>
     <SafeAreaView style={styles.homeContainer}>
       <View style={styles.searchContainer}>
-        <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
+        <Feather.Button
+          name="search"
+          size={24}
+          color={Colors.darkPurple}
+          backgroundColor='transparent'
           onPress={() => { console.log("search") }} />
         <TextInput
-          style={styles.textinput}
-          placeholder={'Search by topic...'}
-          clearButtonMode={'always'}
-          onChangeText={(text) => setText(text)}
-          value={text}
-          keyboardShouldPersistTaps='never'
+            style={styles.textInput}
+            placeholder={'Search by topic...'}
+            clearButtonMode={'always'}
+            onChangeText={(text) => setText(text)}
+            value={text}
+            keyboardShouldPersistTaps='never'
         />
       </View>
 
-      <View style={styles.actionCard}>
-        <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  How do I use the tasks feature? {"\n"}{"\n"}</Text>
-          <Text>  Adding a suggested task from Week X {"\n"}  on the tasks tab will add the task to {"\n"}  your running “My Tasks” list. To access  {"\n"}  tasks from previous weeks, navigate to {"\n"}  previous weeks from the home screen {"\n"}  and access tasks from there.</Text>
-        </Text>
-      </View>
-
-          <View style={styles.actionCard}>
-            <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  Where can I find additional {"\n"}  resources? {"\n"}{"\n"}</Text>
-              <Text>  Check out these websites for more {"\n"}  information about pregnancy and {"\n"}  becoming a parent.</Text>
-            </Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.actionCard}>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>How do I use the tasks feature? {"\n"}</Text>
+            <Text style={styles.cardText}>Adding a suggested task from Week X on the tasks tab will add it to your running “My Tasks” list. To access tasks from previous weeks, navigate to previous weeks from the home screen and access tasks from there.</Text>
           </View>
+        </View>
 
-          <View style={styles.actionCard}>
-            <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  What does the progress bar mean? {"\n"}{"\n"}</Text>
-              <Text>  This progress bar representes how far {"\n"}  along your partner is in their pregnancy. {"\n"}  Remember that your due date is only an {"\n"}  estimation! </Text>
-            </Text>
+        <View style={styles.actionCard}>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>Where can I find additional resources? {"\n"}</Text>
+            <Text style={styles.cardText}>Check out these websites for more information about pregnancy and becoming a parent.</Text>
           </View>
+        </View>
 
-          <View style={styles.actionCard}>
-            <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  How does Pebble recommend items? {"\n"}{"\n"}</Text>
-              <Text>  Pebble leverages intelligent AI {"\n"}  algorithms that can analyze articles  {"\n"}  and tasks you spend the most time on  {"\n"}  and provides suggestions accordingly. </Text>
-            </Text>
+        <View style={styles.actionCard}>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>What does the progress bar mean? {"\n"}</Text>
+            <Text style={styles.cardText}>This progress bar represents how far along your partner is in their pregnancy. Remember that your due date is only an estimation! </Text>
           </View>
+        </View>
+
+        <View style={styles.actionCard}>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>How does Pebble recommend items? {"\n"}</Text>
+            <Text style={styles.cardText}>Pebble leverages intelligent AI algorithms that can analyze articles and tasks you spend the most time on and provides suggestions accordingly. </Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
-          </ScrollView>
-
   );
 }
 
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
-    height:windowHeight,
+    height: windowHeight,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -84,24 +87,32 @@ const styles = StyleSheet.create({
     color: Colors.white,
     alignItems: 'flex-start',
   },
-  textinput: {
+  textInput: {
     flex: 5,
+    fontFamily: 'Nunito_400Regular',
     borderColor: 'gray',
   },
   actionCard: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.15,
-    width: windowWidth * 0.9,
+    height: windowHeight * 0.17,
+    width: '100%',
     borderRadius: 20,
     flex: 3,
     marginTop: 10
   },
-  boldedText: {
-    fontWeight: "bold"
+  textContainer: {
+    width: '90%',
   },
-  searchcontainer: {
+  boldedText: {
+    fontFamily: 'NunitoSans_700Bold',
+  },
+  cardText: {
+    fontFamily: 'NunitoSans_400Regular',
+  },
+  searchcontainer: { // this isn't used anywhere
     backgroundColor: 'white',
     borderWidth: 0, //no effect
     shadowColor: 'white', //no effect
@@ -109,8 +120,11 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     alignItems: 'stretch'
   },
-
   searchbar: {
-    width: "100%",
+    width: '100%',
+  },
+  scrollView: {
+    width: '90%',
+    backgroundColor: Colors.white,
   },
 });
