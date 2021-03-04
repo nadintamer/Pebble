@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 
 import ProfileScreen from '../screens/ProfileScreen';
+import EmergencyScreen from '../screens/EmergencyScreen';
 import FAQScreen from '../screens/FAQScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
@@ -29,6 +30,20 @@ export default function ProfileStackComponent() {
           },
         }}
       />
+      <ProfileStack.Screen
+        name="Emergency"
+        component={EmergencyScreen}
+        options={{
+          title: "Emergency",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+        }}/>
       <ProfileStack.Screen
         name="FAQ"
         component={FAQScreen}

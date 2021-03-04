@@ -19,7 +19,7 @@ export default function ProfileScreen({ navigation }) {
       <View style={styles.nameContainer}>
         <Text style={styles.name}>Brian Lewis</Text>
       </View>
-      <TouchableOpacity style={styles.emergencyButton}>
+      <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
