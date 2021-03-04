@@ -42,6 +42,9 @@ export default function TasksScreen() {
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => {
             closeRow(rowMap, index);
+            // rowMap[index]
+            // conditionally render text / textinput based on editing state
+            // need callback function to edit list array
             console.log("edit button pressed");
           }}
         >

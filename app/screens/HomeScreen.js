@@ -18,9 +18,11 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.subheading}>This Week's Tasks</Text>
           <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
           <Text style={styles.bodyText}>Schedule tour of hospital </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButtonContainer}>
-            <Text style={styles.appButtonText}>Go To Tasks</Text>
-          </TouchableOpacity>
+          <View style={styles.appButtonContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Tasks')} style={styles.appButton}>
+              <Text style={styles.appButtonText}>Go To Tasks</Text>
+            </TouchableOpacity>
+          </View>
 
         </View>
 
@@ -28,9 +30,11 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.subheading}>Info</Text>
           <Text style={styles.bodyText}>Communication Tips</Text>
           <Text style={styles.bodyText}>Paternity Leave </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButtonContainer}>
-            <Text style={styles.appButtonText}>Go To Tasks</Text>
-          </TouchableOpacity>
+          <View style={styles.appButtonContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
+              <Text style={styles.appButtonText}>Learn More</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
@@ -54,6 +58,7 @@ const styles = StyleSheet.create({
   },
   actionCardContainer: {
     flex: 0.7,
+    width: '90%',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -61,8 +66,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
-    height: windowHeight * 0.3,
-    width: windowWidth * 0.8,
+    height: 240,
+    width: '100%',
     borderRadius: 20,
     marginTop: 20,
   },
@@ -77,6 +82,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   appButtonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  appButton: {
+    width: '85%',
     backgroundColor: Colors.coral,
     borderRadius: 20,
     paddingVertical: 10,
@@ -87,7 +97,6 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     alignSelf: "center",
-    textTransform: "uppercase",
     fontFamily: "NunitoSans_700Bold",
   }
 });
