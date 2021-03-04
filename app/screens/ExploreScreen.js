@@ -115,6 +115,10 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginTop: 15,
       },
+      textinput: {
+        flex: 5,
+        borderColor: 'gray',
+      },
 });
 
 
