@@ -14,13 +14,10 @@ export default function SearchScreen() {
 
     return (
       <ScrollView>
-        <SafeAreaView style={styles.homeContainer}>
-              <Image style={styles.image} source={require("../../assets/images/communication.png")}></Image>
-  
-      <Text style={styles.content}>The b yourself, and recruit a support network.</Text>
-  </SafeAreaView>
-  </ScrollView>
-  
+            <SafeAreaView style={styles.homeContainer}>
+                <Text style={styles.content}>The b yourself, and recruit a support network.</Text>
+            </SafeAreaView>
+        </ScrollView>
     );
   }
   
