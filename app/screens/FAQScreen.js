@@ -32,31 +32,31 @@ export default function FAQScreen() {
 
       <ScrollView style={styles.scrollView}>
         <View style={styles.actionCard}>
-          <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  How do I use the tasks feature? {"\n"}{"\n"}</Text>
-          <Text>  Adding a suggested task from Week X {"\n"}  on the tasks tab will add the task to {"\n"}  your running “My Tasks” list. To access  {"\n"}  tasks from previous weeks, navigate to {"\n"}  previous weeks from the home screen {"\n"}  and access tasks from there.</Text>
-          </Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>How do I use the tasks feature? {"\n"}</Text>
+            <Text style={styles.cardText}>Adding a suggested task from Week X on the tasks tab will add it to your running “My Tasks” list. To access tasks from previous weeks, navigate to previous weeks from the home screen and access tasks from there.</Text>
+          </View>
         </View>
 
         <View style={styles.actionCard}>
-          <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  Where can I find additional {"\n"}  resources? {"\n"}{"\n"}</Text>
-          <Text>  Check out these websites for more {"\n"}  information about pregnancy and {"\n"}  becoming a parent.</Text>
-          </Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>Where can I find additional resources? {"\n"}</Text>
+            <Text style={styles.cardText}>Check out these websites for more information about pregnancy and becoming a parent.</Text>
+          </View>
         </View>
 
         <View style={styles.actionCard}>
-          <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  What does the progress bar mean? {"\n"}{"\n"}</Text>
-          <Text>  This progress bar representes how far {"\n"}  along your partner is in their pregnancy. {"\n"}  Remember that your due date is only an {"\n"}  estimation! </Text>
-          </Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>What does the progress bar mean? {"\n"}</Text>
+            <Text style={styles.cardText}>This progress bar represents how far along your partner is in their pregnancy. Remember that your due date is only an estimation! </Text>
+          </View>
         </View>
 
         <View style={styles.actionCard}>
-          <Text style={styles.cardText}>{"\n"}
-          <Text style={styles.boldedText}>  How does Pebble recommend items? {"\n"}{"\n"}</Text>
-          <Text>  Pebble leverages intelligent AI {"\n"}  algorithms that can analyze articles  {"\n"}  and tasks you spend the most time on  {"\n"}  and provides suggestions accordingly. </Text>
-          </Text>
+          <View style={styles.textContainer}>
+            <Text style={styles.boldedText}>How does Pebble recommend items? {"\n"}</Text>
+            <Text style={styles.cardText}>Pebble leverages intelligent AI algorithms that can analyze articles and tasks you spend the most time on and provides suggestions accordingly. </Text>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
   },
   actionCard: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    justifyContent: 'center',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
     height: windowHeight * 0.17,
@@ -101,8 +102,14 @@ const styles = StyleSheet.create({
     flex: 3,
     marginTop: 10
   },
+  textContainer: {
+    width: '90%',
+  },
   boldedText: {
-    fontWeight: 'bold',
+    fontFamily: 'NunitoSans_700Bold',
+  },
+  cardText: {
+    fontFamily: 'NunitoSans_400Regular',
   },
   searchcontainer: { // this isn't used anywhere
     backgroundColor: 'white',
