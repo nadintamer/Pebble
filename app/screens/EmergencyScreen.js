@@ -11,7 +11,7 @@ export default function EmergencyScreen() {
     <SafeAreaView style={styles.homeContainer}>
     
     <View style={styles.callDoctor}>
-    <View style={styles.profilePictureContainer}>
+    <View style={styles.pictureContainer}>
       <Image
         source={require("../../assets/images/callDoctorIcon.png")}
         style={{ width: 60, height: 60}}
@@ -21,7 +21,7 @@ export default function EmergencyScreen() {
     </View>
     
     <View style={styles.hospitalDirections}>
-    <View style={styles.profilePictureContainer}>
+    <View style={styles.pictureContainer}>
       <Image
         source={require("../../assets/images/HospitalDirections.png")}
         style={{ width: 60, height: 60}}
@@ -31,7 +31,7 @@ export default function EmergencyScreen() {
     </View>
     
     <View style={styles.textFriends}>
-    <View style={styles.profilePictureContainer}>
+    <View style={styles.pictureContainer}>
       <Image
         source={require("../../assets/images/TextFamilyIcon.png")}
         style={{ width: 60, height: 60}}

@@ -12,6 +12,10 @@ export default function SavedCardsScreen() {
   return (
     <SafeAreaView style={styles.homeContainer}>
       <View style={styles.actionCard}>
+            <Image
+              source={require("../../assets/images/morningSickness.png")}
+              style={{ width: 60, height: 60}}
+            />
           <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  Morning Sickness {"\n"}{"\n"}</Text>
           <Text>  Despite its name, morning sickness does not {"\n"}  only occur in the morning.</Text>
@@ -19,6 +23,10 @@ export default function SavedCardsScreen() {
       </View>
 
       <View style={styles.actionCard}>
+            <Image
+              source={require("../../assets/images/nausea.png")}
+              style={{ width: 60, height: 60}}
+            />
           <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  Nausea Symptoms {"\n"}{"\n"}</Text>
         <Text>  Morning sickness, vomiting, and more</Text>
@@ -26,6 +34,10 @@ export default function SavedCardsScreen() {
       </View>
 
       <View style={styles.actionCard}>
+            <Image
+              source={require("../../assets/images/covaude.png")}
+              style={{ width: 60, height: 60}}
+            />
           <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  Covaude Syndrome {"\n"}{"\n"}</Text>
         <Text>  The manifestation of pregnancy in men</Text>
@@ -33,6 +45,11 @@ export default function SavedCardsScreen() {
       </View>
 
       <View style={styles.actionCard}>
+            <Image
+              source={require("../../assets/images/hyperemesis.png")}
+              style={{ width: 60, height: 60}}
+            />
+
           <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  Hyperemis Gravidarum {"\n"}{"\n"}</Text>
           <Text>  Extreme Morning Sickness: dehydration, {"\n"}  weight loss, and more</Text>
@@ -52,7 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   actionCard: {
-    alignItems: 'stretch',
+    alignItems: 'center',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
     height: windowHeight * 0.15,
@@ -63,4 +80,10 @@ const styles = StyleSheet.create({
   boldedText: {
     fontWeight: "bold"
   },
+pictureContainer: {
+  marginTop: 50,
+  marginBottom: 15,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+},
 });
