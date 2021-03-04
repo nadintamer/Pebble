@@ -62,7 +62,7 @@ export default function FAQScreen() {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
-    height:windowHeight,
+    height: windowHeight,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -98,9 +98,9 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   boldedText: {
-    fontWeight: "bold"
+    fontWeight: 'bold',
   },
-  searchcontainer: {
+  searchcontainer: { // this isn't used anywhere
     backgroundColor: 'white',
     borderWidth: 0, //no effect
     shadowColor: 'white', //no effect
@@ -109,6 +109,9 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
   searchbar: {
-    width: "100%",
+    width: '100%',
+  },
+  scrollView: {
+    backgroundColor: Colors.white,
   },
 });
