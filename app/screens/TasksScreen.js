@@ -39,7 +39,7 @@ export default function TasksScreen({ route, navigation }) {
   };
 
   const renderMyTask = ({ index, item }) => {
-    return <MyTask task={item} completeTask={completeTask}/>;
+    return <MyTask task={item} completeTask={completeTask} index={index} editToDo={editTask}/>;
   };
 
   const renderHiddenItem = ({ index }, rowMap) => {
@@ -49,7 +49,8 @@ export default function TasksScreen({ route, navigation }) {
           style={[styles.backRightBtn, styles.backRightBtnLeft]}
           onPress={() => {
             closeRow(rowMap, index);
-            // rowMap[index]
+            console.log(rowMap[index]);
+            rowMap[index].setEditing(true);
             // conditionally render text / textinput based on editing state
             // need callback function to edit list array
             // setMyTasks(editedTasks);
@@ -72,6 +73,13 @@ export default function TasksScreen({ route, navigation }) {
 
   const keyExtractor = (index) => {
     return index.toString();
+  };
+
+  // New editing ToDo list function
+  const editTask = (index, newItem) => {
+    let newMyTasks = [...myTasks];
+    newMyTasks[index] = newItem; // update individual item in the list
+    setMyTasks(newMyTasks);
   };
 
   const completeTask = (item) => {
