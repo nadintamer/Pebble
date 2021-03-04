@@ -17,7 +17,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function TasksScreen({ route, navigation }) {
   const { startingTab } = route.params;
   const isFocused = useIsFocused();
-  const [index, setIndex] = useState(startingTab);
+  const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
   const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted"}, {text: "Task 6", status: "notCompleted"}]);
