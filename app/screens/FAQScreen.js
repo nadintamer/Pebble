@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
-import { SearchBar } from 'react-native-elements';
-
 import Colors from '../themes/Colors';
 
 const windowWidth = Dimensions.get('window').width;
@@ -65,6 +63,7 @@ export default function FAQScreen() {
 const styles = StyleSheet.create({
   homeContainer: {
     flex: 1,
+    height:windowHeight,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -96,6 +95,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.15,
     width: windowWidth * 0.9,
     borderRadius: 20,
+    flex: 3,
     marginTop: 10
   },
   boldedText: {
@@ -109,31 +109,8 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     alignItems: 'stretch'
   },
-scrollView: {
-  marginHorizontal: 0,
-},
+
   searchbar: {
     width: "100%",
-    borderWidth: 0, //no effect
   },
 });
-
-/*<SearchBar
-          placeholderTextColor='#fff'
-          placeholder='Search by topic (eg: "additional resources")'
-          onChangeText={updateSearch}
-          value={search}
-        />*/
-
-/* <SearchBar
-  placeholder='Search by topic (eg: "additional resources")'
-  onChangeText={updateSearch}
-  value={search}
-  style={styles.searchbar}
-  lightTheme round
-  containerStyle={{
-    backgroundColor:'white',
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent'
-}}
-/>*/
