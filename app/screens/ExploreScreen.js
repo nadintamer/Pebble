@@ -28,7 +28,7 @@ export default function ExploreScreen({ navigation }) {
       </View>
 
       <Text style={styles.subheading}>
-          You might be interested in... 
+          You might be interested in...
       </Text>
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
       },
     exploreCardColContainer: {
         flex: 1
-    }, 
+    },
     exploreCardRowContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     homeContainer: {
         flex: 1,
         flexDirection: 'column',
-        alignItems: 'center', 
+        alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundColor: Colors.white,
     },
@@ -115,12 +115,10 @@ const styles = StyleSheet.create({
         fontFamily: "NunitoSans_700Bold",
         fontSize: 24,
         marginTop: 15,
-      },
-      textinput: {
-        flex: 5,
-        borderColor: 'gray',
-      },
+    },
+    textinput: {
+      flex: 5,
+      borderColor: 'gray',
+      fontFamily: 'Nunito_400Regular',
+    },
 });
-
-
-

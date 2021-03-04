@@ -23,11 +23,15 @@ export default function HomeStackComponent() {
         name="Home"
         component={HomeScreen}
         options={{
-          title: null,
+          title: 'Week 30',
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
           },
+          headerTitleStyle: {
+            fontFamily: 'Nunito_700Bold',
+            fontSize: 30,
+          }
         }}
       />
       <HomeStack.Screen
@@ -61,6 +65,3 @@ export default function HomeStackComponent() {
     </HomeStack.Navigator>
   );
 }
-
-
-
