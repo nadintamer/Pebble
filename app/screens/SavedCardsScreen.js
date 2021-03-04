@@ -11,50 +11,59 @@ export default function SavedCardsScreen() {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <View style={styles.actionCard}>
-        <Image
-          source={require("../../assets/images/morningSickness.png")}
-          style={{ width: 60, height: 60, margin: 7 }}
-        />
-        <View style={styles.cardText}>
-          <Text style={styles.subheading}>Morning Sickness </Text>
-          <Text style={styles.bodyText}>Despite its name, morning sickness does not only occur in the morning.</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.actionCard}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../../assets/images/morningSickness.png")}
+              style={{ width: 60, height: 60, margin: 7 }}
+            />
+          </View>
+          <View style={styles.cardText}>
+            <Text style={styles.subheading}>Morning Sickness </Text>
+            <Text style={styles.bodyText}>Despite its name, morning sickness does not only occur in the morning.</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.actionCard}>
-        <Image
-          source={require("../../assets/images/nausea.png")}
-          style={{ width: 60, height: 60, margin: 7 }}
-        />
-        <View style={styles.cardText}>
-          <Text style={styles.subheading}>Nausea Symptoms</Text>
-          <Text style={styles.bodyText}>Morning sickness, vomiting, and more</Text>
+        <View style={styles.actionCard}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../../assets/images/nausea.png")}
+              style={{ width: 60, height: 60, margin: 7 }}
+            />
+          </View>
+          <View style={styles.cardText}>
+            <Text style={styles.subheading}>Nausea Symptoms</Text>
+            <Text style={styles.bodyText}>Morning sickness, vomiting, and more</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.actionCard}>
-        <Image
-          source={require("../../assets/images/covaude.png")}
-          style={{ width: 60, height: 60, margin: 7 }}
-        />
-        <View style={styles.cardText}>
-          <Text style={styles.subheading}>Covaude Syndrome </Text>
-          <Text style={styles.bodyText}>The manifestation of pregnancy in men</Text>
+        <View style={styles.actionCard}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../../assets/images/covaude.png")}
+              style={{ width: 60, height: 60, margin: 7 }}
+            />
+          </View>
+          <View style={styles.cardText}>
+            <Text style={styles.subheading}>Covaude Syndrome </Text>
+            <Text style={styles.bodyText}>The manifestation of pregnancy in men</Text>
+          </View>
         </View>
-      </View>
 
-      <View style={styles.actionCard}>
-        <Image
-          source={require("../../assets/images/hyperemesis.png")}
-          style={{ width: 60, height: 60, margin: 7 }}
-        />
-
-        <View style={styles.cardText}>
-          <Text style={styles.subheading}>Hyperemis Gravidarum </Text>
-          <Text style={styles.bodyText}>Extreme Morning Sickness: dehydration, weight loss, and more</Text>
+        <View style={styles.actionCard}>
+          <View style={styles.imageContainer}>
+            <Image
+              source={require("../../assets/images/hyperemesis.png")}
+              style={{ width: 60, height: 60, margin: 7 }}
+            />
+          </View>
+          <View style={styles.cardText}>
+            <Text style={styles.subheading}>Hyperemis Gravidarum </Text>
+            <Text style={styles.bodyText}>Extreme Morning Sickness: dehydration, weight loss, and more</Text>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -108,24 +117,22 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   cardText: {
-    flex: 1,
+    flex: 4,
     flexDirection: 'column',
     alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-  },
-  pictureContainer: {
-    marginTop: 50,
-    marginBottom: 15,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    marginRight: 10,
   },
   subheading: {
     fontFamily: "NunitoSans_700Bold",
     fontSize: 20,
-    marginTop: 15,
   },
   bodyText: {
     fontSize: 16,
     fontFamily: 'NunitoSans_400Regular',
+  },
+  scrollView: {
+    width: '90%',
+    backgroundColor: Colors.white,
   },
 });
