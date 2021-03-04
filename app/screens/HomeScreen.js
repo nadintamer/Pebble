@@ -19,7 +19,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
           <Text style={styles.bodyText}>Schedule tour of hospital </Text>
           <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Tasks')} style={styles.appButton}>
+            <TouchableOpacity onPress={() => navigation.navigate('Tasks', { startingTab: 0 })} style={styles.appButton}>
               <Text style={styles.appButtonText}>Go To Tasks</Text>
             </TouchableOpacity>
           </View>

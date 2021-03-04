@@ -1,7 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList, TouchableOpacity, TextInput, TouchableHighlight } from 'react-native';
 import { SwipeListView } from "react-native-swipe-list-view";
 import Colors from '../themes/Colors';
+import { useIsFocused } from "@react-navigation/native";
 
 import TasksSegmentedControl from "../components/TasksSegmentedControl";
 import WeeklyTask from "../components/WeeklyTask"
@@ -13,12 +14,18 @@ import { Ionicons } from '@expo/vector-icons';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function TasksScreen() {
-  const [index, setIndex] = useState(1);
+export default function TasksScreen({ route, navigation }) {
+  const { startingTab } = route.params;
+  const isFocused = useIsFocused();
+  const [index, setIndex] = useState(startingTab);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
   const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted"}, {text: "Task 6", status: "notCompleted"}]);
   const listRef = useRef(null);
+
+  useEffect(() => {
+    setIndex(startingTab);
+  }, [isFocused]);
 
   const renderWeeklyTask = ({ item, index }, added) => {
     return (
@@ -45,6 +52,7 @@ export default function TasksScreen() {
             // rowMap[index]
             // conditionally render text / textinput based on editing state
             // need callback function to edit list array
+            // setMyTasks(editedTasks);
             console.log("edit button pressed");
           }}
         >

@@ -10,7 +10,7 @@ import * as Font from 'expo-font';
 
 import HomeStackComponent from '../components/HomeStackComponent.js';
 import ExploreStackComponent from '../components/ExploreStackComponent.js';
-import TasksStackComponent from '../components/TasksStackComponent.js';
+import TasksScreen from '../screens/TasksScreen.js';
 import ProfileStackComponent from '../components/ProfileStackComponent.js';
 
 const TabNav = createBottomTabNavigator();
@@ -60,7 +60,7 @@ export default function AppNavigation() {
       >
         <TabNav.Screen name="Home" component={HomeStackComponent} />
         <TabNav.Screen name="Explore" component={ExploreStackComponent} />
-        <TabNav.Screen name="Tasks" component={TasksStackComponent} />
+        <TabNav.Screen name="Tasks" component={TasksScreen} initialParams={{ startingTab: 1 }}/>
         <TabNav.Screen name="Profile" component={ProfileStackComponent} />
       </TabNav.Navigator>
     </NavigationContainer>
