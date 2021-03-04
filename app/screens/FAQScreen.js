@@ -35,21 +35,21 @@ export default function FAQScreen() {
           <Text>  Adding a suggested task from Week X {"\n"}  on the tasks tab will add the task to {"\n"}  your running “My Tasks” list. To access  {"\n"}  tasks from previous weeks, navigate to {"\n"}  previous weeks from the home screen {"\n"}  and access tasks from there.</Text>
         </Text>
       </View>
-          
+
           <View style={styles.actionCard}>
             <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  Where can I find additional {"\n"}  resources? {"\n"}{"\n"}</Text>
               <Text>  Check out these websites for more {"\n"}  information about pregnancy and {"\n"}  becoming a parent.</Text>
             </Text>
           </View>
-          
+
           <View style={styles.actionCard}>
             <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  What does the progress bar mean? {"\n"}{"\n"}</Text>
               <Text>  This progress bar representes how far {"\n"}  along your partner is in their pregnancy. {"\n"}  Remember that your due date is only an {"\n"}  estimation! </Text>
             </Text>
           </View>
-          
+
           <View style={styles.actionCard}>
             <Text style={styles.cardText}>{"\n"}
           <Text style={styles.boldedText}>  How does Pebble recommend items? {"\n"}{"\n"}</Text>
@@ -110,10 +110,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
 scrollView: {
-<<<<<<< HEAD
   marginHorizontal: 0,
-=======
->>>>>>> 533521ce55af2850de3498693dd0ee96ca95726d
 },
   searchbar: {
     width: "100%",
