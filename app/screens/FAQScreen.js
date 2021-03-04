@@ -21,7 +21,7 @@ export default function FAQScreen() {
           backgroundColor='transparent'
           onPress={() => { console.log("search") }} />
         <TextInput
-            style={styles.textinput}
+            style={styles.textInput}
             placeholder={'Search by topic...'}
             clearButtonMode={'always'}
             onChangeText={(text) => setText(text)}
@@ -87,8 +87,9 @@ const styles = StyleSheet.create({
     color: Colors.white,
     alignItems: 'flex-start',
   },
-  textinput: {
+  textInput: {
     flex: 5,
+    fontFamily: 'Nunito_400Regular',
     borderColor: 'gray',
   },
   actionCard: {
