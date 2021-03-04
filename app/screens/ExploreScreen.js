@@ -10,6 +10,8 @@ const windowHeight = Dimensions.get('window').height;
 export default function ExploreScreen({ navigation }) {
     const [search, updateSearch] = useState('');
     const [text, setText] = useState("");
+    console.log(windowWidth);
+    console.log(windowHeight);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -30,17 +32,37 @@ export default function ExploreScreen({ navigation }) {
       <Text style={styles.subheading}>
           You might be interested in... 
       </Text>
+      <View style={styles.exploreCardColContainer}>
+        <View style={styles.exploreCardRowContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                        <View style={styles.exploreCard}>
+                        </View>
+                        <Text style={styles.cardHeading}> Morning Sickness </Text>
+            </TouchableOpacity>
 
-    <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                <View style={styles.exploreCard}>
-                </View>
-                <Text> Morning Sickness </Text>
-    </TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                        <View style={styles.exploreCard}>
+                        </View>
+                        <Text style={styles.cardHeading}> Life Insurance </Text>
+            </TouchableOpacity>
+        </View>
+        <View style={styles.exploreCardRowContainer}>
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                        <View style={styles.exploreCard}>
+                        </View>
+                        <Text style={styles.cardHeading}> Paternity Leave </Text>
+            </TouchableOpacity>
 
+            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+                        <View style={styles.exploreCard}>
+                        </View>
+                        <Text style={styles.cardHeading}> Emotional Wellness </Text>
+            </TouchableOpacity>
+        </View>
+    </View>
     </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
     searchContainer: {
@@ -52,6 +74,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8E8E8',
         borderRadius: 10,
       },
+    exploreCardColContainer: {
+        flex: 1
+    }, 
+    exploreCardRowContainer: {
+        flexDirection: 'row'
+    },
     homeContainer: {
         flex: 1,
         flexDirection: 'column',
@@ -64,7 +92,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.17,
-        width: windowWidth * 0.45,
+        width: windowWidth * 0.37,
         borderRadius: 20,
         marginTop: 30
     },
