@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
   },
 scrollView: {
-  marginHorizontal: 20,
+  marginHorizontal: 0,
 },
   searchbar: {
     width: "100%",

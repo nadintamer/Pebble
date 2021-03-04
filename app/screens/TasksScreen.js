@@ -26,6 +26,8 @@ export default function TasksScreen({ route, navigation }) {
 
   useEffect(() => {
     setIndex(startingTab);
+    navigation.setParams({startingTab: 1})
+
   }, [isFocused]);
 
   const renderWeeklyTask = ({ item, index }, added) => {
