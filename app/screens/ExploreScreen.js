@@ -32,17 +32,29 @@ export default function ExploreScreen({ navigation }) {
             You might be interested in...
         </Text>
       </View>
-
+   
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity >
                         <View style={styles.exploreCardLeft}>
+                            <View style={styles.imageContainer}>
+                            <Image
+                            source={require("../../assets/images/morningsickness-explore.png")}
+                            style={{ width: 105, height: 105}}
+                            />
+                            </View>
                         </View>
                         <Text style={styles.cardHeadingLeft}> Morning Sickness </Text>
             </TouchableOpacity>
 
             <TouchableOpacity >
                         <View style={styles.exploreCardRight}>
+                            <View style={styles.imageContainer}>
+                            <Image
+                            source={require("../../assets/images/life.png")}
+                            style={{ width: 105, height: 105, overflow: 'visible'}}
+                            />
+                            </View>
                         </View>
                         <Text style={styles.cardHeadingRight}> Life Insurance </Text>
             </TouchableOpacity>
@@ -50,12 +62,24 @@ export default function ExploreScreen({ navigation }) {
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity >
                         <View style={styles.exploreCardLeft}>
+                            <View style={styles.imageContainer}>
+                                <Image
+                                source={require("../../assets/images/paternity-explore.png")}
+                                style={{ width: 105, height: 105, overflow: 'visible'}}
+                                />
+                            </View>
                         </View>
                         <Text style={styles.cardHeadingLeft}> Paternity Leave </Text>
             </TouchableOpacity>
 
             <TouchableOpacity >
                         <View style={styles.exploreCardRight}>
+                            <View style={styles.imageContainer}>
+                                <Image
+                                source={require("../../assets/images/emotional.png")}
+                                style={{ width: 105, height: 105}}
+                                />
+                            </View>
                         </View>
                         <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>
             </TouchableOpacity>
@@ -90,6 +114,7 @@ const styles = StyleSheet.create({
     },
     exploreCardLeft: {
         alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.193,
@@ -99,12 +124,12 @@ const styles = StyleSheet.create({
     },
     exploreCardRight: {
         alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.193,
         width: windowWidth * 0.425,
         borderRadius: 20,
-
     },
     cardHeadingRight: {
         fontFamily: "Nunito_700Bold",
@@ -122,6 +147,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20
     },
+    /*
     image: {
         alignItems: 'stretch',
         flexDirection: 'column',
@@ -130,6 +156,7 @@ const styles = StyleSheet.create({
         width: windowWidth,
         marginTop: 30
     },
+    */
     subheading: {
         textAlign: 'left',
         fontFamily: "NunitoSans_700Bold",
