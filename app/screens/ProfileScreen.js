@@ -40,19 +40,24 @@ export default function ProfileScreen({ navigation }) {
       <View style={styles.nameContainer}>
         <Text style={styles.name}>Brian Lewis</Text>
       </View>
-      <TouchableOpacity style={styles.infoIcon} /*blurComponentIOS={blurComponentIOS}*/
-              onPress={showDialog} >
-              <Image
-                source={require("../../assets/images/infoIcon.png")}
-                style={{ width: 28, height: 28, marginBottom: 16}}
-              />
-              <Dialog.Container style={styles.popup} visible={visible} >
-                <Dialog.Title style={styles.popupTitle}>EMERGENCY BUTTON</Dialog.Title>
-                <Dialog.Description style={styles.popupText}>
-                This emergency button lets you quickly access emergency functions such as calling your doctor or directions to the nearest hospital all in one place :)
-                </Dialog.Description>
-                <Dialog.Button label="OK" style={styles.popupOK} onPress={handleCancel} />
-              </Dialog.Container>
+      <TouchableOpacity
+        style={styles.infoIcon}
+        /*blurComponentIOS={blurComponentIOS}*/
+        onPress={showDialog} >
+          <Image
+            source={require("../../assets/images/infoIcon.png")}
+            style={{ width: 28, height: 28, marginBottom: 16}}
+          />
+          <Dialog.Container
+            style={styles.popup}
+            visible={visible}
+            footerStyle={styles.popupFooterStyle}>
+            <Dialog.Title style={styles.popupTitle}>EMERGENCY BUTTON</Dialog.Title>
+            <Dialog.Description style={styles.popupText}>
+              This emergency button lets you quickly access emergency functions such as calling your doctor or directions to the nearest hospital all in one place :)
+            </Dialog.Description>
+            <Dialog.Button label="OK" style={styles.popupOK} onPress={handleCancel}/>
+          </Dialog.Container>
       </TouchableOpacity>
       <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
@@ -123,6 +128,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: '70%'
+  },
+  popupFooterStyle: {
+    marginTop: -25,
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: 'transparent',
+    borderTopColor: 'white',
   },
   popupTitle: {
     fontFamily: 'Nunito_700Bold',
