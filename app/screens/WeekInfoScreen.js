@@ -12,6 +12,12 @@ export default function WeekInfoScreen({ navigation }) {
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
+                    <View style={styles.imageContainer}>
+                        <Image
+                        source={require("../../assets/images/symptom.png")}
+                        style={{ width: '100%', height: '78%', margin:0  }}
+                        />
+                    </View>
                     <View style={styles.textView}>
                         <Text style={styles.subheading}>Week 30 Symptoms</Text>
                         <Text style={styles.bodyText}>Fatigue, morning sickness, and more</Text>
@@ -21,6 +27,12 @@ export default function WeekInfoScreen({ navigation }) {
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
+                    <View style={styles.imageContainer}>
+                        <Image
+                        source={require("../../assets/images/paternity.png")}
+                        style={{ width: '100%', height: '78%', margin:0  }}
+                        />
+                    </View>
                     <View style={styles.textView}>
                         <Text style={styles.subheading}>What You Should Know: Paternity Leave</Text>
                         <Text style={styles.bodyText}>Your employer's policies, alternatives, and more</Text>
@@ -30,6 +42,12 @@ export default function WeekInfoScreen({ navigation }) {
 
             <TouchableOpacity onPress={() => navigation.navigate('Article')}>
                 <View style={styles.actionCard}>
+                    <View style={styles.imageContainer}>
+                        <Image
+                        source={require("../../assets/images/comm.png")}
+                        style={{ width: '100%', height: '78%', margin:0  }}
+                        />
+                    </View>
                     <View style={styles.textView}>
                         <Text style={styles.subheading}>Communicating With Your Partner</Text>
                     </View>
@@ -49,15 +67,17 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.white,
     },
     actionCard: {
-        alignItems: 'stretch',
-        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        flexDirection: 'row',
         backgroundColor: Colors.lightPurple,
-        height: windowHeight * 0.17,
-        width: windowWidth * 0.9,
+        height: windowHeight * 0.15,
+        width: '100%',
         borderRadius: 20,
-        marginTop: 30
+        marginTop: 32,
+        zIndex: 1,
+        width: '90%'
     },
-
     image: {
         alignItems: 'stretch',
         flexDirection: 'column',
@@ -67,23 +87,34 @@ const styles = StyleSheet.create({
         marginTop: 30,
         opacity: 0.7
     },
-
+    imageContainer: {
+        flex: 1,
+        /*
+        marginTop: (windowHeight * 0.104 - 110)/2.0,
+        marginBottom: (windowHeight * 0.104 - 110)/2.0,
+        */
+        marginTop: 10,
+        marginLeft: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 3
+      },
     subheading: {
         fontFamily: "NunitoSans_700Bold",
-        fontSize: 20,
-        marginTop: 15,
+        fontSize: 18,
     },
     bodyText: {
-        fontSize: 16,
+        fontSize: 11,
         fontFamily: 'NunitoSans_400Regular',
         marginTop: 10,
     },
     textView: {
-        flex: 1,
+        flex: 3,
         flexDirection: 'column',
         alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        marginLeft: 20,
-        marginRight: 20,
+        justifyContent: 'center',
+        marginLeft: 10,
+        marginRight: 10,
+        opacity: 0.8
     },
 });
