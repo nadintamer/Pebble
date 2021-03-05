@@ -27,34 +27,37 @@ export default function ExploreScreen({ navigation }) {
         />
       </View>
 
-      <Text style={styles.subheading}>
-          You might be interested in...
-      </Text>
+      <View style={styles.textView}>
+        <Text style={styles.subheading}>
+            You might be interested in...
+        </Text>
+      </View>
+
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                        <View style={styles.exploreCard}>
+                        <View style={styles.exploreCardLeft}>
                         </View>
-                        <Text style={styles.cardHeading}> Morning Sickness </Text>
+                        <Text style={styles.cardHeadingLeft}> Morning Sickness </Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                        <View style={styles.exploreCard}>
+                        <View style={styles.exploreCardRight}>
                         </View>
-                        <Text style={styles.cardHeading}> Life Insurance </Text>
+                        <Text style={styles.cardHeadingRight}> Life Insurance </Text>
             </TouchableOpacity>
         </View>
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                        <View style={styles.exploreCard}>
+                        <View style={styles.exploreCardLeft}>
                         </View>
-                        <Text style={styles.cardHeading}> Paternity Leave </Text>
+                        <Text style={styles.cardHeadingLeft}> Paternity Leave </Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Search')}>
-                        <View style={styles.exploreCard}>
+                        <View style={styles.exploreCardRight}>
                         </View>
-                        <Text style={styles.cardHeading}> Emotional Wellness </Text>
+                        <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>
             </TouchableOpacity>
         </View>
     </View>
@@ -72,13 +75,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#E8E8E8',
         borderRadius: 10,
       },
-    exploreCardColContainer: {
-        flex: 1
-    },
     exploreCardRowContainer: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '90%'
     },
     homeContainer: {
         flex: 1,
@@ -87,20 +88,39 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         backgroundColor: Colors.white,
     },
-    exploreCard: {
-        alignItems: 'stretch',
-        flexDirection: 'column',
+    exploreCardLeft: {
+        alignItems: 'center',
+        flexDirection: 'row',
         backgroundColor: Colors.lightPurple,
-        height: windowHeight * 0.17,
-        width: windowWidth * 0.37,
+        height: windowHeight * 0.193,
+        width: windowWidth * 0.425,
         borderRadius: 20,
-        marginTop: 30,
-        marginRight: 20
+        marginRight: 0.05 * windowWidth, 
     },
-    cardHeading: {
+    exploreCardRight: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: Colors.lightPurple,
+        height: windowHeight * 0.193,
+        width: windowWidth * 0.425,
+        borderRadius: 20,
+
+    },
+    cardHeadingRight: {
         fontFamily: "Nunito_700Bold",
         fontSize: 16,
         textAlign: 'center',
+        width: '100%',
+        marginTop: 20,
+        marginBottom: 20
+    },
+    cardHeadingLeft: {
+        fontFamily: "Nunito_700Bold",
+        fontSize: 16,
+        textAlign: 'center',
+        width: '90%',
+        marginTop: 20,
+        marginBottom: 20
     },
     image: {
         alignItems: 'stretch',
@@ -120,5 +140,13 @@ const styles = StyleSheet.create({
       flex: 5,
       borderColor: 'gray',
       fontFamily: 'Nunito_400Regular',
+    },
+    textView: {
+        width: '90%',
+        /*flex: 0.2,*/
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        marginBottom: 20
     },
 });
