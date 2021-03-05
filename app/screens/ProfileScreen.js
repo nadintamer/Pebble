@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, SafeAreaView, View, StyleSheet, Dimensions, Button, Image, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { BlurView } from 'expo-blur';
 import Dialog from "react-native-dialog";
 
@@ -31,6 +31,7 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
+          <ScrollView style={styles.scrollView}>
       <View style={styles.profilePictureContainer}>
         <Image
           source={require("../../assets/images/penguin-avatar.png")}
@@ -68,6 +69,8 @@ export default function ProfileScreen({ navigation }) {
       <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
         <ProfileButton text="FAQ" image="faq"/>
       </TouchableOpacity>
+    </ScrollView>
+
     </SafeAreaView>
   );
 }
@@ -156,4 +159,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     opacity: 0.5
   },
+scrollView: {
+  width: '99%',
+  backgroundColor: Colors.white,
+},
 });

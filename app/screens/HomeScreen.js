@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, Button, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -12,6 +12,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.homeContainer}>
+          <ScrollView style={styles.scrollView}>
       <View style={styles.progressContainer}>
         <Text style={styles.progressText}>10 Weeks Left</Text>
         <View style={styles.progressBarContainer}>
@@ -60,7 +61,9 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
       </View>
+          </ScrollView>
     </View>
+
   );
 }
 
@@ -106,7 +109,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   actionCard: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
     backgroundColor: Colors.lightPurple,
@@ -158,5 +161,9 @@ const styles = StyleSheet.create({
     color: Colors.white,
     alignSelf: 'center',
     fontFamily: 'NunitoSans_700Bold',
-  }
+  },
+scrollView: {
+  width: '100%',
+  backgroundColor: Colors.white,
+},
 });
