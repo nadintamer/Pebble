@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import EmergencyScreen from '../screens/EmergencyScreen';
-import EmergencyInfoScreen from '../screens/EmergencyInfoScreen';
 import FAQScreen from '../screens/FAQScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
@@ -61,20 +60,6 @@ export default function ProfileStackComponent() {
         component={EmergencyScreen}
         options={{
           title: "Emergency",
-          headerStyle: {
-            backgroundColor: Colors.white,
-            shadowColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontFamily: "Nunito_700Bold",
-            fontSize: 30,
-          }
-        }}/>
-        <ProfileStack.Screen
-        name="Emergency Info"
-        component={EmergencyInfoScreen}
-        options={{
-          title: "",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',

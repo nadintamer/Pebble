@@ -1,5 +1,7 @@
-import React from 'react';
-import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from "react";
+import { Text, SafeAreaView, View, StyleSheet, Dimensions, Button, Image, TouchableOpacity } from 'react-native';
+import { BlurView } from 'expo-blur';
+import Dialog from "react-native-dialog";
 
 import Colors from '../themes/Colors';
 import ProfileButton from '../components/ProfileButton';
@@ -8,27 +10,50 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ProfileScreen({ navigation }) {
+  const [visible, setVisible] = useState(false);
+
+  const showDialog = () => {
+    setVisible(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const handleDelete = () => {
+    setVisible(false);
+  };
+
+  
+  const blurComponentIOS = (
+    <BlurView style={StyleSheet.absoluteFill} blurType="xlight" blurAmount={50} />
+  );
+
   return (
     <SafeAreaView style={styles.homeContainer}>
       <View style={styles.profilePictureContainer}>
         <Image
           source={require("../../assets/images/penguin-avatar.png")}
-          style={{ width: 165, height: 165}}
+          style={{ width: 0.44 * windowWidth, height: 0.2 * windowHeight}}
         />
       </View>
       <View style={styles.nameContainer}>
         <Text style={styles.name}>Brian Lewis</Text>
       </View>
-
-      <TouchableOpacity style={styles.infoIcon}
-              onPress={() => navigation.navigate('Emergency Info')}>
-              <Image
+      <TouchableOpacity style={styles.infoIcon} /*blurComponentIOS={blurComponentIOS}*/
+              onPress={showDialog} >
+              <Image 
                 source={require("../../assets/images/infoIcon.png")}
                 style={{ width: 28, height: 28, marginBottom: 16}}
               />
+              <Dialog.Container style={styles.popup} visible={visible} >
+                <Dialog.Title style={styles.popupTitle}>EMERGENCY BUTTON</Dialog.Title>
+                <Dialog.Description style={styles.popupText}>
+                This emergency button lets you quickly access emergency functions such as calling your doctor or directions to the nearest hospital all in one place :)
+                </Dialog.Description>
+                <Dialog.Button label="OK" style={styles.popupOK} onPress={handleCancel} />
+              </Dialog.Container>
       </TouchableOpacity>
-
-
       <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
@@ -58,7 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   nameContainer: {
-    marginBottom: 44,
+    marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -92,5 +117,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-  }
+  },
+  popup: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+    width: '70%'
+  },
+  popupTitle: {
+    fontFamily: 'Nunito_700Bold',
+    color: Colors.coral,
+    fontSize: 20,
+    opacity: 0.8,
+  },
+  popupText: {
+    fontFamily: 'NunitoSans_400Regular',
+    color: Colors.grey,
+    fontSize: 16,
+    opacity: 0.8,
+    marginBottom: 16,
+    marginTop: 16
+  },
+  popupOK: {
+    fontFamily: 'Nunito_700Bold',
+    color: Colors.darkPurple,
+    fontSize: 20,
+    opacity: 0.5
+  },
 });
