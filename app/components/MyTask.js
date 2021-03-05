@@ -12,21 +12,6 @@ import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
 
 export default function MyTask(props) {
-  const icons = {
-    completed: {
-      name: 'completed',
-      size: 30,
-      color: Colors.darkPurple,
-    },
-    notCompleted: {
-      name: 'not-completed',
-      size: 30,
-      color: Colors.grey,
-    },
-  };
-
-  const checkboxIcon = icons[props.task.status];
-
   const editItem = () => {
     props.setEditing(props.index, false);
 
@@ -38,7 +23,7 @@ export default function MyTask(props) {
     <View>
     { props.task.editing ?
       <View style={styles.task}>
-        <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
+        <CustomIcon name="not-completed" size={30} color={Colors.grey}/>
         <TextInput
           style={styles.taskText}
           onChangeText={(text) => {
@@ -57,7 +42,7 @@ export default function MyTask(props) {
         }}
         underlayColor='white'>
         <View style={styles.task}>
-          <CustomIcon name={checkboxIcon.name} size={checkboxIcon.size} color={checkboxIcon.color}/>
+          <CustomIcon name="not-completed" size={30} color={Colors.grey}/>
           <Text style={styles.taskText}>{props.task.text}</Text>
         </View>
       </TouchableHighlight>

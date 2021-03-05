@@ -7,6 +7,7 @@ import { useIsFocused } from "@react-navigation/native";
 import TasksSegmentedControl from "../components/TasksSegmentedControl";
 import WeeklyTask from "../components/WeeklyTask"
 import MyTask from "../components/MyTask"
+import CompletedTask from "../components/CompletedTask"
 import AddNewTask from "../components/AddNewTask"
 import CustomIcon from "../components/CustomIcon"
 import { Ionicons } from '@expo/vector-icons';
@@ -20,8 +21,10 @@ export default function TasksScreen({ route, navigation }) {
   const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
   const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
-  const [myTasks, setMyTasks] = useState([{text: "Task 5", status: "notCompleted", editing: false}, {text: "Task 6", status: "notCompleted", editing: false}]);
+  const [myTasks, setMyTasks] = useState([{text: "Task 5", editing: false}, {text: "Task 6", editing: false}]);
+  const [completedTasks, setCompletedTasks] = useState([]);
   const [userInput, setUserInput] = useState('');
+  const [showingCompleted, setShowingCompleted] = useState(false);
   const listRef = useRef(null);
   const taskRef = useRef(null);
 
@@ -29,6 +32,14 @@ export default function TasksScreen({ route, navigation }) {
     setIndex(startingTab);
     navigation.setParams({startingTab: 1})
   }, [isFocused]);
+
+  const toggleShowingCompleted = () => {
+    if (showingCompleted) {
+      setShowingCompleted(false);
+    } else {
+      setShowingCompleted(true);
+    }
+  }
 
   const renderWeeklyTask = ({ item, index }, added) => {
     return (
@@ -39,6 +50,14 @@ export default function TasksScreen({ route, navigation }) {
         added={added}
       />
     );
+  };
+
+  const renderCompletedTask = ({ item, index }) => {
+    return <CompletedTask
+              task={item}
+              index={index}
+              uncompleteTask={uncompleteTask}
+            />;
   };
 
   const renderMyTask = ({ index, item }) => {
@@ -106,24 +125,38 @@ export default function TasksScreen({ route, navigation }) {
   const completeTask = (item) => {
     let index = myTasks.indexOf(item);
     let newTask = myTasks[index];
-    let done = newTask.status;
-
-    if (done === "completed") {
-      newTask.status = "notCompleted";
-    } else {
-      newTask.status = "completed";
-    }
 
     let newMyTasks = [...myTasks];
-    newMyTasks[index] = newTask;
+    newMyTasks.splice(index, 1);
     setMyTasks(newMyTasks);
+
+    let newCompletedTasks = [...completedTasks];
+    newCompletedTasks.unshift(newTask.text);
+    setCompletedTasks(newCompletedTasks);
+  };
+
+  const uncompleteTask = (item) => {
+    let index = completedTasks.indexOf(item);
+    let newTask = completedTasks[index];
+
+    let newCompletedTasks = [...completedTasks];
+    newCompletedTasks.splice(index, 1);
+    setCompletedTasks(newCompletedTasks);
+
+    let newMyTasks = [...myTasks];
+    newMyTasks.unshift({text: newTask, editing: false});
+    setMyTasks(newMyTasks);
+
+    if (newCompletedTasks.length == 0) {
+      setShowingCompleted(false);
+    }
   };
 
   const addNewTask = (text) => {
     let myTasksText = myTasks.map(task => task.text);
     if (text !== "" && !myTasksText.includes(text)) {
       let newMyTasks = [...myTasks];
-      newMyTasks.unshift({text: text, status: "notCompleted", editing: false});
+      newMyTasks.unshift({text: text, editing: false});
       setMyTasks(newMyTasks);
 
       if (myTasks.length > 0) {
@@ -142,7 +175,7 @@ export default function TasksScreen({ route, navigation }) {
     setAddedTasks(newAddedTasks);
 
     let newMyTasks = [...myTasks];
-    newMyTasks.unshift({text: item, status: "notCompleted", editing: false});
+    newMyTasks.unshift({text: item, editing: false});
     setMyTasks(newMyTasks);
   };
 
@@ -189,6 +222,23 @@ export default function TasksScreen({ route, navigation }) {
     }
   };
 
+  const getCompletedTasks = () => {
+    let viewToReturn;
+
+    if (showingCompleted) {
+      viewToReturn = <FlatList
+          data={completedTasks}
+          renderItem={renderCompletedTask}
+          keyExtractor={(item, index) => keyExtractor(index)}
+          style={{ marginBottom: 44 }}
+      />
+    } else {
+      viewToReturn = null;
+    }
+
+    return viewToReturn;
+  }
+
   const getTasksList = () => {
     let viewToReturn;
 
@@ -210,10 +260,10 @@ export default function TasksScreen({ route, navigation }) {
       </View>
 
     } else {
-      viewToReturn = <View style={{flex: 1}}>
+      viewToReturn = <View style={{flex: 1 }}>
         <Text style={styles.subheading}>Current Tasks</Text>
         <AddNewTask addNewTask={addNewTask}/>
-        <View style={{ flex: 1 }}>
+        <View style={{ maxHeight: '57%', flexGrow: 0 }}>
           <SwipeListView
             disableRightSwipe
             recalculateHiddenLayout
@@ -224,6 +274,20 @@ export default function TasksScreen({ route, navigation }) {
             listViewRef={listRef}
             rightOpenValue={-180}
           />
+        </View>
+        <View style={{ flex: 1 }}>
+          <TouchableOpacity
+            style={{ flexDirection: 'row', alignItems: 'center'}}
+            onPress={toggleShowingCompleted}>
+            <Image
+              source={showingCompleted ? require("../../assets/images/completed-open.png") : require("../../assets/images/completed-closed.png")}
+              style={styles.completedToggle}
+            />
+            <Text style={styles.subheading}>Completed Tasks</Text>
+          </TouchableOpacity>
+          <View style={{ flexGrow: 0 }}>
+            {getCompletedTasks()}
+          </View>
         </View>
       </View>
     }
@@ -300,5 +364,11 @@ const styles = StyleSheet.create({
   backRightBtnRight: {
     right: 0,
     backgroundColor: 'red',
+  },
+  completedToggle: {
+    width: 20,
+    height: 20,
+    marginTop: 15,
+    marginRight: 10,
   },
 });
