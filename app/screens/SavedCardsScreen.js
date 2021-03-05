@@ -14,53 +14,53 @@ export default function SavedCardsScreen() {
       <ScrollView style={styles.scrollView}>
         <View style={styles.actionCard}>
           <View style={styles.imageContainer}>
-            <Image
-              source={require("../../assets/images/morningSickness.png")}
-              style={{ width: 60, height: 60, margin: 7 }}
-            />
+              <Image
+                source={require("../../assets/images/morningSickness2.png")}
+                style={{ width: '100%', height: '78%', margin:0 }}
+              />
           </View>
           <View style={styles.cardText}>
             <Text style={styles.subheading}>Morning Sickness </Text>
-            <Text style={styles.bodyText}>Despite its name, morning sickness does not only occur in the morning.</Text>
+            <Text style={styles.bodyText}>{"\n"}Despite its name, morning sickness does not only occur in the morning.</Text>
           </View>
         </View>
 
         <View style={styles.actionCard}>
           <View style={styles.imageContainer}>
             <Image
-              source={require("../../assets/images/nausea.png")}
-              style={{ width: 60, height: 60, margin: 7 }}
+              source={require("../../assets/images/nausea2.png")}
+              style={{ width: '100%', height: '78%', margin:0  }}
             />
           </View>
           <View style={styles.cardText}>
             <Text style={styles.subheading}>Nausea Symptoms</Text>
-            <Text style={styles.bodyText}>Morning sickness, vomiting, and more</Text>
+            <Text style={styles.bodyText}>{"\n"}Morning sickness, vomiting, and more</Text>
           </View>
         </View>
 
         <View style={styles.actionCard}>
           <View style={styles.imageContainer}>
             <Image
-              source={require("../../assets/images/covaude.png")}
-              style={{ width: 60, height: 60, margin: 7 }}
+              source={require("../../assets/images/covaude2.png")}
+              style={{ width: '100%', height: '78%', margin:0 }}
             />
           </View>
           <View style={styles.cardText}>
             <Text style={styles.subheading}>Covaude Syndrome </Text>
-            <Text style={styles.bodyText}>The manifestation of pregnancy in men</Text>
+            <Text style={styles.bodyText}>{"\n"}The manifestation of pregnancy in men</Text>
           </View>
         </View>
 
         <View style={styles.actionCard}>
           <View style={styles.imageContainer}>
             <Image
-              source={require("../../assets/images/hyperemesis.png")}
-              style={{ width: 60, height: 60, margin: 7 }}
+              source={require("../../assets/images/hyperemesis2.png")}
+              style={{ width: '100%', height: '78%', margin:0  }}
             />
           </View>
           <View style={styles.cardText}>
             <Text style={styles.subheading}>Hyperemis Gravidarum </Text>
-            <Text style={styles.bodyText}>Extreme Morning Sickness: dehydration, weight loss, and more</Text>
+            <Text style={styles.bodyText}>{"\n"}Extreme Morning Sickness: dehydration, weight loss, and more</Text>
           </View>
         </View>
       </ScrollView>
@@ -85,54 +85,52 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.15,
     width: '100%',
     borderRadius: 20,
-    marginTop: 30,
+    marginTop: 32,
+    zIndex: 1
   },
-  rowContainer: {
+  actionBubble: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
     flexDirection: 'row',
+    backgroundColor: Colors.grey,
+    height: windowHeight * 0.104,
+    opacity: 0.2,
+    width: '25%',
+    borderRadius: 20,
+    marginTop: 20,
+    zIndex: 2
   },
   imageContainer: {
     flex: 1,
-    margin: 10,
+    /*
+    marginTop: (windowHeight * 0.104 - 110)/2.0,
+    marginBottom: (windowHeight * 0.104 - 110)/2.0,
+    */
+    marginTop: 10,
+    marginLeft: 20,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  textContainer: {
-    flex: 4,
-    marginRight: 10,
-  },
-  boldedText: {
-    fontFamily: 'NunitoSans_700Bold',
-  },
-  cardText: {
-    fontFamily: 'NunitoSans_400Regular',
-  },
-  pictureContainer: {
-    marginTop: 50,
-    marginBottom: 15,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    zIndex: 3
   },
   scrollView: {
     width: '90%',
     backgroundColor: Colors.white,
   },
   cardText: {
-    flex: 4,
+    flex: 3,
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
+    marginLeft: 10,
     marginRight: 10,
+    opacity: 0.8
   },
   subheading: {
     fontFamily: "NunitoSans_700Bold",
-    fontSize: 20,
+    fontSize: 18,
   },
   bodyText: {
-    fontSize: 16,
+    fontSize: 11,
     fontFamily: 'NunitoSans_400Regular',
-  },
-  scrollView: {
-    width: '90%',
-    backgroundColor: Colors.white,
   },
 });
