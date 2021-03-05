@@ -96,15 +96,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    backgroundColor: Colors.lightPurple,
+    backgroundColor: Colors.lightGrey,
     height: windowHeight * 0.17,
     width: '100%',
     borderRadius: 20,
     flex: 3,
-    marginTop: 10
+    marginTop: 10,
   },
   textContainer: {
     width: '90%',
+    opacity: 0.8
   },
   boldedText: {
     fontFamily: 'NunitoSans_700Bold',

@@ -7,7 +7,6 @@ import { NavigationContainer } from '@react-navigation/native'
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import EmergencyScreen from '../screens/EmergencyScreen';
-import EmergencyInfoScreen from '../screens/EmergencyInfoScreen';
 import FAQScreen from '../screens/FAQScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
@@ -69,33 +68,6 @@ export default function ProfileStackComponent() {
             fontFamily: "Nunito_700Bold",
             fontSize: 30,
           }
-        }}/>
-        <ProfileStack.Screen
-        name="Emergency Info"
-        component={EmergencyInfoScreen}
-        options={{
-          title: "",
-          headerBackButtonVisible: false,
-          headerStyle: {
-            backgroundColor: Colors.white,
-            opacity: 0.25,
-            shadowColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontFamily: "Nunito_700Bold",
-            fontSize: 30,
-          },
-          headerLeft: null,
-          headerRight: () => (
-            <View
-              style={{ marginRight: 20 }}
-              onPress={() => navigation.navigate('Settings')}>
-              <Image
-                source={require("../../assets/images/gear.png")}
-                style={{ width: 34, height: 34}}
-              />
-            </View>
-          ),
         }}/>
       <ProfileStack.Screen
         name="FAQ"
