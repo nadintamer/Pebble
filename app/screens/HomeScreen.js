@@ -15,7 +15,7 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.progressContainer}>
         <Text style={styles.progressText}>10 Weeks Left</Text>
         <View style={styles.progressBarContainer}>
-          <ProgressBar progress={0.5} color={Colors.darkPurple} style={styles.progressBar}/>
+          <ProgressBar progress={0.75} color={Colors.darkPurple} style={styles.progressBar}/>
           <CustomIcon name="baby" size={30} color={Colors.coral} style={styles.babyIcon}/>
         </View>
       </View>
