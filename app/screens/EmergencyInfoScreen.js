@@ -19,7 +19,6 @@ export default function ProfileScreen({ navigation }) {
       <View style={styles.nameContainer}>
         <Text style={styles.name}>Brian Lewis</Text>
       </View>
-
       <TouchableOpacity style={styles.infoIcon}
               onPress={() => navigation.navigate('Emergency Info')}>
               <Image
@@ -27,8 +26,6 @@ export default function ProfileScreen({ navigation }) {
                 style={{ width: 28, height: 28, marginBottom: 16}}
               />
       </TouchableOpacity>
-
-
       <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
       </TouchableOpacity>
@@ -50,6 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: Colors.white,
+    opacity: 0.25
   },
   profilePictureContainer: {
     marginTop: 50,
