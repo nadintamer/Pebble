@@ -53,7 +53,6 @@ export default function MyTask(props) {
       :
       <TouchableHighlight
         onPress={() => {
-          console.log(props);
           props.completeTask(props.task);
         }}
         underlayColor='white'>
