@@ -19,22 +19,21 @@ export default function ProfileScreen({ navigation }) {
       <View style={styles.nameContainer}>
         <Text style={styles.name}>Brian Lewis</Text>
       </View>
-      <TouchableOpacity style={styles.infoIcon}
-              onPress={() => navigation.navigate('Emergency Info')}>
-              <Image
-                source={require("../../assets/images/infoIcon.png")}
-                style={{ width: 28, height: 28, marginBottom: 16}}
-              />
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
+      <View style={styles.infoIcon}>
+          <Image
+              source={require("../../assets/images/infoIcon.png")}
+              style={{ width: 28, height: 28, marginBottom: 16}}
+          />
+      </View>
+      <View style={styles.emergencyButton}>
           <Text style={styles.emergencyText}>EMERGENCY</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
+      </View>
+      <View style={styles.profileButton}>
         <ProfileButton text="Saved" image="saved"/>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
+      </View>
+      <View style={styles.profileButton}>
         <ProfileButton text="FAQ" image="faq"/>
-      </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

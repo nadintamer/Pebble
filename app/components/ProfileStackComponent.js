@@ -75,14 +75,27 @@ export default function ProfileStackComponent() {
         component={EmergencyInfoScreen}
         options={{
           title: "",
+          headerBackButtonVisible: false,
           headerStyle: {
             backgroundColor: Colors.white,
+            opacity: 0.25,
             shadowColor: 'transparent',
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
             fontSize: 30,
-          }
+          },
+          headerLeft: null,
+          headerRight: () => (
+            <View
+              style={{ marginRight: 20 }}
+              onPress={() => navigation.navigate('Settings')}>
+              <Image
+                source={require("../../assets/images/gear.png")}
+                style={{ width: 34, height: 34}}
+              />
+            </View>
+          ),
         }}/>
       <ProfileStack.Screen
         name="FAQ"
