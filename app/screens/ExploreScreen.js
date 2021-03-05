@@ -13,10 +13,10 @@ export default function ExploreScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-
-    <View style={styles.searchContainer}>
+    
+    <View style={styles.searchContainer} >
         <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
-          onPress={() => { console.log("search") }} />
+          onPress={() => navigation.navigate('Search')} />
         <TextInput
           style={styles.textinput}
           placeholder={'Search by topic (eg: "additional resources)'}
@@ -35,26 +35,26 @@ export default function ExploreScreen({ navigation }) {
 
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <TouchableOpacity >
                         <View style={styles.exploreCardLeft}>
                         </View>
                         <Text style={styles.cardHeadingLeft}> Morning Sickness </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <TouchableOpacity >
                         <View style={styles.exploreCardRight}>
                         </View>
                         <Text style={styles.cardHeadingRight}> Life Insurance </Text>
             </TouchableOpacity>
         </View>
         <View style={styles.exploreCardRowContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <TouchableOpacity >
                         <View style={styles.exploreCardLeft}>
                         </View>
                         <Text style={styles.cardHeadingLeft}> Paternity Leave </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+            <TouchableOpacity >
                         <View style={styles.exploreCardRight}>
                         </View>
                         <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>

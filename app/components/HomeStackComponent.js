@@ -38,7 +38,7 @@ export default function HomeStackComponent() {
         name="WeekInfo"
         component={WeekInfoScreen}
         options={{
-          title: "WeekInfo",
+          title: "Week 30 Info",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
@@ -52,7 +52,7 @@ export default function HomeStackComponent() {
         name="Article"
         component={ArticleScreen}
         options={{
-          title: "Article",
+          title: "",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',

@@ -63,8 +63,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.2,
-        width: windowWidth,
-        marginTop: 30
+        width: windowWidth * 0.9,
+        marginTop: 30,
+        opacity: 0.7
     },
 
     subheading: {
