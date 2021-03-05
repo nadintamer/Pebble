@@ -46,7 +46,7 @@ export default function ProfileScreen({ navigation }) {
         onPress={showDialog} >
           <Image
             source={require("../../assets/images/infoIcon.png")}
-            style={{ width: 28, height: 28, marginBottom: 16}}
+            style={{ width: 34, height: 34, marginBottom: 16}}
           />
           <Dialog.Container
             style={styles.popup}
