@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.1.0",
     "@expo-google-fonts/nunito-sans": "^0.1.0",
+    "@mapbox/polyline": "^1.1.1",
     "@material-ui/core": "^1.0.0",
     "@material-ui/icons": "^1.0.0",
     "@react-native-community/masked-view": "0.1.10",
@@ -29,7 +30,9 @@
     "react-native-dialog": "^6.2.0",
     "react-native-elements": "^3.2.0",
     "react-native-gesture-handler": "~1.8.0",
+    "react-native-google-maps-directions": "^2.1.1",
     "react-native-maps": "0.27.1",
+    "react-native-maps-directions": "^1.8.0",
     "react-native-paper": "^4.7.2",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.9",
