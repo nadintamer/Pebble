@@ -12,6 +12,8 @@ import ArticleScreen from '../screens/ArticleScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
 import MapScreen from '../screens/MapScreen';
+import CallScreen from '../screens/CallScreen';
+
 
 const ProfileStack = createStackNavigator();
 export default function ProfileStackComponent() {
@@ -118,6 +120,20 @@ export default function ProfileStackComponent() {
         component={MapScreen}
         options={{
           title: "Map",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+        }}/>
+        <ProfileStack.Screen
+        name="CallDoctor"
+        component={CallScreen}
+        options={{
+          title: "CallDoctor",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
