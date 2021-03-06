@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Image, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Text, View, Image, TextInput, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Colors from '../themes/Colors';
 import { useIsFocused } from "@react-navigation/native";
 
@@ -10,80 +10,64 @@ const windowHeight = Dimensions.get('window').height;
 export default function EmergencyScreen() {
   return (
     <SafeAreaView style={styles.homeContainer}>
+      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("call doctor")}>
+        <View style={styles.pictureContainer}>
           <Image
-            source={require("../../assets/images/Divider.png")}
-            style={{ width: 430, height: 5}}
+            source={require("../../assets/images/call-doctor-icon.png")}
+            style={{ width: 30, height: 30}}
           />
-    <View style={styles.callDoctor}>
-    <View style={styles.pictureContainer}>
-      <Image
-        source={require("../../assets/images/call-doctor-icon.png")}
-        style={{ width: 25, height: 25}}
-      />
-    </View>
-    <Text style={styles.boldedText}> Call Doctor </Text>
-    </View>
-          
+        </View>
+        <Text style={styles.boldedText}>Call doctor</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("hospital directions")}>
+        <View style={styles.pictureContainer}>
           <Image
-            source={require("../../assets/images/Divider.png")}
-            style={{ width: 430, height: 5}}
+            source={require("../../assets/images/hospital-directions.png")}
+            style={{ width: 30, height: 30}}
           />
-
-    <View style={styles.hospitalDirections}>
-    <View style={styles.pictureContainer}>
-      <Image
-        source={require("../../assets/images/hospital-directions.png")}
-        style={{ width: 60, height: 60}}
-      />
-    </View>
-          <Text style={styles.boldedText}> {"\n"} Directions to Nearest Hospital </Text>
-    </View>
+        </View>
+        <Text style={styles.boldedText}>Directions to nearest hospital</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("text friends")}>
+        <View style={styles.pictureContainer}>
           <Image
-            source={require("../../assets/images/Divider.png")}
-            style={{ width: 430, height: 5}}
+            source={require("../../assets/images/text-family-icon.png")}
+            style={{ width: 35, height: 35}}
           />
-
-    <View style={styles.textFriends}>
-    <View style={styles.pictureContainer}>
-      <Image
-        source={require("../../assets/images/text-family-icon.png")}
-        style={{ width: 60, height: 60}}
-      />
-    </View>
-          <Text style={styles.boldedText}> {"\n"}Text Family & Friends </Text>
-    </View>
-          <Image
-            source={require("../../assets/images/Divider.png")}
-            style={{ width: 430, height: 5}}
-          />
+        </View>
+        <Text style={styles.boldedText}>Text family & friends</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 
 }
 const styles = StyleSheet.create({
-homeContainer: {
-  flex: 0.5,
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  backgroundColor: Colors.white,
-},
-boldedText: {
-  fontWeight: "bold",
-  fontSize: 18,
-fontFamily: 'NunitoSans_400Regular'
-
-},
-callDoctor: {
-flexDirection: "row",
-    justifyContent: "space-evenly"
-},
-    hospitalDirections : {
-    flexDirection: "row",
-    justifyContent: "space-evenly"
-    },
-    textFriends : {
-    flexDirection: "row",
-    justifyContent: "space-evenly"
-    },
+  homeContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: Colors.white,
+  },
+  boldedText: {
+    fontSize: 18,
+    fontFamily: 'NunitoSans_400Regular',
+  },
+  rowContainer: {
+    height: 100,
+    width: '90%',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: 'transparent',
+    borderBottomColor: Colors.lightGrey,
+  },
+  pictureContainer: {
+    width: 40,
+    height: 40,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
