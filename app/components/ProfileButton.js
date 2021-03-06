@@ -5,7 +5,7 @@ import Colors from '../themes/Colors';
 
 export default function ProfileButton(props) {
   const images = {
-    saved: require("../../assets/images/bookmark.png"),
+    saved: require("../../assets/images/saved.png"),
     faq: require("../../assets/images/faq.png"),
   }
 

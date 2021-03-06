@@ -3,6 +3,7 @@ import { Text, View, TextInput, StyleSheet, Dimensions, SafeAreaView, TouchableO
 import Colors from '../themes/Colors';
 import { SearchBar } from 'react-native-elements';
 import { Feather } from '@expo/vector-icons';
+import Articles from '../themes/Content';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
