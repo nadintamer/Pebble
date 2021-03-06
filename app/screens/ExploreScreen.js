@@ -13,7 +13,7 @@ export default function ExploreScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-    
+
     <View style={styles.searchContainer} >
         <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
           onPress={() => navigation.navigate('Search')} />
@@ -32,148 +32,173 @@ export default function ExploreScreen({ navigation }) {
             You might be interested in...
         </Text>
       </View>
-   
+
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
-            <TouchableOpacity >
-                        <View style={styles.exploreCardLeft}>
-                            <View style={styles.imageContainer}>
-                            <Image
-                            source={require("../../assets/images/morningsickness-explore.png")}
-                            style={{ width: 105, height: 105}}
-                            />
-                            </View>
-                        </View>
-                        <Text style={styles.cardHeadingLeft}> Morning Sickness </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Morning Sickness',
+                subtitle: 'Despite its name, morning sickness does not only occur in the morning.',
+                body: 'Morning sickness body text',
+              }
+            })}>
+              <View style={styles.exploreCardLeft}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={require("../../assets/images/morningsickness-explore.png")}
+                    style={{ width: 105, height: 105}}
+                  />
+                </View>
+              </View>
+              <Text style={styles.cardHeadingLeft}> Morning Sickness </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity >
-                        <View style={styles.exploreCardRight}>
-                            <View style={styles.imageContainer}>
-                            <Image
-                            source={require("../../assets/images/life.png")}
-                            style={{ width: 105, height: 105, overflow: 'visible'}}
-                            />
-                            </View>
-                        </View>
-                        <Text style={styles.cardHeadingRight}> Life Insurance </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Life Insurance',
+                subtitle: 'Life insurance subtitle',
+                body: 'Life insurance body text',
+              }
+            })}>
+              <View style={styles.exploreCardRight}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={require("../../assets/images/life.png")}
+                    style={{ width: 105, height: 105, overflow: 'visible'}}
+                  />
+                </View>
+              </View>
+              <Text style={styles.cardHeadingRight}> Life Insurance </Text>
             </TouchableOpacity>
         </View>
+
         <View style={styles.exploreCardRowContainer}>
-            <TouchableOpacity >
-                        <View style={styles.exploreCardLeft}>
-                            <View style={styles.imageContainer}>
-                                <Image
-                                source={require("../../assets/images/paternity-explore.png")}
-                                style={{ width: 105, height: 105, overflow: 'visible'}}
-                                />
-                            </View>
-                        </View>
-                        <Text style={styles.cardHeadingLeft}> Paternity Leave </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Paternity Leave',
+                subtitle: 'Paternity leave subtitle',
+                body: 'Paternity leave body text',
+              }
+            })}>
+              <View style={styles.exploreCardLeft}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={require("../../assets/images/paternity-explore.png")}
+                    style={{ width: 105, height: 105, overflow: 'visible'}}
+                  />
+                </View>
+              </View>
+              <Text style={styles.cardHeadingLeft}> Paternity Leave </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity >
-                        <View style={styles.exploreCardRight}>
-                            <View style={styles.imageContainer}>
-                                <Image
-                                source={require("../../assets/images/emotional.png")}
-                                style={{ width: 105, height: 105}}
-                                />
-                            </View>
-                        </View>
-                        <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Emotional Wellness',
+                subtitle: 'Emotional wellness subtitle',
+                body: 'Emotional wellness body text',
+              }
+            })}>
+              <View style={styles.exploreCardRight}>
+                <View style={styles.imageContainer}>
+                  <Image
+                    source={require("../../assets/images/emotional.png")}
+                    style={{ width: 105, height: 105}}
+                  />
+                </View>
+              </View>
+              <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>
             </TouchableOpacity>
         </View>
-    </View>
+      </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-    searchContainer: {
-        flexDirection: 'row',
-        width: '90%',
-        height: '7%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#E8E8E8',
-        borderRadius: 10,
-      },
-    exploreCardRowContainer: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '90%'
-    },
-    homeContainer: {
-        flex: 1,
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'flex-start',
-        backgroundColor: Colors.white,
-    },
-    exploreCardLeft: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        backgroundColor: Colors.lightPurple,
-        height: windowHeight * 0.193,
-        width: windowWidth * 0.425,
-        borderRadius: 20,
-        marginRight: 0.05 * windowWidth, 
-    },
-    exploreCardRight: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'row',
-        backgroundColor: Colors.lightPurple,
-        height: windowHeight * 0.193,
-        width: windowWidth * 0.425,
-        borderRadius: 20,
-    },
-    cardHeadingRight: {
-        fontFamily: "Nunito_700Bold",
-        fontSize: 16,
-        textAlign: 'center',
-        width: '100%',
-        marginTop: 20,
-        marginBottom: 20
-    },
-    cardHeadingLeft: {
-        fontFamily: "Nunito_700Bold",
-        fontSize: 16,
-        textAlign: 'center',
-        width: '90%',
-        marginTop: 20,
-        marginBottom: 20
-    },
-    /*
-    image: {
-        alignItems: 'stretch',
-        flexDirection: 'column',
-        backgroundColor: Colors.lightPurple,
-        height: windowHeight * 0.2,
-        width: windowWidth,
-        marginTop: 30
-    },
-    */
-    subheading: {
-        textAlign: 'left',
-        fontFamily: "NunitoSans_700Bold",
-        fontSize: 24,
-        marginTop: 15,
-    },
-    textinput: {
-      flex: 5,
-      borderColor: 'gray',
-      fontFamily: 'Nunito_400Regular',
-    },
-    textView: {
-        width: '90%',
-        /*flex: 0.2,*/
-        flexDirection: 'row',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-        marginBottom: 20
-    },
+  searchContainer: {
+    flexDirection: 'row',
+    width: '90%',
+    height: '7%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8E8E8',
+    borderRadius: 10,
+  },
+  exploreCardRowContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '90%'
+  },
+  homeContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: Colors.white,
+  },
+  exploreCardLeft: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: Colors.lightPurple,
+    height: windowHeight * 0.193,
+    width: windowWidth * 0.425,
+    borderRadius: 20,
+    marginRight: 0.05 * windowWidth,
+  },
+  exploreCardRight: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: Colors.lightPurple,
+    height: windowHeight * 0.193,
+    width: windowWidth * 0.425,
+    borderRadius: 20,
+  },
+  cardHeadingRight: {
+    fontFamily: "Nunito_700Bold",
+    fontSize: 16,
+    textAlign: 'center',
+    width: '100%',
+    marginTop: 20,
+    marginBottom: 20
+  },
+  cardHeadingLeft: {
+    fontFamily: "Nunito_700Bold",
+    fontSize: 16,
+    textAlign: 'center',
+    width: '90%',
+    marginTop: 20,
+    marginBottom: 20
+  },
+  /*
+  image: {
+      alignItems: 'stretch',
+      flexDirection: 'column',
+      backgroundColor: Colors.lightPurple,
+      height: windowHeight * 0.2,
+      width: windowWidth,
+      marginTop: 30
+  },
+  */
+  subheading: {
+    textAlign: 'left',
+    fontFamily: "NunitoSans_700Bold",
+    fontSize: 24,
+    marginTop: 15,
+  },
+  textinput: {
+    flex: 5,
+    borderColor: 'gray',
+    fontFamily: 'Nunito_400Regular',
+  },
+  textView: {
+    width: '90%',
+    /*flex: 0.2,*/
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    marginBottom: 20
+  },
 });

@@ -7,6 +7,7 @@ import Colors from '../themes/Colors';
 
 import ExploreScreen from '../screens/ExploreScreen';
 import SearchScreen from '../screens/SearchScreen';
+import ArticleScreen from '../screens/ArticleScreen';
 import ResultsScreen from '../screens/ResultsScreen';
 const ExploreStack = createStackNavigator();
 
@@ -46,7 +47,20 @@ export default function ExploreStackComponent() {
             fontSize: 30,
           }
     }}/>
-
+    <ExploreStack.Screen
+      name="Article"
+      component={ArticleScreen}
+      options={{
+        title: "",
+        headerStyle: {
+          backgroundColor: Colors.white,
+          shadowColor: 'transparent',
+        },
+        headerTitleStyle: {
+          fontFamily: "Nunito_700Bold",
+          fontSize: 30,
+        }
+      }}/>
     </ExploreStack.Navigator>
   );
-} 
+}
