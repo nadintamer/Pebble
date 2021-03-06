@@ -1,187 +1,141 @@
+// documentation & examples: https://github.com/bramus/react-native-maps-directions-example/blob/master/App.js
+
+import React, { Component } from 'react';
+import { Dimensions, StyleSheet, View, Text } from 'react-native';
+import MapView from 'react-native-maps';
+
 import MapViewDirections from 'react-native-maps-directions';
 
-import Colors from '../themes/Colors';
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE = 37.771707;
+const LONGITUDE = -122.4053769;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-import React, { Component } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  Text,
-  View,
-  Keyboard,
-  TouchableHighlight
-} from "react-native";
-import MapView, { Polyline, Marker } from "react-native-maps";
-import PolyLine from "@mapbox/polyline";
+const GOOGLE_MAPS_APIKEY = "AIzaSyDOWe6OA113TbhvUJNGKCIs75U6R5sjQXI";
 
-import _ from "lodash";
+const styles = StyleSheet.create({
+  versionBox: {
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  },
+  versionText: {
+    padding: 4,
+    backgroundColor: '#FFF',
+    color: '#000',
+  },
+});
 
-export default class App extends Component {
+
+class Map extends Component {
+
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition((position) => {
+          var lat = parseFloat(position.coords.latitude)
+          var long = parseFloat(position.coords.longitude)
+    
+          var initialRegion = {
+            latitude: lat,
+            longitude: long,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+          }
+    
+          this.setState({initialPosition: initialRegion})
+        },
+        (error) => alert(JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000});
+      }
+
+
   constructor(props) {
     super(props);
+
     this.state = {
-      error: "",
-      latitude: 0,
-      longitude: 0,
-      destination: "",
-      predictions: [],
-      pointCoords: []
+      coordinates: [
+        "Norcliffe Hall, Stanford, CA, USA",
+        "Stanford Hospital, Stanford, CA, USA",
+      ],
     };
-    this.onChangeDestinationDebounced = _.debounce(
-      this.onChangeDestination,
-      1000
-    );
+
+    
+    this.mapView = null;
   }
 
-  componentDidMount() {
-    //Get current location and set initial region to this
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        this.setState({
-          latitude: position.coords.latitude,
-          longitude: position.coords.longitude
-        });
+
+  onMapPress = (e) => {
+    this.setState({
+      coordinates: [
+        ...this.state.coordinates,
+        e.nativeEvent.coordinate,
+      ],
+    });
+  }
+
+  onReady = (result) => {
+    this.mapView.fitToCoordinates(result.coordinates, {
+      edgePadding: {
+        right: (width / 10),
+        bottom: (height / 10),
+        left: (width / 10),
+        top: (height / 10),
       },
-      error => console.error(error),
-      { enableHighAccuracy: true, maximumAge: 2000, timeout: 20000 }
-    );
+    });
   }
 
-  async getRouteDirections(destinationPlaceId, destinationName) {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/directions/json?origin=${
-          this.state.latitude
-        },${
-          this.state.longitude
-        }&destination=place_id:${destinationPlaceId}&key=${"AIzaSyDOWe6OA113TbhvUJNGKCIs75U6R5sjQXI"}`
-      );
-      const json = await response.json();
-      console.log(json);
-      const points = PolyLine.decode(json.routes[0].overview_polyline.points);
-      const pointCoords = points.map(point => {
-        return { latitude: point[0], longitude: point[1] };
-      });
-      this.setState({
-        pointCoords,
-        predictions: [],
-        destination: destinationName
-      });
-      Keyboard.dismiss();
-      this.map.fitToCoordinates(pointCoords);
-    } catch (error) {
-      console.error(error);
-    }
+  onError = (errorMessage) => {
+    console.log(errorMessage); // eslint-disable-line no-console
   }
 
-  async onChangeDestination(destination) {
-    const apiUrl = `https://maps.googleapis.com/maps/api/place/autocomplete/json?key=${"AIzaSyDOWe6OA113TbhvUJNGKCIs75U6R5sjQXI"}
-    &input=${destination}&location=${this.state.latitude},${
-      this.state.longitude
-    }&radius=2000`;
-    console.log(apiUrl);
-    try {
-      const result = await fetch(apiUrl);
-      const json = await result.json();
-      this.setState({
-        predictions: json.predictions
-      });
-      console.log(json);
-    } catch (err) {
-      console.error(err);
-    }
+  setDistance(distance, duration_in_traffic) {
+    // console.log('setDistance');
+    this.setState({
+      distance: parseFloat(distance),
+      durationInTraffic: parseInt(duration_in_traffic)
+    });
   }
 
   render() {
-    let marker = null;
-
-    if (this.state.pointCoords.length > 1) {
-      marker = (
-        <Marker
-          coordinate={this.state.pointCoords[this.state.pointCoords.length - 1]}
-        />
-      );
-    }
-
-    const predictions = this.state.predictions.map(prediction => (
-      <TouchableHighlight
-        onPress={() =>
-          this.getRouteDirections(
-            prediction.place_id,
-            prediction.structured_formatting.main_text
-          )
-        }
-        key={prediction.id}
-      >
-        <View>
-          <Text style={styles.suggestions}>
-            {prediction.structured_formatting.main_text}
-          </Text>
-        </View>
-      </TouchableHighlight>
-    ));
-
     return (
-      <View style={styles.container}>
+      <View style={StyleSheet.absoluteFill}>
         <MapView
-          ref={map => {
-            this.map = map;
+          initialRegion={{
+            latitude: LATITUDE,
+            longitude: LONGITUDE,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
           }}
-          style={styles.map}
-          region={{
-            latitude: this.state.latitude,
-            longitude: this.state.longitude,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121
-          }}
-          showsUserLocation={true}
+          style={StyleSheet.absoluteFill}
+          ref={c => this.mapView = c} // eslint-disable-line react/jsx-no-bind
+          onPress={this.onMapPress}
         >
-          <Polyline
-            coordinates={this.state.pointCoords}
+          <MapViewDirections
+            origin={this.state.initialPosition}
+            destination={this.state.coordinates[this.state.coordinates.length-1]}
+            waypoints={this.state.coordinates.slice(1,-1)}
+            mode='DRIVING'
+            apikey={GOOGLE_MAPS_APIKEY}
+            language='en'
             strokeWidth={4}
-            strokeColor="red"
+            strokeColor="black"
+            onStart={(params) => {
+              console.log(`Started routing between "${params.origin}" and "${params.destination}"${(params.waypoints.length ? " using waypoints: " + params.waypoints.join(', ') : "")}`);
+            }}
+            onReady={this.onReady}
+            onError={(errorMessage) => {
+              console.log(errorMessage);
+            }}
+            resetOnChange={false}
           />
-          {marker}
         </MapView>
-        <TextInput
-          placeholder="Enter destination..."
-          style={styles.destinationInput}
-          value={this.state.destination}
-          clearButtonMode="always"
-          onChangeText={destination => {
-            console.log(destination);
-            this.setState({ destination });
-            this.onChangeDestinationDebounced(destination);
-          }}
-        />
-        {predictions}
+     
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  suggestions: {
-    backgroundColor: "white",
-    padding: 5,
-    fontSize: 18,
-    borderWidth: 0.5,
-    marginLeft: 5,
-    marginRight: 5
-  },
-  destinationInput: {
-    height: 40,
-    borderWidth: 0.5,
-    marginTop: 50,
-    marginLeft: 5,
-    marginRight: 5,
-    padding: 5,
-    backgroundColor: "white"
-  },
-  container: {
-    ...StyleSheet.absoluteFillObject
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject
-  }
-});
+export default Map;
