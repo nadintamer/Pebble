@@ -223,17 +223,19 @@ export default function TasksScreen({ route, navigation }) {
   };
 
   const getCompletedTasks = () => {
-    let viewToReturn;
+    let viewToReturn = null;
 
     if (showingCompleted) {
-      viewToReturn = <FlatList
-          data={completedTasks}
-          renderItem={renderCompletedTask}
-          keyExtractor={(item, index) => keyExtractor(index)}
-          style={{ marginBottom: 44 }}
-      />
-    } else {
-      viewToReturn = null;
+      if (completedTasks.length == 0) {
+        viewToReturn = <Text style={styles.warning}>You haven't completed any tasks yet!</Text>
+      } else {
+        viewToReturn = <FlatList
+            data={completedTasks}
+            renderItem={renderCompletedTask}
+            keyExtractor={(item, index) => keyExtractor(index)}
+            style={{ marginBottom: 44 }}
+        />
+      }
     }
 
     return viewToReturn;
@@ -371,4 +373,10 @@ const styles = StyleSheet.create({
     marginTop: 15,
     marginRight: 10,
   },
+  warning: {
+    fontFamily: 'NunitoSans_400Regular',
+    fontSize: 20,
+    marginTop: 20,
+    alignSelf: 'center',
+  }
 });
