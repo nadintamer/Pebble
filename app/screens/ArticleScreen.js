@@ -1,7 +1,8 @@
-import React from 'react';
-import { Text, View, ScrollView, SafeAreaView, StyleSheet, Dimensions, Video, Image } from 'react-native';
-import { ProgressBar } from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { Text, View, ScrollView, TouchableOpacity, SafeAreaView, StyleSheet, Dimensions, Video, Image } from 'react-native';
 import Colors from '../themes/Colors';
+import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -9,6 +10,46 @@ const windowHeight = Dimensions.get('window').height;
 export default function ArticleScreen({ route, navigation }) {
   const { articleInfo } = route.params;
   const defaultImage = require("../../assets/images/communication2.png");
+  const [bookmarked, setBookmarked] = useState(false);
+
+  const bookmarkPressed = () => {
+    if (savingBookmark) return; //stop if already saving
+
+    if (!bookmarked) {
+      saveBookmark(content);
+    } else {
+      deleteBookmark(content);
+    }
+
+    setBookmarked(!bookmarked);
+  }
+
+  useEffect(() => {
+    (async () => {
+      navigation.setOptions({
+      headerStyle: {
+        backgroundColor: Colors.white,
+        shadowColor: 'transparent',
+      },
+      headerRight: () => (
+        bookmarked ?
+        <TouchableOpacity
+          style={{ marginRight: 20 }}
+          onPress={bookmarkPressed}>
+          <Ionicons name="ios-bookmark" size={32} color={Colors.coral} />
+        </TouchableOpacity>
+        :
+        <TouchableOpacity
+          style={{ marginRight: 20 }}
+          onPress={bookmarkPressed}>
+          <Ionicons name="ios-bookmark-outline" size={32} color={Colors.coral} />
+        </TouchableOpacity>
+      ),
+    });
+    let saved = await AsyncStorage.getItem('saved');
+    console.log(saved);
+  })();
+}, [bookmarked]);
 
   return (
     <ScrollView style={styles.scrollView}>

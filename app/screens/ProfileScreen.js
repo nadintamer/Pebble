@@ -31,47 +31,43 @@ export default function ProfileScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <ScrollView
-        style={styles.scrollView}
-        contentContainerStyle={{ alignItems: 'center' }}>
-        <View style={styles.profilePictureContainer}>
+      <View style={styles.profilePictureContainer}>
+        <Image
+          source={require("../../assets/images/penguin-avatar.png")}
+          style={{ width: 0.44 * windowWidth, height: 0.2 * windowHeight}}
+        />
+      </View>
+      <View style={styles.nameContainer}>
+        <Text style={styles.name}>Brian Lewis</Text>
+      </View>
+      <TouchableOpacity
+        style={styles.infoIcon}
+        /*blurComponentIOS={blurComponentIOS}*/
+        onPress={showDialog} >
           <Image
-            source={require("../../assets/images/penguin-avatar.png")}
-            style={{ width: 0.44 * windowWidth, height: 0.2 * windowHeight}}
+            source={require("../../assets/images/infoIcon.png")}
+            style={{ width: 34, height: 34, marginBottom: 16}}
           />
-        </View>
-        <View style={styles.nameContainer}>
-          <Text style={styles.name}>Brian Lewis</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.infoIcon}
-          /*blurComponentIOS={blurComponentIOS}*/
-          onPress={showDialog} >
-            <Image
-              source={require("../../assets/images/infoIcon.png")}
-              style={{ width: 34, height: 34, marginBottom: 16}}
-            />
-            <Dialog.Container
-              style={styles.popup}
-              visible={visible}
-              footerStyle={styles.popupFooterStyle}>
-              <Dialog.Title style={styles.popupTitle}>EMERGENCY BUTTON</Dialog.Title>
-              <Dialog.Description style={styles.popupText}>
-                This emergency button lets you quickly access emergency functions such as calling your doctor or directions to the nearest hospital all in one place :)
-              </Dialog.Description>
-              <Dialog.Button label="OK" style={styles.popupOK} onPress={handleCancel}/>
-            </Dialog.Container>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
-            <Text style={styles.emergencyText}>EMERGENCY</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
-          <ProfileButton text="Saved" image="saved"/>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
-          <ProfileButton text="FAQ" image="faq"/>
-        </TouchableOpacity>
-      </ScrollView>
+          <Dialog.Container
+            style={styles.popup}
+            visible={visible}
+            footerStyle={styles.popupFooterStyle}>
+            <Dialog.Title style={styles.popupTitle}>EMERGENCY BUTTON</Dialog.Title>
+            <Dialog.Description style={styles.popupText}>
+              This emergency button lets you quickly access emergency functions such as calling your doctor or directions to the nearest hospital all in one place :)
+            </Dialog.Description>
+            <Dialog.Button label="OK" style={styles.popupOK} onPress={handleCancel}/>
+          </Dialog.Container>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.emergencyButton} onPress={() => navigation.navigate('Emergency')}>
+          <Text style={styles.emergencyText}>EMERGENCY</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('Saved')}>
+        <ProfileButton text="Saved" image="saved"/>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.profileButton} onPress= {() => navigation.navigate('FAQ')}>
+        <ProfileButton text="FAQ" image="faq"/>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -159,9 +155,5 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
     fontSize: 20,
     opacity: 0.5
-  },
-  scrollView: {
-    width: '100%',
-    backgroundColor: Colors.white,
   },
 });
