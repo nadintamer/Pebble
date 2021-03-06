@@ -42,6 +42,7 @@
     "react-native-scroll-menu": "0.0.8",
     "react-native-scrolling-menu": "^0.1.1",
     "react-native-segmented-control-tab": "^3.4.1",
+    "react-native-sms": "^1.11.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swipe-list-view": "^3.2.6",
     "react-native-swipeout": "^2.3.6",

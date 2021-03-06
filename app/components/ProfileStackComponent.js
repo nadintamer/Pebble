@@ -13,6 +13,7 @@ import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
 import MapScreen from '../screens/MapScreen';
 import CallScreen from '../screens/CallScreen';
+import TextScreen from '../screens/TextScreen';
 
 
 const ProfileStack = createStackNavigator();
@@ -134,6 +135,20 @@ export default function ProfileStackComponent() {
         component={CallScreen}
         options={{
           title: "CallDoctor",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+        }}/>
+        <ProfileStack.Screen
+        name="TextFamily"
+        component={TextScreen}
+        options={{
+          title: "TextFamily",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',

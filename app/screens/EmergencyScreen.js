@@ -27,7 +27,7 @@ export default function EmergencyScreen( {navigation}) {
         </View>
         <Text style={styles.boldedText}>Directions to nearest hospital</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("text friends")}>
+      <TouchableOpacity style={styles.rowContainer} onPress={() => navigation.navigate('TextFamily')}>
         <View style={styles.pictureContainer}>
           <Image
             source={require("../../assets/images/text-family-icon.png")}

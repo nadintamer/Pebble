@@ -1,4 +1,4 @@
-// Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
+// could maybe combine with call screen but have to implement multiple people functionality so maybe not
 import React, { Component } from 'react';
  
 import { StyleSheet, Text, View, TouchableOpacity, Linking, Platform } from 'react-native';
@@ -6,23 +6,28 @@ import Colors from '../themes/Colors';
 
 export default class mainapp extends Component {
  
-  dialCall = () => {
+ 
+  sendMessage = () => {
     let phoneNumber = '';
  
     if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${5033172937}'; //hardcoded my number in here for now lmao
+      phoneNumber = 'sms:${5033172937}'; //hardcoded my number in here for now lmao
     }
     else {
-      phoneNumber = 'telprompt:${5033172937}';
+      phoneNumber = 'telprompt:5033172937';
     }
-    Linking.openURL(phoneNumber);
+    const separator = Platform.OS === 'ios' ? '&' : '?'
+
+    const url = `sms:${phoneNumber}${separator}body=${"i'm having a child bye"}`
+     Linking.openURL(url)
+    //Linking.openURL(phoneNumber);
   };
  
   render() {
     return (
       <View style={styles.MainContainer}>
-        <TouchableOpacity onPress={this.dialCall} activeOpacity={0.7} style={styles.button} >
-          <Text style={styles.TextStyle}>Press to Call Your Doctor ;)</Text>
+        <TouchableOpacity onPress={this.sendMessage} activeOpacity={0.7} style={styles.button} >
+          <Text style={styles.TextStyle}>Alert Your Contacts!</Text>
         </TouchableOpacity>
       </View>
  
