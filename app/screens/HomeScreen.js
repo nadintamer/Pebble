@@ -1,66 +1,72 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, Button, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon';
+import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experimentation
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function HomeScreen({ navigation }) {
   return (
-    <View style={styles.homeContainer}>
-      <View style={styles.progressContainer}>
-        <Text style={styles.progressText}>10 Weeks Left</Text>
-        <View style={styles.progressBarContainer}>
-          <ProgressBar progress={0.75} color={Colors.darkPurple} style={styles.progressBar}/>
-          <CustomIcon name="baby" size={30} color={Colors.coral} style={styles.babyIcon}/>
-        </View>
-      </View>
-
-      <View style={styles.actionCardContainer}>
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.heading}>This Week's Tasks</Text>
-            <View style={styles.bulletRow}>
-              <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
-            </View>
-            <View style={styles.bulletRow}>
-              <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Schedule tour of hospital 🏥</Text>
-            </View>
-          </View>
-          <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Tasks', { startingTab: 0 })} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Go To Tasks</Text>
-            </TouchableOpacity>
-          </View>
-
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.heading}>Info</Text>
-            <View style={styles.bulletRow}>
-              <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Communication Tips</Text>
-            </View>
-            <View style={styles.bulletRow}>
-              <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Paternity leave</Text>
-            </View>
-          </View>
-          <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Learn More</Text>
-            </TouchableOpacity>
+    <SafeAreaView style={styles.homeContainer}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={{ alignItems: 'center' }}>
+        <View style={styles.progressContainer}>
+          <Text style={styles.progressText}>10 Weeks Left</Text>
+          <View style={styles.progressBarContainer}>
+            <ProgressBar progress={0.75} color={Colors.darkPurple} style={styles.progressBar}/>
+            <CustomIcon name="baby" size={30} color={Colors.coral} style={styles.babyIcon}/>
           </View>
         </View>
-      </View>
-    </View>
+
+        <View style={styles.actionCardContainer}>
+          <View style={styles.actionCard}>
+            <View style={styles.textContainer}>
+              <Text style={styles.heading}>This Week's Tasks</Text>
+              <View style={styles.bulletRow}>
+                <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
+                <Text style={styles.bodyText}>Ask employer about paternity leave</Text>
+              </View>
+              <View style={styles.bulletRow}>
+                <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
+                <Text style={styles.bodyText}>Schedule tour of hospital 🏥</Text>
+              </View>
+            </View>
+            <View style={styles.appButtonContainer}>
+              <TouchableOpacity onPress={() => navigation.navigate('Tasks', { startingTab: 0 })} style={styles.appButton}>
+                <Text style={styles.appButtonText}>Go To Tasks</Text>
+              </TouchableOpacity>
+            </View>
+
+          </View>
+
+          <View style={styles.actionCard}>
+            <View style={styles.textContainer}>
+              <Text style={styles.heading}>Info</Text>
+              <View style={styles.bulletRow}>
+                <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
+                <Text style={styles.bodyText}>Communication Tips</Text>
+              </View>
+              <View style={styles.bulletRow}>
+                <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
+                <Text style={styles.bodyText}>Paternity leave</Text>
+              </View>
+            </View>
+            <View style={styles.appButtonContainer}>
+              <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
+                <Text style={styles.appButtonText}>Learn More</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+
   );
 }
 
@@ -158,5 +164,9 @@ const styles = StyleSheet.create({
     color: Colors.white,
     alignSelf: 'center',
     fontFamily: 'NunitoSans_700Bold',
-  }
+  },
+  scrollView: {
+    width: '100%',
+    backgroundColor: Colors.white,
+  },
 });

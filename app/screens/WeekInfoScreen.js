@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import Colors from '../themes/Colors';
+import Articles from '../themes/Content';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -9,13 +10,18 @@ export default function WeekInfoScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.homeContainer}>
             <Image style={styles.image} source={require("../../assets/images/dad-image.png")}></Image>
-
-            <TouchableOpacity onPress={() => navigation.navigate('Article')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Week 30 Symptoms',
+                subtitle: 'Fatigue, morning sickness, and more',
+                body: 'symptoms',
+              }
+            })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
                         <Image
-                        source={require("../../assets/images/symptom.png")}
-                        style={{ width: '100%', height: '78%', margin:0  }}
+                          source={require("../../assets/images/symptom.png")}
+                          style={{ width: '100%', height: '78%', margin: 0 }}
                         />
                     </View>
                     <View style={styles.textView}>
@@ -25,12 +31,18 @@ export default function WeekInfoScreen({ navigation }) {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Article')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'What You Should Know: Paternity Leave',
+                subtitle: 'Your employer\'s policies, alternatives, and more',
+                body: 'paternity leave',
+              }
+            })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
                         <Image
-                        source={require("../../assets/images/paternity.png")}
-                        style={{ width: '100%', height: '78%', margin:0  }}
+                          source={require("../../assets/images/paternity.png")}
+                          style={{ width: '100%', height: '78%', margin: 0 }}
                         />
                     </View>
                     <View style={styles.textView}>
@@ -40,16 +52,24 @@ export default function WeekInfoScreen({ navigation }) {
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate('Article')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Article', {
+              articleInfo: {
+                title: 'Communicating with Your Partner: Tips',
+                subtitle: 'Ensuring healthy communication throughout pregnancy and beyond',
+                body: Articles.communication,
+                image: require("../../assets/images/penguin-avatar.png") // placeholder to demonstrate dynamic image for article
+              }
+            })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
                         <Image
-                        source={require("../../assets/images/comm.png")}
-                        style={{ width: '100%', height: '78%', margin:0  }}
+                          source={require("../../assets/images/comm.png")}
+                          style={{ width: '100%', height: '78%', margin: 0 }}
                         />
                     </View>
                     <View style={styles.textView}>
-                        <Text style={styles.subheading}>Communicating With Your Partner</Text>
+                        <Text style={styles.subheading}>Communicating with Your Partner: Tips</Text>
+                        <Text style={styles.bodyText}>Ensuring healthy communication throughout pregnancy and beyond</Text>
                     </View>
                 </View>
             </TouchableOpacity>
