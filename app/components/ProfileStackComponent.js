@@ -10,6 +10,7 @@ import EmergencyScreen from '../screens/EmergencyScreen';
 import FAQScreen from '../screens/FAQScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
+import MapScreen from '../screens/MapScreen';
 
 const ProfileStack = createStackNavigator();
 export default function ProfileStackComponent() {
@@ -88,6 +89,21 @@ export default function ProfileStackComponent() {
         component={SavedCardsScreen}
         options={{
           title: "Saved",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+        }}/>
+
+<ProfileStack.Screen
+        name="Map"
+        component={MapScreen}
+        options={{
+          title: "Map",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',

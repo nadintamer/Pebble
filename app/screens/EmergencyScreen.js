@@ -9,7 +9,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function EmergencyScreen( {navigation}) {
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("call doctor")}>
+      <TouchableOpacity style={styles.rowContainer}>
         <View style={styles.pictureContainer}>
           <Image
             source={require("../../assets/images/call-doctor-icon.png")}
@@ -18,7 +18,7 @@ export default function EmergencyScreen( {navigation}) {
         </View>
         <Text style={styles.boldedText}>Call doctor</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.rowContainer} onPress={() => console.log("hospital directions")}>
+      <TouchableOpacity style={styles.rowContainer} onPress={() => navigation.navigate('Map')}>
         <View style={styles.pictureContainer}>
           <Image
             source={require("../../assets/images/hospital-directions.png")}
