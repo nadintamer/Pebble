@@ -8,6 +8,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import EmergencyScreen from '../screens/EmergencyScreen';
 import FAQScreen from '../screens/FAQScreen';
+import ArticleScreen from '../screens/ArticleScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
 import MapScreen from '../screens/MapScreen';
@@ -98,8 +99,21 @@ export default function ProfileStackComponent() {
             fontSize: 30,
           }
         }}/>
-
-<ProfileStack.Screen
+      <ProfileStack.Screen
+        name="Article"
+        component={ArticleScreen}
+        options={{
+          title: "",
+          headerStyle: {
+            backgroundColor: Colors.white,
+            shadowColor: 'transparent',
+          },
+          headerTitleStyle: {
+            fontFamily: "Nunito_700Bold",
+            fontSize: 30,
+          }
+        }}/>
+      <ProfileStack.Screen
         name="Map"
         component={MapScreen}
         options={{

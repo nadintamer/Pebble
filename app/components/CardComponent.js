@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, FlatList, StyleSheet, Dimensions, Image } from 'react-native';
+import { Text, View, FlatList, TouchableOpacity, StyleSheet, Dimensions, Image } from 'react-native';
 
 import Colors from '../themes/Colors';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function SavedCardsScreen(props) {
+export default function CardComponent(props) {
   return (
     <View style={styles.homeContainer}>
-      <View style={styles.actionCard}>
-        <View style={styles.imageBackground}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={props.icon}
-              style={{ width: '100%', height: '100%', margin: 0, resizeMode: 'contain' }}
-            />
+      <TouchableOpacity onPress={() => props.navigation.navigate("Article", { articleInfo: props.article})}>
+        <View style={styles.actionCard}>
+          <View style={styles.imageBackground}>
+            <View style={styles.imageContainer}>
+              <Image
+                source={props.article.icon}
+                style={{ width: '100%', height: '100%', margin: 0, resizeMode: 'contain' }}
+              />
+            </View>
+          </View>
+          <View style={styles.cardText}>
+            <Text style={styles.subheading}>{props.article.title}</Text>
+            <Text style={styles.bodyText}>{"\n"}{props.article.subtitle}</Text>
           </View>
         </View>
-        <View style={styles.cardText}>
-          <Text style={styles.subheading}>{props.title}</Text>
-          <Text style={styles.bodyText}>{"\n"}{props.subtitle}</Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }

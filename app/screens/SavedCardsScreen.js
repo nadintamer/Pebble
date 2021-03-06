@@ -4,13 +4,15 @@ import { Text, View, FlatList, SafeAreaView, ScrollView, StyleSheet, Dimensions,
 import Colors from '../themes/Colors';
 import CardComponent from '../components/CardComponent';
 import { AsyncStorage } from 'react-native';
+import { useIsFocused } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function SavedCardsScreen() {
+export default function SavedCardsScreen({ navigation }) {
   const [bookmarks, setBookmarks] = useState([])
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     const reloadBookmarks = async () => {
@@ -21,7 +23,7 @@ export default function SavedCardsScreen() {
       setIsRefreshing(false);
     }
     reloadBookmarks()
-  }, [])
+  }, [isFocused])
 
   const getBookmarks = async () => {
     try {
@@ -50,9 +52,8 @@ export default function SavedCardsScreen() {
   const renderItem = ({item}) => {
     return (
       <CardComponent
-        title={item.title}
-        subtitle={item.subtitle}
-        icon={item.icon}
+        article={item}
+        navigation={navigation}
       />
     );
   }
