@@ -1,5 +1,8 @@
 import React from 'react';
 import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import MapView from 'react-native-maps'
+
+    
 
 import Colors from '../themes/Colors';
 
@@ -8,9 +11,9 @@ const windowHeight = Dimensions.get('window').height;
 
 export default function SettingsScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.homeContainer}>
+  <SafeAreaView style={styles.homeContainer}>
       <Text>Settings</Text>
-    </SafeAreaView>
+  </SafeAreaView>
   );
 }
 
@@ -24,3 +27,4 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
 });
+

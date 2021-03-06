@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, Image, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Text, View, Image, TouchableOpacity, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Colors from '../themes/Colors';
 import { useIsFocused } from "@react-navigation/native";
-
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function EmergencyScreen() {
+export default function EmergencyScreen( {navigation}) {
   return (
     <SafeAreaView style={styles.homeContainer}>
           <Image
@@ -15,12 +14,14 @@ export default function EmergencyScreen() {
             style={{ width: 430, height: 5}}
           />
     <View style={styles.callDoctor}>
-    <View style={styles.pictureContainer}>
+
+
+    <TouchableOpacity style={styles.pictureContainer} onPress= {() => navigation.navigate('Map')}>
       <Image
         source={require("../../assets/images/call-doctor-icon.png")}
         style={{ width: 25, height: 25}}
       />
-    </View>
+    </TouchableOpacity>
     <Text style={styles.boldedText}> Call Doctor </Text>
     </View>
           
