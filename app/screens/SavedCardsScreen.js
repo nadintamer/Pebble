@@ -1,70 +1,79 @@
-import React from 'react';
-import { Text, View, SafeAreaView, ScrollView, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, FlatList, SafeAreaView, ScrollView, StyleSheet, Dimensions, Image, TouchableOpacity } from 'react-native';
 
 import Colors from '../themes/Colors';
-import ProfileButton from '../components/ProfileButton';
+import CardComponent from '../components/CardComponent';
+import { AsyncStorage } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function SavedCardsScreen() {
-  const [savedCards, setSavedCards] = useState([]);
+  const [bookmarks, setBookmarks] = useState([])
+  const [isRefreshing, setIsRefreshing] = useState(false)
+
+  useEffect(() => {
+    const reloadBookmarks = async () => {
+      setIsRefreshing(true);
+      const bookmarks = await getBookmarks();
+      console.log(bookmarks);
+      setBookmarks(bookmarks);
+      setIsRefreshing(false);
+    }
+    reloadBookmarks()
+  }, [])
+
+  const getBookmarks = async () => {
+    try {
+      const bookmark = await AsyncStorage.getItem('allBookmarkedItems');
+      return (bookmark ? JSON.parse(bookmark) : []);
+    } catch (error) {
+      console.log(error);
+    }
+    return ([]);
+  }
+
+  const bookmarkPressed = (item) => {
+    const { navigate } = navigation;
+    navigate('BookmarkViewer', { content: item });
+  }
+
+  const reloadBookmarks = async () => {
+    setIsRefreshing(true);
+    const bookmarks = await getBookmarks();
+    setBookmarks(bookmarks);
+    setIsRefreshing(false);
+  }
+
+  const _keyExtractor = (item, index) => index.toString();
+
+  const renderItem = ({item}) => {
+    return (
+      <CardComponent
+        title={item.title}
+        subtitle={item.subtitle}
+        icon={item.icon}
+      />
+    );
+  }
+
+  let emptyList = null;
+  if (!bookmarks[0]) {
+    emptyList = (<Text style={{marginTop: 20}}>No bookmarks exist yet!</Text>);
+  }
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.actionCard}>
-          <View style={styles.imageContainer}>
-              <Image
-                source={require("../../assets/images/morningSickness2.png")}
-                style={{ width: '100%', height: '78%', margin:0 }}
-              />
-          </View>
-          <View style={styles.cardText}>
-            <Text style={styles.subheading}>Morning Sickness </Text>
-            <Text style={styles.bodyText}>{"\n"}Despite its name, morning sickness does not only occur in the morning.</Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={require("../../assets/images/nausea2.png")}
-              style={{ width: '100%', height: '78%', margin:0  }}
-            />
-          </View>
-          <View style={styles.cardText}>
-            <Text style={styles.subheading}>Nausea Symptoms</Text>
-            <Text style={styles.bodyText}>{"\n"}Morning sickness, vomiting, and more</Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={require("../../assets/images/covaude2.png")}
-              style={{ width: '100%', height: '78%', margin:0 }}
-            />
-          </View>
-          <View style={styles.cardText}>
-            <Text style={styles.subheading}>Covaude Syndrome </Text>
-            <Text style={styles.bodyText}>{"\n"}The manifestation of pregnancy in men</Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.imageContainer}>
-            <Image
-              source={require("../../assets/images/hyperemesis2.png")}
-              style={{ width: '100%', height: '78%', margin:0  }}
-            />
-          </View>
-          <View style={styles.cardText}>
-            <Text style={styles.subheading}>Hyperemis Gravidarum </Text>
-            <Text style={styles.bodyText}>{"\n"}Extreme Morning Sickness: dehydration, weight loss, and more</Text>
-          </View>
-        </View>
-      </ScrollView>
+      <View style={{width: '90%', height: '100%' }}>
+        {emptyList}
+        <FlatList
+          data={bookmarks}
+          keyExtractor={_keyExtractor}
+          renderItem={renderItem}
+          onRefresh={reloadBookmarks}
+          refreshing={isRefreshing}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -101,17 +110,25 @@ const styles = StyleSheet.create({
     marginTop: 20,
     zIndex: 2
   },
-  imageContainer: {
-    flex: 1,
-    /*
-    marginTop: (windowHeight * 0.104 - 110)/2.0,
-    marginBottom: (windowHeight * 0.104 - 110)/2.0,
-    */
-    marginTop: 10,
-    marginLeft: 20,
+  imageBackground: {
+    //flex: 1,
+    height: 84,
+    width: 84,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 3
+    zIndex: 3,
+    marginTop: 10,
+    marginLeft: 20,
+    backgroundColor: Colors.lightPurple,
+    borderRadius: 20,
+  },
+  imageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '80%',
+    height: '80%',
+    resizeMode: 'contain',
+    backgroundColor: 'red',
   },
   scrollView: {
     width: '90%',

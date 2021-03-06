@@ -36,11 +36,7 @@ export default function ExploreScreen({ navigation }) {
       <View style={styles.exploreCardColContainer}>
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Morning Sickness',
-                subtitle: 'Despite its name, morning sickness does not only occur in the morning.',
-                body: 'Morning sickness body text',
-              }
+              articleInfo: Articles.morningSickness
             })}>
               <View style={styles.exploreCardLeft}>
                 <View style={styles.imageContainer}>
@@ -54,11 +50,7 @@ export default function ExploreScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Life Insurance',
-                subtitle: 'Life insurance subtitle',
-                body: 'Life insurance body text',
-              }
+              articleInfo: Articles.lifeInsurance
             })}>
               <View style={styles.exploreCardRight}>
                 <View style={styles.imageContainer}>
@@ -74,11 +66,7 @@ export default function ExploreScreen({ navigation }) {
 
         <View style={styles.exploreCardRowContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Paternity Leave',
-                subtitle: 'Paternity leave subtitle',
-                body: 'Paternity leave body text',
-              }
+              articleInfo: Articles.paternityLeave
             })}>
               <View style={styles.exploreCardLeft}>
                 <View style={styles.imageContainer}>
@@ -92,11 +80,7 @@ export default function ExploreScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Emotional Wellness',
-                subtitle: 'Emotional wellness subtitle',
-                body: 'Emotional wellness body text',
-              }
+              articleInfo: Articles.emotionalWellness
             })}>
               <View style={styles.exploreCardRight}>
                 <View style={styles.imageContainer}>

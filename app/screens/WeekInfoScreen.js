@@ -11,11 +11,7 @@ export default function WeekInfoScreen({ navigation }) {
         <SafeAreaView style={styles.homeContainer}>
             <Image style={styles.image} source={require("../../assets/images/dad-image.png")}></Image>
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Week 30 Symptoms',
-                subtitle: 'Fatigue, morning sickness, and more',
-                body: 'symptoms',
-              }
+              articleInfo: Articles.week30Symptoms,
             })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
@@ -32,11 +28,7 @@ export default function WeekInfoScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'What You Should Know: Paternity Leave',
-                subtitle: 'Your employer\'s policies, alternatives, and more',
-                body: 'paternity leave',
-              }
+              articleInfo: Articles.paternityLeave,
             })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
@@ -53,12 +45,7 @@ export default function WeekInfoScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: {
-                title: 'Communicating with Your Partner: Tips',
-                subtitle: 'Ensuring healthy communication throughout pregnancy and beyond',
-                body: Articles.communication,
-                image: require("../../assets/images/penguin-avatar.png") // placeholder to demonstrate dynamic image for article
-              }
+              articleInfo: Articles.communication,
             })}>
                 <View style={styles.actionCard}>
                     <View style={styles.imageContainer}>
