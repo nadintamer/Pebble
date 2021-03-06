@@ -43,5 +43,8 @@ const styles = StyleSheet.create({
     margin: 10,
     fontFamily: 'Nunito_400Regular',
     fontSize: 16,
+    color: Colors.grey,
+    textDecorationLine: 'line-through',
+    textDecorationStyle: 'solid',
   }
 });
