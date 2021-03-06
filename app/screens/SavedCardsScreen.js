@@ -18,7 +18,6 @@ export default function SavedCardsScreen({ navigation }) {
     const reloadBookmarks = async () => {
       setIsRefreshing(true);
       const bookmarks = await getBookmarks();
-      console.log(bookmarks);
       setBookmarks(bookmarks);
       setIsRefreshing(false);
     }
@@ -60,7 +59,7 @@ export default function SavedCardsScreen({ navigation }) {
 
   let emptyList = null;
   if (!bookmarks[0]) {
-    emptyList = (<Text style={{marginTop: 20}}>No bookmarks exist yet!</Text>);
+    emptyList = (<Text style={styles.warning}>You haven't saved any modules yet!</Text>);
   }
 
   return (
@@ -152,4 +151,10 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: 'NunitoSans_400Regular',
   },
+  warning: {
+    fontFamily: 'NunitoSans_400Regular',
+    fontSize: 20,
+    marginTop: 20,
+    alignSelf: 'center',
+  }
 });

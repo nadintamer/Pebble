@@ -1,7 +1,9 @@
 import React from 'react';
-import { Text, View, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity, Image } from 'react-native';
+import { Text, View, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity, ScrollView, Image } from 'react-native';
 import Colors from '../themes/Colors';
 import Articles from '../themes/Content';
+
+import CardComponent from '../components/CardComponent';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -10,56 +12,28 @@ export default function WeekInfoScreen({ navigation }) {
     return (
         <SafeAreaView style={styles.homeContainer}>
             <Image style={styles.image} source={require("../../assets/images/dad-image.png")}></Image>
-            <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: Articles.week30Symptoms,
-            })}>
-                <View style={styles.actionCard}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                          source={require("../../assets/images/symptom.png")}
-                          style={{ width: '100%', height: '78%', margin: 0 }}
-                        />
-                    </View>
-                    <View style={styles.textView}>
-                        <Text style={styles.subheading}>Week 30 Symptoms</Text>
-                        <Text style={styles.bodyText}>Fatigue, morning sickness, and more</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: Articles.paternityLeave,
-            })}>
-                <View style={styles.actionCard}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                          source={require("../../assets/images/paternity.png")}
-                          style={{ width: '100%', height: '78%', margin: 0 }}
-                        />
-                    </View>
-                    <View style={styles.textView}>
-                        <Text style={styles.subheading}>What You Should Know: Paternity Leave</Text>
-                        <Text style={styles.bodyText}>Your employer's policies, alternatives, and more</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate('Article', {
-              articleInfo: Articles.communication,
-            })}>
-                <View style={styles.actionCard}>
-                    <View style={styles.imageContainer}>
-                        <Image
-                          source={require("../../assets/images/comm.png")}
-                          style={{ width: '100%', height: '78%', margin: 0 }}
-                        />
-                    </View>
-                    <View style={styles.textView}>
-                        <Text style={styles.subheading}>Communicating with Your Partner: Tips</Text>
-                        <Text style={styles.bodyText}>Ensuring healthy communication throughout pregnancy and beyond</Text>
-                    </View>
-                </View>
-            </TouchableOpacity>
+            <ScrollView
+              style={{ flex: 1, width: '100%' }}
+              contentContainerStyle={{alignItems: 'center', justifyContent: 'center' }}>
+              <View style={styles.actionCard}>
+                <CardComponent
+                  article={Articles.week30Symptoms}
+                  navigation={navigation}
+                />
+              </View>
+              <View style={styles.actionCard}>
+                <CardComponent
+                  article={Articles.paternityLeave}
+                  navigation={navigation}
+                />
+              </View>
+              <View style={styles.actionCard}>
+                <CardComponent
+                  article={Articles.communication}
+                  navigation={navigation}
+                />
+              </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -75,14 +49,9 @@ const styles = StyleSheet.create({
     },
     actionCard: {
         alignItems: 'center',
-        justifyContent: 'flex-start',
         flexDirection: 'row',
-        backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.15,
-        width: '100%',
-        borderRadius: 20,
-        marginTop: 32,
-        zIndex: 1,
+        marginTop: 30,
         width: '90%'
     },
     image: {
