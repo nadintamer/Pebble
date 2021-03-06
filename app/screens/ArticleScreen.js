@@ -14,9 +14,6 @@ export default function ArticleScreen({ route, navigation }) {
   const [savingBookmark, setSavingBookmark] = useState(false);
 
   const bookmarkPressed = () => {
-    //if (savingBookmark) return; //stop if already saving
-    console.log(bookmarked);
-
     if (!bookmarked) {
       saveBookmark(articleInfo);
     } else {
