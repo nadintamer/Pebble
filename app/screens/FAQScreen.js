@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions } from 'react-native';
+import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions, Linking } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import Colors from '../themes/Colors';
@@ -42,6 +42,9 @@ export default function FAQScreen() {
           <View style={styles.textContainer}>
             <Text style={styles.boldedText}>Where can I find additional resources? {"\n"}</Text>
             <Text style={styles.cardText}>Check out these websites for more information about pregnancy and becoming a parent.</Text>
+            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://www.whattoexpect.com/pregnancy/expecting-father/')}> What to Expect for Fathers</Text>
+            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://www.nationalparenthelpline.org/find-support')}> National Parent Helpline</Text>
+            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://postpartumstress.com/about/support-groups/')}> The Post Partum Stress Center</Text>
           </View>
         </View>
 
@@ -112,6 +115,11 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontFamily: 'NunitoSans_400Regular',
+  },
+  cardLink: {
+    fontFamily: 'NunitoSans_400Regular',
+    color: Colors.darkPurple,
+    textDecorationLine: 'underline',
   },
   searchcontainer: { // this isn't used anywhere
     backgroundColor: 'white',

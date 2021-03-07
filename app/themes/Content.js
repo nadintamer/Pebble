@@ -64,8 +64,10 @@ So how can you help your partner manage their morning sickness?
   week30Symptoms: {
     title: 'Week 30 Symptoms',
     subtitle: 'Fatigue, morning sickness, and more',
-    body: 'symptoms',
-    icon: require('../../assets/images/symptoms-icon.png'),
+    body: `Week 30 is a huge milestone: you are approximately 3/4 of the way done. Your baby might weigh in at about 3 pounds, and will be growing roughly half a pound per week for the next seven weeks. Week 30 comes with many possible symptoms:
+    \n \t \u25CF Because the baby's head is now pressing on your partner's bladder, they may experience urinary discomfort and heartburn.
+      \n \t \u25CF  Because they are gearing up for milk production, partner may experience soreness in their breasts
+      \n \t \u25CF Fatigue is common at this stage of pregnancy.`,    icon: require('../../assets/images/symptoms-icon.png'),
   }
 };
 
