@@ -20,7 +20,7 @@ export default function ExploreScreen({ navigation }) {
           onPress={() => navigation.navigate('Search')} />
         <TextInput
           style={styles.textinput}
-          placeholder={'Search by topic (eg: "additional resources)'}
+          placeholder={'Search by topic...'}
           clearButtonMode={'always'}
           onChangeText={(text) => setText(text)}
           value={text}
@@ -91,7 +91,7 @@ export default function ExploreScreen({ navigation }) {
                   />
                 </View>
               </View>
-              <Text style={styles.cardHeadingRight}> Emotional Wellness </Text>
+              <Text style={styles.cardHeadingRight}> Emotional Health </Text>
             </TouchableOpacity>
         </View>
       </View>
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   subheading: {
     textAlign: 'left',
     fontFamily: "NunitoSans_700Bold",
-    fontSize: 24,
+    fontSize: 22,
     marginTop: 15,
   },
   textinput: {
