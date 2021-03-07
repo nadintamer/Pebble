@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   profilePictureContainer: {
-    marginTop: 50,
-    marginBottom: 15,
+    marginTop: 20,
+    marginBottom: 10,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   emergencyButton: {
     width: '90%',
     height: 52,
-    marginBottom: 35,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.coral,
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   profileButton: {
     width: '90%',
     height: 126,
-    marginBottom: 30,
+    marginBottom: 15,
     justifyContent: 'center',
     alignItems: 'center',
   },
