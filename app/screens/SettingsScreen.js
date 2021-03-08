@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Text, SafeAreaView, View, StyleSheet, TextInput, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps'
+import { Switch } from 'react-native-switch';
+
 
 import CustomIcon from '../components/CustomIcon'
 
@@ -16,57 +19,61 @@ export default function SettingsScreen({ navigation }) {
   const [dueDate, setDueDate] = useState('');
   const [babyGender, setBabyGender] = useState('');
   const [doctorNumber, setDoctorNumber] = useState('');
-
-
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <SafeAreaView style={styles.homeContainer}>
-      <View style={styles.settingView}>
-      <Text>Name: </Text>
-        <TextInput
-          value={name}
-          onChangeText={(name) => setName(name)}
-          style={styles.textInput}
-        />
-      </View>
+      <ScrollView keyboardShouldPersistTaps="handled" >
+        <View style={styles.settingView}>
+          <Text style={styles.descriptorText}>Name: </Text>
+          <TextInput
+            value={name}
+            onChangeText={(name) => setName(name)}
+            style={styles.textInput}
+          />
+        </View>
 
-      <View style={styles.settingView}>
-        <Text>First Child: </Text>
-        <TextInput
-          value={firstChild}
-          onChangeText={(firstChild) => setFirstChild(firstChild)}
-          style={styles.textInput}
-        />
-      </View>
+        <View style={styles.settingView}>
+          <Text style={styles.descriptorText}>First Child: </Text>
+          <Switch
+            trackColor={{ false: Colors.darkPurple, true: Colors.grey }}
+            thumbColor={isEnabled ? Colors.darkPurple : Colors.grey}
+            ios_backgroundColor={Colors.darkPurple}
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+        </View>
 
-      <View style={styles.settingView}>
-        <Text>Due Date: </Text>
-        <TextInput
-          value={dueDate}
-          onChangeText={(dueDate) => setDueDate(dueDate)}
-          style={styles.textInput}
-        />
-      </View>
-      
-      <View style={styles.settingView}>
-        <Text>Baby's Gender: </Text>
-        <TextInput
-          value={babyGender}
-          onChangeText={(babyGender) => setBabyGender(babyGender)}
-          style={styles.textInput}
-        />
-      </View>
+        <View style={styles.settingView}>
+          <Text style={styles.descriptorText}>Due Date: </Text>
+          <TextInput
+            value={dueDate}
+            onChangeText={(dueDate) => setDueDate(dueDate)}
+            style={styles.textInput}
+          />
+        </View>
 
-      <View style={styles.settingView}>
-        <Text>Doctor's Number: </Text>
-        <TextInput
-          value={doctorNumber}
-          onChangeText={(doctorNumber) => setDoctorNumber(doctorNumber)}
-          style={styles.textInput}
-        />
-      </View>
-      <Text>All changes are autosaved. </Text>
+        <View style={styles.settingView}>
+          <Text style={styles.descriptorText}>Baby's Gender: </Text>
+          <TextInput
+            value={babyGender}
+            onChangeText={(babyGender) => setBabyGender(babyGender)}
+            style={styles.textInput}
+          />
+        </View>
 
+        <View style={styles.settingView}>
+          <Text style={styles.descriptorText}>Doctor's Number: </Text>
+          <TextInput
+            value={doctorNumber}
+            onChangeText={(doctorNumber) => setDoctorNumber(doctorNumber)}
+            style={styles.textInput}
+          />
+        </View>
+        <Text style={styles.bottomText}>All changes are autosaved. </Text>
+      </ScrollView>
     </SafeAreaView>
+
   );
 }
 
@@ -83,23 +90,43 @@ const styles = StyleSheet.create({
     width: 200,
     height: 44,
     padding: 8,
+    fontFamily: 'Nunito_400Regular',
+    fontSize: 16,
+    color: Colors.settingsDarkGrey,
+  },
+
+  descriptorText: {
+    margin: 10,
+    fontFamily: 'Nunito_400Regular',
+    fontSize: 16,
+    color: Colors.grey,
+    fontWeight: 'bold' // not working
   },
 
   descriptionText: {
     width: 200,
     height: 44,
     padding: 8,
+
+  },
+
+  bottomText: {
+    margin: 60,
+    fontFamily: 'Nunito_400Regular',
+    fontSize: 16,
+    color: Colors.grey,
+    fontStyle: 'italic', //also not working
   },
 
   settingView: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
     backgroundColor: Colors.white,
     borderBottomWidth: 1,
     borderColor: '#ccc',
     width: windowWidth * 0.9,
-    height: windowHeight*0.1,
+    height: windowHeight * 0.1,
   },
 });
 
