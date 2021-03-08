@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Text, SafeAreaView, View, StyleSheet, TextInput, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Text, SafeAreaView, Button, View, StyleSheet, TextInput, Dimensions, Image, TouchableOpacity } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps'
 import { Switch } from 'react-native-switch';
+import DateTimePicker from '@react-native-community/datetimepicker'; //https://github.com/react-native-datetimepicker/datetimepicker
 
 
 import CustomIcon from '../components/CustomIcon'
@@ -20,6 +21,29 @@ export default function SettingsScreen({ navigation }) {
   const [babyGender, setBabyGender] = useState('');
   const [doctorNumber, setDoctorNumber] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  // this stuff isn't necessary sorry will clean up later
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
+
+
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+
+
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -36,9 +60,9 @@ export default function SettingsScreen({ navigation }) {
         <View style={styles.settingView}>
           <Text style={styles.descriptorText}>First Child: </Text>
           <Switch
-            trackColor={{ false: Colors.darkPurple, true: Colors.grey }}
-            thumbColor={isEnabled ? Colors.darkPurple : Colors.grey}
-            ios_backgroundColor={Colors.darkPurple}
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
+            thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+            ios_backgroundColor="#3e3e3e"
             onValueChange={toggleSwitch}
             value={isEnabled}
           />
@@ -46,11 +70,18 @@ export default function SettingsScreen({ navigation }) {
 
         <View style={styles.settingView}>
           <Text style={styles.descriptorText}>Due Date: </Text>
-          <TextInput
-            value={dueDate}
-            onChangeText={(dueDate) => setDueDate(dueDate)}
-            style={styles.textInput}
-          />
+          <View>
+
+            <DateTimePicker style={{ width: 100 }}
+              testID="dateTimePicker"
+              value={date}
+              mode={mode}
+              is24Hour={true}
+              display="default"
+              onChange={onChange}
+              onPress={showDatepicker}
+            />
+          </View>
         </View>
 
         <View style={styles.settingView}>
@@ -65,6 +96,7 @@ export default function SettingsScreen({ navigation }) {
         <View style={styles.settingView}>
           <Text style={styles.descriptorText}>Doctor's Number: </Text>
           <TextInput
+            keyboardType='numeric'
             value={doctorNumber}
             onChangeText={(doctorNumber) => setDoctorNumber(doctorNumber)}
             style={styles.textInput}
