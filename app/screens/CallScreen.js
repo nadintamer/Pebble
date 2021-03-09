@@ -1,4 +1,5 @@
 // Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
+//THIS IS NOW USELESS can get rid of later
 import React, { Component } from 'react';
  
 import { StyleSheet, Text, View, TouchableOpacity, Linking, Platform } from 'react-native';

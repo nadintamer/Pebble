@@ -1,4 +1,5 @@
 // could maybe combine with call screen but have to implement multiple people functionality so maybe not
+// THIS IS NOW USELESS but will leave it here in case of multiperson functionality although tbh that shouldn't need it's own component either i'm just scared
 import React, { Component } from 'react';
  
 import { StyleSheet, Text, View, TouchableOpacity, Linking, Platform } from 'react-native';
