@@ -12,7 +12,6 @@ import ArticleScreen from '../screens/ArticleScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
 import MapScreen from '../screens/MapScreen';
-import CallScreen from '../screens/CallScreen';
 import TextScreen from '../screens/TextScreen';
 
 
@@ -130,20 +129,7 @@ export default function ProfileStackComponent() {
             fontSize: 30,
           }
         }}/>
-        <ProfileStack.Screen
-        name="CallDoctor"
-        component={CallScreen}
-        options={{
-          title: "CallDoctor",
-          headerStyle: {
-            backgroundColor: Colors.white,
-            shadowColor: 'transparent',
-          },
-          headerTitleStyle: {
-            fontFamily: "Nunito_700Bold",
-            fontSize: 30,
-          }
-        }}/>
+      
         <ProfileStack.Screen
         name="TextFamily"
         component={TextScreen}

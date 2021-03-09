@@ -1,3 +1,5 @@
+// // Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
+
 import React, { useState } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, Linking, SafeAreaView, Platform, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Colors from '../themes/Colors';

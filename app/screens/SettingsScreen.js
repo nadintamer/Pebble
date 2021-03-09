@@ -4,6 +4,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import MapView from 'react-native-maps'
 import { Switch } from 'react-native-switch';
 import DateTimePicker from '@react-native-community/datetimepicker'; //https://github.com/react-native-datetimepicker/datetimepicker
+import ToggleSwitch from 'toggle-switch-react-native'
+
 
 
 import CustomIcon from '../components/CustomIcon'
@@ -45,6 +47,8 @@ export default function SettingsScreen({ navigation }) {
 
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  //const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
   return (
     <SafeAreaView style={styles.homeContainer}>
       <ScrollView keyboardShouldPersistTaps="handled" >
@@ -59,20 +63,23 @@ export default function SettingsScreen({ navigation }) {
 
         <View style={styles.settingView}>
           <Text style={styles.descriptorText}>First Child: </Text>
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
+          <View style={styles.toggleView}>
+            <ToggleSwitch
+              isOn={isEnabled}
+              onColor={Colors.darkPurple}
+              offColor={Colors.grey}
+              labelStyle={{ color: "black", fontWeight: "900" }}
+              size="large"
+              onToggle={toggleSwitch}
+            />
+          </View>
         </View>
 
         <View style={styles.settingView}>
           <Text style={styles.descriptorText}>Due Date: </Text>
           <View>
 
-            <DateTimePicker style={{ width: 100 }}
+            <DateTimePicker style={styles.datePicker}
               testID="dateTimePicker"
               value={date}
               mode={mode}
@@ -160,5 +167,23 @@ const styles = StyleSheet.create({
     width: windowWidth * 0.9,
     height: windowHeight * 0.1,
   },
+  toggleView: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-start',
+    marginBottom: 5,
+  },
+  datePicker: { //will try covering with a button?
+    width: 100,
+    color: 'white',
+    tintColor: 'white',
+    backgroundColor: 'white',
+    marginBottom: 5
+  }
 });
 
+/*<Switch
+           ios_backgroundColor="blue"
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />*/
