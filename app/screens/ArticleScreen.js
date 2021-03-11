@@ -135,20 +135,26 @@ export default function ArticleScreen({ route, navigation }) {
     })();
   }, [bookmarked]);
 
+  const getMultimedia = () => {
+    let viewToReturn;
+    if (articleInfo.hasOwnProperty('videoId')) {
+      viewToReturn = (
+        <View style={styles.video}>
+          <YoutubePlayer play={true} width='100%' height='100%' videoId={articleInfo.videoId} />
+        </View>
+      );
+    } else {
+      viewToReturn = (
+        <Image style={styles.image} source={articleInfo.image ? articleInfo.image : defaultImage}></Image>
+      );
+    }
+    return viewToReturn;
+  }
+
   return (
     <ScrollView style={styles.scrollView}>
       <SafeAreaView style={styles.homeContainer}>
-
-
-        <Image style={styles.image} source={articleInfo.image ? articleInfo.image : defaultImage}></Image>
-        
-       
-          <View style={styles.image}>
-          
-                <YoutubePlayer play={true} height={200} videoId={'AyEm6K295iE'} />
-              </View>
-           
-
+        {getMultimedia()}
         <View style={styles.textView}>
           <Text style={styles.heading}>{articleInfo.title}</Text>
           <Text style={styles.subheading}>{articleInfo.subtitle}</Text>
@@ -173,7 +179,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.lightPurple,
     height: windowHeight * 0.23,
     width: windowWidth * 0.9,
-    opacity: 0.75
+    opacity: 0.75,
+  },
+  video: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: windowHeight * 0.23,
+    width: windowWidth * 0.9,
   },
   bodyText: {
     color: 'black',

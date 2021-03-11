@@ -10,8 +10,8 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function SavedCardsScreen({ navigation }) {
-  const [bookmarks, setBookmarks] = useState([])
-  const [isRefreshing, setIsRefreshing] = useState(false)
+  const [bookmarks, setBookmarks] = useState([]);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const isFocused = useIsFocused();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function SavedCardsScreen({ navigation }) {
       setIsRefreshing(false);
     }
     reloadBookmarks()
-  }, [isFocused])
+  }, [])
 
   const getBookmarks = async () => {
     try {

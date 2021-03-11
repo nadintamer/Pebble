@@ -15,15 +15,14 @@ const articleBodyText = {
     \n \t \u25CF Mothers need to let fathers be involved. The woman has to involve the man in the experience of pregnancy; the baby is not as real to him as it is to the woman experiencing all the changes of pregnancy. Do not assume that motherhood comes naturally. Share your insecurities and show confidence in your partner\'s ability to be a good and nurturing parent.
     \n \t \u25CF Anticipate stress and exhaustion. They are an inevitable part of being new parents. Eat well, exercise, take time for yourself, and recruit a support network.`,
     icon: require('../../assets/images/communication-icon.png'),
-    image: require('../../assets/images/penguin-avatar.png'),
   },
   morningSickness: {
     title: 'Morning Sickness',
     subtitle: 'Despite its name, morning sickness does not only occur in the morning.',
     body: `Morning sickness symptoms typically start between weeks 6 to 9 of pregnancy. How long does morning sickness last? For the vast majority of expectant moms, nausea and vomiting typically subside between weeks 12 to 16 of pregnancy, with symptoms at their worst between weeks 10 to 16.
-      
+
 So how can you help your partner manage their morning sickness?
-      
+
       \n \t \u25CF Stay away from smells that trigger nausea, whether it’s the curry from your favorite takeout place or your formerly favorite perfume. A few other tactics can help. Try microwaving food, which usually results in fewer odors, and open the windows when you cook. Leave any place that smells so strong it’s making you ill. And wash your clothes more often with a lightly-scented (or unscented) detergent to get rid of incrusted smells. Steer clear, too, of foods that you can’t stand the sight of. Raw chicken, for example, is a common culprit.
           \n \t \u25CF Buy your partner a Sea-Band wristlet. These 1-inch wide bands put pressure on an acupressure point in the inner wrist. They’re widely available at drug and health food stores and have been shown to safely lessen pregnancy nausea.
           \n \t \u25CF Destressing can help minimize queasiness. Try encouraging your partner to practice classic stress-reduction techniques, like meditation and visualization or prenatal yoga.
@@ -41,13 +40,14 @@ So how can you help your partner manage their morning sickness?
             \n \t \u25CF The only way to be sure that you do not qualify under a parental leave policy on a paid or unpaid basis is to ask your HR department or benefits administrator for information. Sometimes, your employee handbook will also include this information. Remember that while there may be an official policy about leave, you can always try to negotiate for more time or some pay during your time off (which is especially the case if you plan to continue working part-time).
                   \n \t \u25CF  Read more about how to qualify for paternity leave in Week 31's module.
                       `,
-    icon: require('../../assets/images/paternity-explore.png')
+    icon: require('../../assets/images/paternity-explore.png'),
+    videoId: 'oPjtoZJAJi4',
   },
   lifeInsurance: {
     title: 'Life Insurance',
     subtitle: 'Is life insurance something to consider for your family? Read more below.',
     body: `There are certain life stages during which getting life insurance is essential to your family’s well-being. Having a baby is one of those life-changing and rewarding experiences. Your priorities shift, and one of your greatest concerns is protecting your new little one.
-      
+
       \n \t \u25CF Getting the best life insurance rates possible is one way you can financially protect your growing family. Most pregnant women can still qualify for life insurance even while pregnant.
           \n \t \u25CF If you have seen a physician regularly and have pre-pregnancy or at least early-pregnancy cholesterol tests that the life insurance companies can review, this will help determine your rating since your levels may be elevated during pregnancy and while nursing. Some companies are more lenient on cholesterol requirements, but proof that your numbers are high strictly due to pregnancy will be helpful. Your medical records will provide this information. Many companies are willing to offer affordable life insurance coverage to you if you are carrying a single baby and have no complications. You may even be considered a Preferred risk class if you can meet certain criteria.
               \n \t \u25CF Further research can help you determine if life insurance would be a good idea for your baby `,
@@ -68,6 +68,7 @@ So how can you help your partner manage their morning sickness?
     \n \t \u25CF Because the baby's head is now pressing on your partner's bladder, they may experience urinary discomfort and heartburn.
       \n \t \u25CF  Because they are gearing up for milk production, partner may experience soreness in their breasts
       \n \t \u25CF Fatigue is common at this stage of pregnancy.`,    icon: require('../../assets/images/symptoms-icon.png'),
+    videoId: 'AyEm6K295iE',
   }
 };
 
