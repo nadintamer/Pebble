@@ -1,61 +1,7 @@
 // documentation & examples: https://github.com/bramus/react-native-maps-directions-example/blob/master/App.js
+
+
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet, View, TouchableOpacity, Linking, Text } from 'react-native';
-import MapView from 'react-native-maps';
-import Colors from '../themes/Colors';
-
-export default function MapScreen({ navigation }) {
-const lat = 37.4357;
-const lng = -122.1763;
-  let openMap = () => {
-    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
-    const latLng = `${lat},${lng}`;
-    const label = 'Your Hospital';
-    const url = Platform.select({
-      ios: `${scheme}${label}@${latLng}`,
-      android: `${scheme}${latLng}(${label})`
-    });
-
-
-    Linking.openURL(url);
-    //Linking.openURL(phoneNumber);
-  };
-  return (
-    <View style={styles.MainContainer}>
-      <TouchableOpacity onPress={openMap} activeOpacity={0.7} style={styles.button} >
-        <Text style={styles.TextStyle}>Get Directions!</Text>
-      </TouchableOpacity>
-    </View>
-
-  );
-}
-
-
-const styles = StyleSheet.create({
-
-  MainContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-
-    width: '80%',
-    padding: 6,
-    backgroundColor: Colors.darkPurple,
-    borderRadius: 7,
-  },
-
-  TextStyle: {
-    color: '#fff',
-    fontSize: 18,
-    textAlign: 'center',
-    fontFamily: 'NunitoSans_400Regular',
-  }
-
-});
-
-/*import React, { Component } from 'react';
 import { Dimensions, StyleSheet, View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -193,4 +139,61 @@ class Map extends Component {
   }
 }
 
-export default Map;*/
+export default Map;
+
+/*
+import React, { Component } from 'react';
+import { Dimensions, StyleSheet, View, TouchableOpacity, Linking, Text } from 'react-native';
+import MapView from 'react-native-maps';
+import Colors from '../themes/Colors';
+
+export default function MapScreen({ navigation }) {
+const lat = 37.4357;
+const lng = -122.1763;
+  let openMap = () => {
+    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+    const latLng = `${lat},${lng}`;
+    const label = 'Your Hospital';
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`
+    });
+
+
+    Linking.openURL(url);
+    //Linking.openURL(phoneNumber);
+  };
+  return (
+    <View style={styles.MainContainer}>
+      <TouchableOpacity onPress={openMap} activeOpacity={0.7} style={styles.button} >
+        <Text style={styles.TextStyle}>Get Directions!</Text>
+      </TouchableOpacity>
+    </View>
+
+  );
+}
+
+
+const styles = StyleSheet.create({
+
+  MainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+
+    width: '80%',
+    padding: 6,
+    backgroundColor: Colors.darkPurple,
+    borderRadius: 7,
+  },
+
+  TextStyle: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
+    fontFamily: 'NunitoSans_400Regular',
+  }
+
+});*/
