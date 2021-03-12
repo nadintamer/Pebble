@@ -1,6 +1,61 @@
 // documentation & examples: https://github.com/bramus/react-native-maps-directions-example/blob/master/App.js
-
 import React, { Component } from 'react';
+import { Dimensions, StyleSheet, View, TouchableOpacity, Linking, Text } from 'react-native';
+import MapView from 'react-native-maps';
+import Colors from '../themes/Colors';
+
+export default function MapScreen({ navigation }) {
+const lat = 37.4357;
+const lng = -122.1763;
+  let openMap = () => {
+    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+    const latLng = `${lat},${lng}`;
+    const label = 'Your Hospital';
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`
+    });
+
+
+    Linking.openURL(url);
+    //Linking.openURL(phoneNumber);
+  };
+  return (
+    <View style={styles.MainContainer}>
+      <TouchableOpacity onPress={openMap} activeOpacity={0.7} style={styles.button} >
+        <Text style={styles.TextStyle}>Get Directions!</Text>
+      </TouchableOpacity>
+    </View>
+
+  );
+}
+
+
+const styles = StyleSheet.create({
+
+  MainContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+
+    width: '80%',
+    padding: 6,
+    backgroundColor: Colors.darkPurple,
+    borderRadius: 7,
+  },
+
+  TextStyle: {
+    color: '#fff',
+    fontSize: 18,
+    textAlign: 'center',
+    fontFamily: 'NunitoSans_400Regular',
+  }
+
+});
+
+/*import React, { Component } from 'react';
 import { Dimensions, StyleSheet, View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 
@@ -37,14 +92,14 @@ class Map extends Component {
         navigator.geolocation.getCurrentPosition((position) => {
           var lat = parseFloat(position.coords.latitude)
           var long = parseFloat(position.coords.longitude)
-    
+
           var initialRegion = {
             latitude: lat,
             longitude: long,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA,
           }
-    
+
           this.setState({initialPosition: initialRegion})
         },
         (error) => alert(JSON.stringify(error)),
@@ -62,7 +117,7 @@ class Map extends Component {
       ],
     };
 
-    
+
     this.mapView = null;
   }
 
@@ -132,10 +187,10 @@ class Map extends Component {
             resetOnChange={false}
           />
         </MapView>
-     
+
       </View>
     );
   }
 }
 
-export default Map;
+export default Map;*/
