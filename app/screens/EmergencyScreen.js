@@ -13,10 +13,10 @@ export default function EmergencyScreen( {navigation}) {
     let phoneNumber = '';
  
     if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${5033172937}'; //hardcoded my number in here for now lmao
+      phoneNumber = 'tel:${6099377312}'; //hardcoded my number in here for now lmao
     }
     else {
-      phoneNumber = 'telprompt:${5033172937}';
+      phoneNumber = 'telprompt:${6099377312}';
     }
     Linking.openURL(phoneNumber);
   };

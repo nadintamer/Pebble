@@ -23,7 +23,7 @@ export default function SettingsScreen({ navigation }) {
   const [babyGender, setBabyGender] = useState('');
   const [doctorNumber, setDoctorNumber] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
-  const [date, setDate] = useState(new Date(1598051730000));
+  const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
@@ -87,7 +87,7 @@ export default function SettingsScreen({ navigation }) {
               display="default"
               onChange={onChange}
               onPress={showDatepicker}
-            />
+              />
           </View>
         </View>
 
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginBottom: 5,
   },
-  datePicker: { //will try covering with a button?
+  datePicker: { 
     width: 100,
     color: 'white',
     tintColor: 'white',
