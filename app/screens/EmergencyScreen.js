@@ -11,7 +11,7 @@ const windowHeight = Dimensions.get('window').height;
 export default function EmergencyScreen( {navigation}) {
   let dialCall = () => {
     let phoneNumber = '';
- 
+
     if (Platform.OS === 'android') {
       phoneNumber = 'tel:${6099377312}'; //hardcoded my number in here for now lmao
     }
@@ -23,7 +23,7 @@ export default function EmergencyScreen( {navigation}) {
 
   let sendMessage = () => {
     let phoneNumber = '';
- 
+
     if (Platform.OS === 'android') {
       phoneNumber = 'sms:${5033172937}'; //hardcoded my number in here for now lmao
     }
@@ -37,6 +37,21 @@ export default function EmergencyScreen( {navigation}) {
     //Linking.openURL(phoneNumber);
   };
 
+  const lat = 37.4357;
+  const lng = -122.1763;
+  let openMap = () => {
+    const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+    const latLng = `${lat},${lng}`;
+    const label = 'Stanford Hospital';
+    const url = Platform.select({
+      ios: `${scheme}${label}@${latLng}`,
+      android: `${scheme}${latLng}(${label})`
+    });
+
+
+    Linking.openURL(url);
+  };
+
   return (
     <SafeAreaView style={styles.homeContainer}>
       <TouchableOpacity style={styles.rowContainer} onPress={dialCall}>
@@ -48,7 +63,7 @@ export default function EmergencyScreen( {navigation}) {
         </View>
         <Text style={styles.boldedText}>Call doctor</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.rowContainer} onPress={() => navigation.navigate('Map')}>
+      <TouchableOpacity style={styles.rowContainer} onPress={openMap}>
         <View style={styles.pictureContainer}>
           <Image
             source={require("../../assets/images/hospital-directions.png")}
