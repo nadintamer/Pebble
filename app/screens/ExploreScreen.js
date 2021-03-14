@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity, Image } from 'react-native';
 import Colors from '../themes/Colors';
 import { SearchBar } from 'react-native-elements';
 import { Feather } from '@expo/vector-icons';
 import Articles from '../themes/Content';
+import { useIsFocused } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ExploreScreen({ navigation }) {
-    const [search, updateSearch] = useState('');
-    const [text, setText] = useState("");
+  const [search, updateSearch] = useState('');
+  const [text, setText] = useState("");
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    setText("");
+  }, [isFocused]);
 
   return (
     <SafeAreaView style={styles.homeContainer}>
