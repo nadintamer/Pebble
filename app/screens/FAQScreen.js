@@ -150,14 +150,6 @@ const styles = StyleSheet.create({
     color: Colors.darkPurple,
     textDecorationLine: 'underline',
   },
-  searchcontainer: { // this isn't used anywhere
-    backgroundColor: 'white',
-    borderWidth: 0, //no effect
-    shadowColor: 'white', //no effect
-    borderBottomColor: 'transparent',
-    borderTopColor: 'transparent',
-    alignItems: 'stretch'
-  },
   scrollView: {
     width: '90%',
     backgroundColor: Colors.white,
@@ -169,12 +161,3 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
-
-/*
-
-      <ScrollView style={styles.scrollView}>
-        <FAQCardComponent faq={FAQ.tasks}/>
-        <FAQCardComponent faq={FAQ.resources}/>
-        <FAQCardComponent faq={FAQ.progressBar}/>
-        <FAQCardComponent faq={FAQ.recommendations}/>
-      </ScrollView>*/
