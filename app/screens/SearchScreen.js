@@ -15,31 +15,28 @@ import {
   TouchableOpacity,
   Image
 } from 'react-native';
+
 export default function SearchScreen({ route, navigation }) {
-  // const [articles, setArticles] = useState([{ firstName: "Jessica", lastName: "Yu", number: "5033172937", email: "jmyu@stanford.edu" },
-  // { firstName: "fake", lastName: "Name", number: "1234", email: "hi@edu" }]);
-  const [articles, setArticles] = useState([{ title: Articles.communication.title, articleInf: Articles.communication },
-  { title: Articles.morningSickness.title, articleInf: Articles.communication},
-  { title: Articles.paternityLeave.title, articleInf: Articles.paternityLeave},
-  { title: Articles.lifeInsurance.title, articleInf: Articles.lifeInsurance} ]) //, body: Articles.communication.body , body: Articles.communication.body
+  const articles = [
+    { title: Articles.communication.title, articleInf: Articles.communication },
+    { title: Articles.morningSickness.title, articleInf: Articles.communication },
+    { title: Articles.paternityLeave.title, articleInf: Articles.paternityLeave },
+    { title: Articles.lifeInsurance.title, articleInf: Articles.lifeInsurance },
+    { title: Articles.emotionalWellness.title, articleInf: Articles.emotionalWellness },
+    { title: Articles.week30Symptoms.title, articleInf: Articles.week30Symptoms }
+  ];
+  const [searchResults, setSearchResults] = useState([]);
   const [text, setText] = useState('');
 
-  const resetArticles = () => {
-    setArticles([{ title: Articles.communication.title, articleInf: Articles.communication },
-    { title: Articles.morningSickness.title, articleInf: Articles.morningSickness }, { title: Articles.paternityLeave.title, articleInf: Articles.paternityLeave},
-    { title: Articles.lifeInsurance.title, articleInf: Articles.lifeInsurance}])
-  
+  const resetSearchResults = () => {
+    setSearchResults(articles);
   };
 
-
   useEffect(() => {
-    resetArticles();
+    resetSearchResults();
   }, []);
 
-
-
   const renderItem = ({ item }) => {
-  
     return <View style={{ minHeight: 70, padding: 5 }}>
       <TouchableOpacity style={{ minHeight: 70, padding: 5 }}
         onPress={() => navigation.navigate('Article', {
@@ -50,48 +47,42 @@ export default function SearchScreen({ route, navigation }) {
           {item.body}
         </Text>
       </TouchableOpacity>
-
     </View>
   };
-
-
-
 
   const searchArticles = (item) => {
     const filteredArticles = articles.filter(article => {
       let articleLowercase = (
         article.title +
         ' ' +
-        article.body
+        article.articleInf.subtitle +
+        ' ' +
+        article.articleInf.body
       ).toLowerCase();
       console.log(item);
       let searchTermLowercase = item.toLowerCase();
 
       return articleLowercase.indexOf(searchTermLowercase) > -1;
     });
-    setArticles(filteredArticles);
+    setSearchResults(filteredArticles);
   };
 
   return (
     <View style={{ flex: 1 }}>
-      <SafeAreaView style={{ backgroundColor: Colors.white }} />
-
       <TextInput style={{ minHeight: 70, padding: 5 }}
         onChangeText={(text) => {
           setText(text);
-          console.log(text);
         }}
         value={text}
         placeholder="Search..."
         onSubmitEditing={(event) => {
           searchArticles(text);
-          console.log(text);
           setText("");
         }}
       />
       <View style={{ flex: 1, backgroundColor: Colors.white }}>
         <FlatList
-          data={articles}
+          data={searchResults}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
           ListEmptyComponent={() => (
