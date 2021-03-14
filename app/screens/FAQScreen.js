@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions, Linking, FlatList } from 'react-native';
+import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions, FlatList } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import FAQCardComponent from '../components/FAQCardComponent';
 import FAQ from '../themes/FAQ';
