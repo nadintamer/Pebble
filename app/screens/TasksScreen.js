@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Text, SafeAreaView, View, StyleSheet, Dimensions, Image, Button, FlatList, TouchableOpacity, TextInput, TouchableHighlight } from 'react-native';
 import { SwipeListView } from "react-native-swipe-list-view";
 import Colors from '../themes/Colors';
+import { AsyncStorage } from 'react-native';
 import { useIsFocused } from "@react-navigation/native";
 
 import TasksSegmentedControl from "../components/TasksSegmentedControl";
@@ -29,6 +30,10 @@ export default function TasksScreen({ route, navigation }) {
   const taskRef = useRef(null);
 
   useEffect(() => {
+    readTasks();
+  }, []);
+
+  useEffect(() => {
     setIndex(startingTab);
     navigation.setParams({startingTab: 1})
   }, [isFocused]);
@@ -38,6 +43,54 @@ export default function TasksScreen({ route, navigation }) {
       setShowingCompleted(false);
     } else {
       setShowingCompleted(true);
+    }
+  }
+
+  const setTasksFromStorage = (newValue, taskType) => {
+    switch (taskType) {
+      case 'myTasks':
+        setMyTasks(JSON.parse(newValue));
+        break;
+      case 'completedTasks':
+        setCompletedTasks(JSON.parse(newValue));
+        break;
+      case 'addedTasks':
+        setAddedTasks(JSON.parse(newValue));
+        break;
+      case 'notAddedTasks':
+        setNotAddedTasks(JSON.parse(newValue));
+        break;
+    }
+  }
+
+  const readTasks = async () => {
+    try {
+      const myTasks = await AsyncStorage.getItem('myTasks');
+      if (myTasks !== null) {
+        setTasksFromStorage(myTasks, 'myTasks');
+      }
+      const completedTasks = await AsyncStorage.getItem('completedTasks');
+      if (completedTasks !== null) {
+        setTasksFromStorage(completedTasks, 'completedTasks');
+      }
+      const addedTasks = await AsyncStorage.getItem('addedTasks');
+      if (addedTasks !== null) {
+        setTasksFromStorage(addedTasks, 'addedTasks');
+      }
+      const notAddedTasks = await AsyncStorage.getItem('notAddedTasks');
+      if (notAddedTasks !== null) {
+        setTasksFromStorage(notAddedTasks, 'notAddedTasks');
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  const setStorage = async (newValue, taskType) => {
+    try {
+      await AsyncStorage.setItem(taskType, JSON.stringify(newValue));
+    } catch (e) {
+      console.error(e);
     }
   }
 
@@ -117,9 +170,11 @@ export default function TasksScreen({ route, navigation }) {
       let newAddedTasks = [...addedTasks];
       newAddedTasks[addedIndex] = newItem;
       setAddedTasks(newAddedTasks);
+      setStorage(newAddedTasks, 'addedTasks');
     }
     newMyTasks[index].text = newItem; // update individual item in the list
     setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
   };
 
   const completeTask = (item) => {
@@ -129,10 +184,12 @@ export default function TasksScreen({ route, navigation }) {
     let newMyTasks = [...myTasks];
     newMyTasks.splice(index, 1);
     setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
 
     let newCompletedTasks = [...completedTasks];
     newCompletedTasks.unshift(newTask.text);
     setCompletedTasks(newCompletedTasks);
+    setStorage(newCompletedTasks, 'completedTasks');
   };
 
   const uncompleteTask = (item) => {
@@ -142,10 +199,12 @@ export default function TasksScreen({ route, navigation }) {
     let newCompletedTasks = [...completedTasks];
     newCompletedTasks.splice(index, 1);
     setCompletedTasks(newCompletedTasks);
+    setStorage(newCompletedTasks, 'completedTasks');
 
     let newMyTasks = [...myTasks];
     newMyTasks.unshift({text: newTask, editing: false});
     setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
 
     if (newCompletedTasks.length == 0) {
       setShowingCompleted(false);
@@ -158,6 +217,7 @@ export default function TasksScreen({ route, navigation }) {
       let newMyTasks = [...myTasks];
       newMyTasks.unshift({text: text, editing: false});
       setMyTasks(newMyTasks);
+      setStorage(newMyTasks, 'myTasks');
 
       if (myTasks.length > 0) {
         listRef.current.scrollToIndex({animated: true, index: 0});
@@ -169,29 +229,35 @@ export default function TasksScreen({ route, navigation }) {
     let newNotAddedTasks = [...notAddedTasks];
     newNotAddedTasks.splice(index, 1);
     setNotAddedTasks(newNotAddedTasks);
+    setStorage(newNotAddedTasks, 'notAddedTasks');
 
     let newAddedTasks = [...addedTasks];
     newAddedTasks.unshift(item);
     setAddedTasks(newAddedTasks);
+    setStorage(newAddedTasks, 'addedTasks');
 
     let newMyTasks = [...myTasks];
     newMyTasks.unshift({text: item, editing: false});
     setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
   };
 
   const removeFromMyTasks = (index, item) => {
     let newAddedTasks = [...addedTasks];
     newAddedTasks.splice(index, 1);
     setAddedTasks(newAddedTasks);
+    setStorage(newAddedTasks, 'addedTasks');
 
     let newMyTasks = [...myTasks];
     let myTasksIndex = myTasks.map(function(task) { return task.text; }).indexOf(item);
     newMyTasks.splice(myTasksIndex, 1);
     setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
 
     let newNotAddedTasks = [...notAddedTasks];
     newNotAddedTasks.unshift(item);
     setNotAddedTasks(newNotAddedTasks);
+    setStorage(newNotAddedTasks, 'notAddedTasks');
   };
 
   // Close a row before deleting
@@ -209,16 +275,19 @@ export default function TasksScreen({ route, navigation }) {
     let newTasks = [...myTasks];
     newTasks.splice(index, 1);
     setMyTasks(newTasks);
+    setStorage(newTasks, 'myTasks');
 
     if (addedTasks.includes(item)) {
       let newAddedTasks = [...addedTasks];
       let addedTasksIndex = newAddedTasks.indexOf(item);
       newAddedTasks.splice(addedTasksIndex, 1);
       setAddedTasks(newAddedTasks);
+      setStorage(newAddedTasks, 'addedTasks');
 
       let newNotAddedTasks = [...notAddedTasks];
       newNotAddedTasks.unshift(item);
       setNotAddedTasks(newNotAddedTasks);
+      setStorage(newNotAddedTasks, 'notAddedTasks');
     }
   };
 
