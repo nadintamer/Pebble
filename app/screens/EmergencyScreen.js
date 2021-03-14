@@ -1,22 +1,44 @@
 // // Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, Linking, SafeAreaView, Platform, StyleSheet, ScrollView, Dimensions } from 'react-native';
 import Colors from '../themes/Colors';
 import { useIsFocused } from "@react-navigation/native";
+import { AsyncStorage } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function EmergencyScreen( {navigation}) {
+  const [doctorNumber, setDoctorNumber] = useState('');
+
+  useEffect(() => {
+    readNumber();
+  }, []);
+
+  const setNumberFromStorage = (newValue) => {
+    setDoctorNumber(JSON.parse(newValue));
+  }
+
+  const readNumber = async () => {
+    try {
+      const doctorPhone = await AsyncStorage.getItem('doctorPhone');
+      if (doctorPhone !== null) {
+        setNumberFromStorage(doctorPhone);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   let dialCall = () => {
     let phoneNumber = '';
 
     if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${6099377312}'; //hardcoded my number in here for now lmao
+      phoneNumber = 'tel:${' + doctorNumber + '}';
     }
     else {
-      phoneNumber = 'telprompt:${6099377312}';
+      phoneNumber = 'telprompt:${' + doctorNumber + '}';
     }
     Linking.openURL(phoneNumber);
   };

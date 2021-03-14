@@ -21,7 +21,6 @@ export default function SettingsScreen({ navigation }) {
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
-  // this stuff isn't necessary sorry will clean up later
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || dueDate;
     setShow(Platform.OS === 'ios');
@@ -34,7 +33,7 @@ export default function SettingsScreen({ navigation }) {
     setMode(currentMode);
   };
 
-  const showDatepicker = () => {
+  const showDatePicker = () => {
     showMode('date');
   };
 
@@ -146,7 +145,7 @@ export default function SettingsScreen({ navigation }) {
               is24Hour={true}
               display="default"
               onChange={onChange}
-              onPress={showDatepicker}
+              onPress={showDatePicker}
             />
           </View>
         </View>
