@@ -38,14 +38,9 @@ export default function TasksScreen({ route, navigation }) {
     navigation.setParams({startingTab: 1})
   }, [isFocused]);
 
-  const toggleShowingCompleted = () => {
-    if (showingCompleted) {
-      setShowingCompleted(false);
-    } else {
-      setShowingCompleted(true);
-    }
-  }
-
+  /*
+  ASYNCSTORAGE FUNCTIONS
+  */
   const setTasksFromStorage = (newValue, taskType) => {
     switch (taskType) {
       case 'myTasks':
@@ -94,64 +89,56 @@ export default function TasksScreen({ route, navigation }) {
     }
   }
 
-  const renderWeeklyTask = ({ item, index }, added) => {
-    return (
-      <WeeklyTask
-        text={item}
-        addToTasks={() => addToMyTasks(index, item)}
-        removeFromTasks={() => removeFromMyTasks(index, item)}
-        added={added}
-      />
-    );
+  /*
+  TASK FUNCTIONS
+  */
+  const addNewTask = (text) => {
+    let myTasksText = myTasks.map(task => task.text);
+    if (text !== "" && !myTasksText.includes(text)) {
+      let newMyTasks = [...myTasks];
+      newMyTasks.unshift({text: text, editing: false});
+      setMyTasks(newMyTasks);
+      setStorage(newMyTasks, 'myTasks');
+
+      if (myTasks.length > 0) {
+        listRef.current.scrollToIndex({animated: true, index: 0});
+      }
+    }
   };
 
-  const renderCompletedTask = ({ item, index }) => {
-    return <CompletedTask
-              task={item}
-              index={index}
-              uncompleteTask={uncompleteTask}
-            />;
+  const addToMyTasks = (index, item) => {
+    let newNotAddedTasks = [...notAddedTasks];
+    newNotAddedTasks.splice(index, 1);
+    setNotAddedTasks(newNotAddedTasks);
+    setStorage(newNotAddedTasks, 'notAddedTasks');
+
+    let newAddedTasks = [...addedTasks];
+    newAddedTasks.unshift(item);
+    setAddedTasks(newAddedTasks);
+    setStorage(newAddedTasks, 'addedTasks');
+
+    let newMyTasks = [...myTasks];
+    newMyTasks.unshift({text: item, editing: false});
+    setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
   };
 
-  const renderMyTask = ({ index, item }) => {
-    return <MyTask
-              task={item}
-              completeTask={completeTask}
-              index={index}
-              editToDo={editTask}
-              setEditing={setEditing}
-              userInput={userInput}
-              setUserInput={setUserInput}
-            />;
-  };
+  const removeFromMyTasks = (index, item) => {
+    let newAddedTasks = [...addedTasks];
+    newAddedTasks.splice(index, 1);
+    setAddedTasks(newAddedTasks);
+    setStorage(newAddedTasks, 'addedTasks');
 
-  const renderHiddenItem = ({ index }, rowMap) => {
-    return (
-      <View style={styles.rowBack}>
-        <TouchableOpacity
-          style={[styles.backRightBtn, styles.backRightBtnLeft]}
-          onPress={() => {
-            closeRow(rowMap, index);
-            setUserInput(myTasks[index].text);
-            setEditing(index, true);
-          }}
-        >
-          <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
-          <Text style={styles.backTextWhite}>Edit</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.backRightBtn, styles.backRightBtnRight]}
-          onPress={() => deleteTask(rowMap, index)}
-        >
-          <Ionicons name="trash-outline" size={20} color={Colors.white} style={{ margin: 5 }}/>
-          <Text style={styles.backTextWhite}>Delete</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
+    let newMyTasks = [...myTasks];
+    let myTasksIndex = myTasks.map(function(task) { return task.text; }).indexOf(item);
+    newMyTasks.splice(myTasksIndex, 1);
+    setMyTasks(newMyTasks);
+    setStorage(newMyTasks, 'myTasks');
 
-  const keyExtractor = (index) => {
-    return index.toString();
+    let newNotAddedTasks = [...notAddedTasks];
+    newNotAddedTasks.unshift(item);
+    setNotAddedTasks(newNotAddedTasks);
+    setStorage(newNotAddedTasks, 'notAddedTasks');
   };
 
   const setEditing = (index, val) => {
@@ -211,55 +198,6 @@ export default function TasksScreen({ route, navigation }) {
     }
   };
 
-  const addNewTask = (text) => {
-    let myTasksText = myTasks.map(task => task.text);
-    if (text !== "" && !myTasksText.includes(text)) {
-      let newMyTasks = [...myTasks];
-      newMyTasks.unshift({text: text, editing: false});
-      setMyTasks(newMyTasks);
-      setStorage(newMyTasks, 'myTasks');
-
-      if (myTasks.length > 0) {
-        listRef.current.scrollToIndex({animated: true, index: 0});
-      }
-    }
-  };
-
-  const addToMyTasks = (index, item) => {
-    let newNotAddedTasks = [...notAddedTasks];
-    newNotAddedTasks.splice(index, 1);
-    setNotAddedTasks(newNotAddedTasks);
-    setStorage(newNotAddedTasks, 'notAddedTasks');
-
-    let newAddedTasks = [...addedTasks];
-    newAddedTasks.unshift(item);
-    setAddedTasks(newAddedTasks);
-    setStorage(newAddedTasks, 'addedTasks');
-
-    let newMyTasks = [...myTasks];
-    newMyTasks.unshift({text: item, editing: false});
-    setMyTasks(newMyTasks);
-    setStorage(newMyTasks, 'myTasks');
-  };
-
-  const removeFromMyTasks = (index, item) => {
-    let newAddedTasks = [...addedTasks];
-    newAddedTasks.splice(index, 1);
-    setAddedTasks(newAddedTasks);
-    setStorage(newAddedTasks, 'addedTasks');
-
-    let newMyTasks = [...myTasks];
-    let myTasksIndex = myTasks.map(function(task) { return task.text; }).indexOf(item);
-    newMyTasks.splice(myTasksIndex, 1);
-    setMyTasks(newMyTasks);
-    setStorage(newMyTasks, 'myTasks');
-
-    let newNotAddedTasks = [...notAddedTasks];
-    newNotAddedTasks.unshift(item);
-    setNotAddedTasks(newNotAddedTasks);
-    setStorage(newNotAddedTasks, 'notAddedTasks');
-  };
-
   // Close a row before deleting
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
@@ -291,6 +229,80 @@ export default function TasksScreen({ route, navigation }) {
     }
   };
 
+  /*
+  FLATLIST RENDERING FUNCTIONS
+  */
+  const toggleShowingCompleted = () => {
+    if (showingCompleted) {
+      setShowingCompleted(false);
+    } else {
+      setShowingCompleted(true);
+    }
+  }
+
+  const keyExtractor = (index) => {
+    return index.toString();
+  };
+
+  const renderWeeklyTask = ({ item, index }, added) => {
+    return (
+      <WeeklyTask
+        text={item}
+        addToTasks={() => addToMyTasks(index, item)}
+        removeFromTasks={() => removeFromMyTasks(index, item)}
+        added={added}
+      />
+    );
+  };
+
+  const renderCompletedTask = ({ item, index }) => {
+    return <CompletedTask
+              task={item}
+              index={index}
+              uncompleteTask={uncompleteTask}
+            />;
+  };
+
+  const renderMyTask = ({ index, item }) => {
+    return <MyTask
+              task={item}
+              completeTask={completeTask}
+              index={index}
+              editToDo={editTask}
+              setEditing={setEditing}
+              userInput={userInput}
+              setUserInput={setUserInput}
+            />;
+  };
+
+  const renderHiddenItem = ({ index }, rowMap) => {
+    return (
+      <View style={styles.rowBack}>
+        <TouchableOpacity
+          style={[styles.backRightBtn, styles.backRightBtnLeft]}
+          onPress={() => {
+            closeRow(rowMap, index);
+            setUserInput(myTasks[index].text);
+            setEditing(index, true);
+          }}
+        >
+          <CustomIcon name="pen" size={20} color={Colors.white} style={{ margin: 5 }}/>
+          <Text style={styles.backTextWhite}>Edit</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.backRightBtn, styles.backRightBtnRight]}
+          onPress={() => deleteTask(rowMap, index)}
+        >
+          <Ionicons name="trash-outline" size={20} color={Colors.white} style={{ margin: 5 }}/>
+          <Text style={styles.backTextWhite}>Delete</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  /*
+  CONDITIONAL RENDERING FUNCTIONS
+  */
   const getCompletedTasks = () => {
     let viewToReturn = null;
 
