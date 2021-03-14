@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, SafeAreaView, View, StyleSheet, Dimensions, Button, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { BlurView } from 'expo-blur';
 import Dialog from "react-native-dialog";
+import { AsyncStorage } from 'react-native';
+import { useIsFocused } from "@react-navigation/native";
 
 import Colors from '../themes/Colors';
 import ProfileButton from '../components/ProfileButton';
@@ -10,7 +12,13 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function ProfileScreen({ navigation }) {
+  const [name, setName] = useState('Brian Lewis');
   const [visible, setVisible] = useState(false);
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    readName();
+  }, [isFocused]);
 
   const showDialog = () => {
     setVisible(true);
@@ -24,10 +32,24 @@ export default function ProfileScreen({ navigation }) {
     setVisible(false);
   };
 
-
   const blurComponentIOS = (
     <BlurView style={StyleSheet.absoluteFill} blurType="xlight" blurAmount={50} />
   );
+
+  const setNameFromStorage = (newValue) => {
+    setName(JSON.parse(newValue));
+  }
+
+  const readName = async () => {
+    try {
+      const name = await AsyncStorage.getItem('name');
+      if (name !== null) {
+        setNameFromStorage(name);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -38,7 +60,7 @@ export default function ProfileScreen({ navigation }) {
         />
       </View>
       <View style={styles.nameContainer}>
-        <Text style={styles.name}>Brian Lewis</Text>
+        <Text style={styles.name}>{name}</Text>
       </View>
       <TouchableOpacity
         style={styles.infoIcon}
