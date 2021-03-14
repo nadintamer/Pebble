@@ -31,7 +31,7 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.bulletRow}>
               <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Schedule tour of hospital 🏥</Text>
+              <Text style={styles.bodyText}>Schedule tour of birth hospital 🏥</Text>
             </View>
           </View>
           <View style={styles.appButtonContainer}>
