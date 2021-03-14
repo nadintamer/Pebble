@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, componentDidMount } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useIsFocused } from "@react-navigation/native";
 import Colors from '../themes/Colors';
-import Articles from '../themes/Content';
+import Articles from '../themes/Articles';
 import CardComponent from '../components/CardComponent';
 
 import {
@@ -90,7 +90,8 @@ export default function SearchScreen({ route, navigation }) {
           placeholder={'Search...'}
           clearButtonMode={'always'}
           onChangeText={(text) => {
-            setText(text)
+            setText(text);
+            searchArticles(text);
           }}
           value={text}
           onSubmitEditing={(event) => {

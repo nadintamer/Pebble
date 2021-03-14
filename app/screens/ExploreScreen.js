@@ -3,7 +3,7 @@ import { Text, View, TextInput, StyleSheet, Dimensions, SafeAreaView, TouchableO
 import Colors from '../themes/Colors';
 import { SearchBar } from 'react-native-elements';
 import { Feather } from '@expo/vector-icons';
-import Articles from '../themes/Content';
+import Articles from '../themes/Articles';
 import { useIsFocused } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get('window').width;

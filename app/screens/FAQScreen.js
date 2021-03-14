@@ -1,15 +1,65 @@
-import React, { useState } from 'react';
-import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions, Linking } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TextInput, SafeAreaView, StyleSheet, ScrollView, Dimensions, Linking, FlatList } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-
+import FAQCardComponent from '../components/FAQCardComponent';
+import FAQ from '../themes/FAQ';
 import Colors from '../themes/Colors';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 export default function FAQScreen() {
-  const [search, updateSearch] = useState('');
-  const [text, setText] = useState("");
+  const questions = [
+    FAQ.tasks,
+    FAQ.resources,
+    FAQ.progressBar,
+    FAQ.recommendations,
+  ];
+  const [searchResults, setSearchResults] = useState([]);
+  const [text, setText] = useState('');
+
+  const resetSearchResults = () => {
+    setSearchResults(questions);
+  };
+
+  useEffect(() => {
+    resetSearchResults();
+  }, []);
+
+  const renderItem = ({ item }) => {
+    return (
+      <FAQCardComponent faq={item}/>
+    );
+  };
+
+  const searchQuestions = (item) => {
+    const filteredQuestions = questions.filter(question => {
+      let questionLowercase = (
+        question.question +
+        ' ' +
+        question.answer
+      ).toLowerCase();
+      let searchTermLowercase = item.toLowerCase();
+
+      return questionLowercase.indexOf(searchTermLowercase) > -1;
+    });
+    setSearchResults(filteredQuestions);
+  };
+
+  const noQuestionsFound = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 50,
+        }}
+      >
+        <Text style={styles.warning}>No questions found 😢</Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.homeContainer}>
@@ -21,47 +71,30 @@ export default function FAQScreen() {
           backgroundColor='transparent'
           onPress={() => { console.log("search") }} />
         <TextInput
-            style={styles.textInput}
-            placeholder={'Search by topic...'}
-            clearButtonMode={'always'}
-            onChangeText={(text) => setText(text)}
-            value={text}
-            keyboardShouldPersistTaps='never'
+          style={styles.textInput}
+          placeholder={'Search by topic...'}
+          clearButtonMode={'always'}
+          value={text}
+          keyboardShouldPersistTaps='never'
+          onChangeText={(text) => {
+            setText(text);
+            searchQuestions(text);
+          }}
+          value={text}
+          onSubmitEditing={(event) => {
+            searchQuestions(text);
+          }}
         />
       </View>
 
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.boldedText}>How do I use the tasks feature? {"\n"}</Text>
-            <Text style={styles.cardText}>Adding a suggested task from Week X on the tasks tab will add it to your running “My Tasks” list. To access tasks from previous weeks, navigate to previous weeks from the home screen and access tasks from there.</Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.boldedText}>Where can I find additional resources? {"\n"}</Text>
-            <Text style={styles.cardText}>Check out these websites for more information about pregnancy and becoming a parent.</Text>
-            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://www.whattoexpect.com/pregnancy/expecting-father/')}> What to Expect for Fathers</Text>
-            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://www.nationalparenthelpline.org/find-support')}> National Parent Helpline</Text>
-            <Text style={styles.cardLink} onPress={() => Linking.openURL('https://postpartumstress.com/about/support-groups/')}> The Post Partum Stress Center</Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.boldedText}>What does the progress bar mean? {"\n"}</Text>
-            <Text style={styles.cardText}>This progress bar represents how far along your partner is in their pregnancy. Remember that your due date is only an estimation! </Text>
-          </View>
-        </View>
-
-        <View style={styles.actionCard}>
-          <View style={styles.textContainer}>
-            <Text style={styles.boldedText}>How does Pebble recommend items? {"\n"}</Text>
-            <Text style={styles.cardText}>Pebble leverages intelligent AI algorithms that can analyze articles and tasks you spend the most time on and provides suggestions accordingly. </Text>
-          </View>
-        </View>
-      </ScrollView>
+      <View style={{ width: '90%' }}>
+        <FlatList
+          data={searchResults}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+          ListEmptyComponent={noQuestionsFound()}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -72,7 +105,7 @@ const styles = StyleSheet.create({
     height: windowHeight,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     backgroundColor: Colors.white,
   },
   searchContainer: {
@@ -136,4 +169,19 @@ const styles = StyleSheet.create({
     width: '90%',
     backgroundColor: Colors.white,
   },
+  warning: {
+    fontFamily: 'NunitoSans_400Regular',
+    fontSize: 20,
+    marginTop: 20,
+    alignSelf: 'center',
+  },
 });
+
+/*
+
+      <ScrollView style={styles.scrollView}>
+        <FAQCardComponent faq={FAQ.tasks}/>
+        <FAQCardComponent faq={FAQ.resources}/>
+        <FAQCardComponent faq={FAQ.progressBar}/>
+        <FAQCardComponent faq={FAQ.recommendations}/>
+      </ScrollView>*/

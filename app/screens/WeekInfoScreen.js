@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions, SafeAreaView, TouchableOpacity, ScrollView, Image } from 'react-native';
 import Colors from '../themes/Colors';
-import Articles from '../themes/Content';
+import Articles from '../themes/Articles';
 
 import CardComponent from '../components/CardComponent';
 
