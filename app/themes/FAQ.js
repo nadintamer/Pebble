@@ -29,6 +29,10 @@ const frequentlyAskedQuestions = {
     question: 'How does Pebble recommend items?',
     answer: 'Pebble leverages intelligent AI algorithms that can analyze articles and tasks you spend the most time on and provides suggestions accordingly.',
   },
+  saved: {
+    question: 'How do saved modules work?',
+    answer: 'If you\'d like to come back to a module later, you can tap on the bookmark icon in the top right corner to save it! All of your saved modules are available under "Saved" on the Profile tab.',
+  },
 };
 
 export default frequentlyAskedQuestions;

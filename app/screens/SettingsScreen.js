@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     textAlign: 'right',
-    width: 200,
+    width: '100%',
     height: 44,
     padding: 8,
     fontFamily: 'Nunito_400Regular',

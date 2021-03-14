@@ -14,6 +14,7 @@ export default function FAQScreen() {
     FAQ.resources,
     FAQ.progressBar,
     FAQ.recommendations,
+    FAQ.saved,
   ];
   const [searchResults, setSearchResults] = useState([]);
   const [text, setText] = useState('');
@@ -87,7 +88,7 @@ export default function FAQScreen() {
         />
       </View>
 
-      <View style={{ width: '90%' }}>
+      <View style={{ width: '90%', flex: 1 }}>
         <FlatList
           data={searchResults}
           renderItem={renderItem}
@@ -116,12 +117,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8E8E8',
     borderRadius: 10,
-  },
-  searchBar: {
-    width: '100%',
-    alignItems: 'center',
-    color: Colors.white,
-    alignItems: 'flex-start',
+    marginBottom: 10,
   },
   textInput: {
     flex: 5,
@@ -161,9 +157,6 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
     borderTopColor: 'transparent',
     alignItems: 'stretch'
-  },
-  searchbar: {
-    width: '100%',
   },
   scrollView: {
     width: '90%',
