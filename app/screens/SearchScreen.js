@@ -17,6 +17,7 @@ import {
 } from 'react-native';
 
 export default function SearchScreen({ route, navigation }) {
+  const { searchTerm } = route.params;
   const articles = [
     { title: Articles.communication.title, articleInf: Articles.communication },
     { title: Articles.morningSickness.title, articleInf: Articles.communication },
@@ -34,6 +35,8 @@ export default function SearchScreen({ route, navigation }) {
 
   useEffect(() => {
     resetSearchResults();
+    setText(searchTerm);
+    searchArticles(searchTerm);
   }, []);
 
   const renderItem = ({ item }) => {

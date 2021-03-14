@@ -17,7 +17,7 @@ export default function ExploreScreen({ navigation }) {
 
     <View style={styles.searchContainer} >
         <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
-          onPress={() => navigation.navigate('Search')} />
+          onPress={() => navigation.navigate('Search', { searchTerm: text })} />
         <TextInput
           style={styles.textinput}
           placeholder={'Search by topic...'}
@@ -25,6 +25,7 @@ export default function ExploreScreen({ navigation }) {
           onChangeText={(text) => setText(text)}
           value={text}
           keyboardShouldPersistTaps='never'
+          onSubmitEditing={() => navigation.navigate('Search', { searchTerm: text })}
         />
       </View>
 
