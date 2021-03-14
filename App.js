@@ -40,10 +40,11 @@ import {
 export default function App() {
   let [fontsLoaded] = useFonts({
     Nunito_400Regular,
+    Nunito_700Bold,
     Nunito_900Black,
     NunitoSans_400Regular,
+    NunitoSans_400Regular_Italic,
     NunitoSans_700Bold,
-    Nunito_700Bold,
   });
 
   if (!fontsLoaded) {
