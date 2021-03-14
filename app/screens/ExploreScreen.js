@@ -20,8 +20,7 @@ export default function ExploreScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.homeContainer}>
-
-    <View style={styles.searchContainer} >
+      <View style={styles.searchContainer}>
         <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
           onPress={() => navigation.navigate('Search', { searchTerm: text })} />
         <TextInput
@@ -164,16 +163,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 20
   },
-  /*
-  image: {
-      alignItems: 'stretch',
-      flexDirection: 'column',
-      backgroundColor: Colors.lightPurple,
-      height: windowHeight * 0.2,
-      width: windowWidth,
-      marginTop: 30
-  },
-  */
   subheading: {
     textAlign: 'left',
     fontFamily: "NunitoSans_700Bold",
@@ -187,7 +176,6 @@ const styles = StyleSheet.create({
   },
   textView: {
     width: '90%',
-    /*flex: 0.2,*/
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',

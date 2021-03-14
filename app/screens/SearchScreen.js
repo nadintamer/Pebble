@@ -3,6 +3,7 @@ import { Feather } from '@expo/vector-icons';
 import { useIsFocused } from "@react-navigation/native";
 import Colors from '../themes/Colors';
 import Articles from '../themes/Content';
+import CardComponent from '../components/CardComponent';
 
 import {
   StyleSheet,
@@ -19,12 +20,12 @@ import {
 export default function SearchScreen({ route, navigation }) {
   const { searchTerm } = route.params;
   const articles = [
-    { title: Articles.communication.title, articleInf: Articles.communication },
-    { title: Articles.morningSickness.title, articleInf: Articles.communication },
-    { title: Articles.paternityLeave.title, articleInf: Articles.paternityLeave },
-    { title: Articles.lifeInsurance.title, articleInf: Articles.lifeInsurance },
-    { title: Articles.emotionalWellness.title, articleInf: Articles.emotionalWellness },
-    { title: Articles.week30Symptoms.title, articleInf: Articles.week30Symptoms }
+    Articles.communication,
+    Articles.paternityLeave,
+    Articles.lifeInsurance,
+    Articles.emotionalWellness,
+    Articles.week30Symptoms,
+    Articles.morningSickness,
   ];
   const [searchResults, setSearchResults] = useState([]);
   const [text, setText] = useState('');
@@ -40,17 +41,12 @@ export default function SearchScreen({ route, navigation }) {
   }, []);
 
   const renderItem = ({ item }) => {
-    return <View style={{ minHeight: 70, padding: 5 }}>
-      <TouchableOpacity style={{ minHeight: 70, padding: 5 }}
-        onPress={() => navigation.navigate('Article', {
-          articleInfo: item.articleInf
-        })}>
-        <Text style={{ color: Colors.darkPurple, fontWeight: 'bold', fontSize: 26 }}>
-          {item.title + ' '}
-          {item.body}
-        </Text>
-      </TouchableOpacity>
-    </View>
+    return (
+      <CardComponent
+        article={item}
+        navigation={navigation}
+      />
+    );
   };
 
   const searchArticles = (item) => {
@@ -58,11 +54,10 @@ export default function SearchScreen({ route, navigation }) {
       let articleLowercase = (
         article.title +
         ' ' +
-        article.articleInf.subtitle +
+        article.subtitle +
         ' ' +
-        article.articleInf.body
+        article.body
       ).toLowerCase();
-      console.log(item);
       let searchTermLowercase = item.toLowerCase();
 
       return articleLowercase.indexOf(searchTermLowercase) > -1;
@@ -70,36 +65,45 @@ export default function SearchScreen({ route, navigation }) {
     setSearchResults(filteredArticles);
   };
 
+  const noModulesFound = () => {
+    return (
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 50,
+        }}
+      >
+        <Text style={styles.warning}>No modules found 😢</Text>
+      </View>
+    );
+  }
+
   return (
-    <View style={{ flex: 1 }}>
-      <TextInput style={{ minHeight: 70, padding: 5 }}
-        onChangeText={(text) => {
-          setText(text);
-        }}
-        value={text}
-        placeholder="Search..."
-        onSubmitEditing={(event) => {
-          searchArticles(text);
-          setText("");
-        }}
-      />
-      <View style={{ flex: 1, backgroundColor: Colors.white }}>
+    <View style={styles.homeContainer}>
+      <View style={styles.searchContainer}>
+        <Feather.Button name="search" size={24} color={Colors.darkPurple} backgroundColor='transparent'
+          onPress={() => navigation.navigate('Search', { searchTerm: text })} />
+        <TextInput
+          style={styles.textinput}
+          placeholder={'Search...'}
+          clearButtonMode={'always'}
+          onChangeText={(text) => {
+            setText(text)
+          }}
+          value={text}
+          onSubmitEditing={(event) => {
+            searchArticles(text);
+          }}
+        />
+      </View>
+      <View style={{ width: '90%' }}>
         <FlatList
           data={searchResults}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
-          ListEmptyComponent={() => (
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginTop: 50
-              }}
-            >
-              <Text style={{ color: Colors.white }}>No Contacts Found</Text>
-            </View>
-          )}
+          ListEmptyComponent={noModulesFound()}
         />
       </View>
     </View>
@@ -108,20 +112,32 @@ export default function SearchScreen({ route, navigation }) {
 
 
 const styles = StyleSheet.create({
-  container: {
+  homeContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    backgroundColor: Colors.white,
   },
-  search: {
+  searchContainer: {
     flexDirection: 'row',
     width: '90%',
     height: '7%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.white,
+    backgroundColor: '#E8E8E8',
     borderRadius: 10,
+  },
+  textinput: {
+    flex: 5,
+    borderColor: 'gray',
+    fontFamily: 'Nunito_400Regular',
+  },
+  warning: {
+    fontFamily: 'NunitoSans_400Regular',
+    fontSize: 20,
+    marginTop: 20,
+    alignSelf: 'center',
   },
 });
 
