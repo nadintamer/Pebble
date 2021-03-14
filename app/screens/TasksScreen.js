@@ -21,8 +21,8 @@ export default function TasksScreen({ route, navigation }) {
   const isFocused = useIsFocused();
   const [index, setIndex] = useState(1);
   const [addedTasks, setAddedTasks] = useState([]);
-  const [notAddedTasks, setNotAddedTasks] = useState(["Task 1", "Task 2", "Task 3", "Task 4"]);
-  const [myTasks, setMyTasks] = useState([{text: "Task 5", editing: false}, {text: "Task 6", editing: false}]);
+  const [notAddedTasks, setNotAddedTasks] = useState(["Schedule tour of birth hospital 🏥", "Do a practice drive to the hospital and plan alternate routes 🚗", "Make a list of items for baby’s nursery", "Ask employer about paternity leave"]);
+  const [myTasks, setMyTasks] = useState([{text: "Schedule Week 29 Ultrasound", editing: false}, {text: "Get your partner flowers 🌼", editing: false}]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [userInput, setUserInput] = useState('');
   const [showingCompleted, setShowingCompleted] = useState(false);

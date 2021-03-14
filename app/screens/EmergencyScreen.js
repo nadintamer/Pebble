@@ -54,9 +54,8 @@ export default function EmergencyScreen( {navigation}) {
     }
     const separator = Platform.OS === 'ios' ? '&' : '?'
 
-    const url = `sms:${phoneNumber}${separator}body=${"i'm having a child bye"}`
-     Linking.openURL(url)
-    //Linking.openURL(phoneNumber);
+    const url = `sms:${phoneNumber}${separator}body=${"It's time!! 🍼"}`
+    Linking.openURL(url)
   };
 
   const lat = 37.4357;
@@ -69,7 +68,6 @@ export default function EmergencyScreen( {navigation}) {
       ios: `${scheme}${label}@${latLng}`,
       android: `${scheme}${latLng}(${label})`
     });
-
 
     Linking.openURL(url);
   };
