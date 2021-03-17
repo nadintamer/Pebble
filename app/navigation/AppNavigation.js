@@ -44,7 +44,6 @@ export default function AppNavigation() {
   const getOpenedApp = async () => {
     try {
       const openedApp = await AsyncStorage.getItem('openedApp');
-      console.log(openedApp);
       if (openedApp !== null) {
         setOnboardedFromStorage(openedApp);
       }
