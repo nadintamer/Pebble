@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   taskInput: {
     width: '100%',
     height: 84,
-    margin: 10,
+    margin: 15,
     fontFamily: 'Nunito_400Regular',
     fontSize: 16,
   }

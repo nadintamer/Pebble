@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
     height: '7%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E8E8E8',
-    borderRadius: 10,
+    backgroundColor: '#F4F4F7',
+    borderRadius: 20,
     marginBottom: 32
   },
   textinput: {

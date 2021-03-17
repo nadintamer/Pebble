@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'NunitoSans_400Regular',
     color: '#606274',
-    marginTop: 20
+    marginTop: 20,
   },
   boldBodyText: {
     color: 'black',
@@ -217,7 +217,8 @@ const styles = StyleSheet.create({
   },
   textView: {
     width: windowWidth * 0.9,
-    lineHeight: 33
+    lineHeight: 33,
+    opacity: 0.8
   },
   scrollView: {
     backgroundColor: Colors.white,

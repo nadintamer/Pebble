@@ -112,8 +112,8 @@ const styles = StyleSheet.create({
     height: '7%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E8E8E8',
-    borderRadius: 10,
+    backgroundColor: '#F4F4F7',
+    borderRadius: 20,
     marginTop: 5
   },
   exploreCardRowContainer: {
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.193,
     width: windowWidth * 0.425,
     borderRadius: 20,
+    opacity: 0.8
   },
   cardHeadingRight: {
     fontFamily: "Nunito_700Bold",
@@ -154,7 +155,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '100%',
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    opacity: 0.8
   },
   cardHeadingLeft: {
     fontFamily: "Nunito_700Bold",
@@ -162,19 +164,22 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: '90%',
     marginTop: 20,
-    marginBottom: 20
+    marginBottom: 20,
+    opacity: 0.8
   },
   subheading: {
     textAlign: 'left',
     fontFamily: "NunitoSans_700Bold",
     fontSize: 22,
     marginTop: 32,
-    marginBottom: 10
+    marginBottom: 10,
+    opacity: 0.8
   },
   textinput: {
     flex: 5,
     borderColor: 'gray',
-    fontFamily: 'Nunito_400Regular',
+    fontFamily: "Nunito_700Bold",
+    color: "black"
   },
   textView: {
     width: '90%',

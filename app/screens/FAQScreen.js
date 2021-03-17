@@ -115,13 +115,13 @@ const styles = StyleSheet.create({
     height: '7%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#E8E8E8',
-    borderRadius: 10,
+    backgroundColor: '#F4F4F7',
+    borderRadius: 20,
     marginTop: 5
   },
   textInput: {
     flex: 5,
-    fontFamily: 'Nunito_400Regular',
+    fontFamily: "Nunito_700Bold",
     borderColor: 'gray',
   },
   actionCard: {

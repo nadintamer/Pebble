@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: 'Nunito_700Bold',
     fontSize: 30,
+    opacity: 0.8
   },
   emergencyButton: {
     width: '90%',

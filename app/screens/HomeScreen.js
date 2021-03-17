@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 20,
     marginLeft: 20,
+    opacity: 0.8
   },
   bulletRow: {
     flexDirection: 'row',

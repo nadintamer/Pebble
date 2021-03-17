@@ -65,8 +65,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   taskText: {
-    margin: 10,
+    margin: 15,
     fontFamily: 'Nunito_400Regular',
     fontSize: 16,
+    opacity: 0.8
   }
 });

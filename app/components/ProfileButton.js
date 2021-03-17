@@ -46,5 +46,6 @@ const styles = StyleSheet.create({
     margin: 10,
     fontFamily: 'Nunito_700Bold',
     fontSize: 18,
+    opacity: 0.8
   }
 });

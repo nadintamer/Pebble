@@ -414,11 +414,13 @@ const styles = StyleSheet.create({
     fontFamily: "NunitoSans_700Bold",
     fontSize: 24,
     marginTop: 20,
+    opacity: 0.8
   },
   subheadingCompleted: {
     fontFamily: "NunitoSans_700Bold",
     fontSize: 24,
     marginTop: 44,
+    opacity: 0.8
   },
   backTextWhite: {
     color: 'white',

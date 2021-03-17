@@ -116,6 +116,7 @@ const styles = StyleSheet.create({
   boldedText: {
     fontSize: 18,
     fontFamily: 'NunitoSans_400Regular',
+    opacity: 0.8
   },
   rowContainer: {
     height: 100,
