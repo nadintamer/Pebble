@@ -18,12 +18,12 @@ export default function Onboarding1(props) {
       <View style={styles.imageContainer}>
         <Image
           source={require("../../assets/images/onboard1.png")}
-          style={{ width: 0.44 * windowWidth, height: 0.2 * windowHeight}}
+          style={{ width: 280, height: 280}}
         />
       </View>
 
-      <Text> Welcome to Pebble </Text>
-      <Text> Let's walk you through the basics </Text>
+      <Text style={styles.heading}> Welcome to Pebble </Text>
+      <Text style={styles.description}> Let's walk you through the basics </Text>
 
       <View style={styles.appButtonContainer}>
         <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
@@ -45,28 +45,20 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   imageContainer: {
-    marginTop: 20,
-    marginBottom: 10,
+    marginTop: 0.147 * windowHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  textContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    marginTop: 20,
-    marginLeft: 20,
-  },
-  
   heading: {
     fontFamily: 'Nunito_700Bold',
     fontSize: 30,
-    marginBottom: 26,
+    marginTop: 0.08 * windowHeight,
   },
-  bodyText: {
+  description: {
     fontFamily: 'NunitoSans_400Regular',
     fontSize: 16,
-    marginBottom: 20,
+    marginTop: 0.05 * windowHeight,
+    marginBottom: 40
   },
   appButtonContainer: {
     justifyContent: 'center',
@@ -76,11 +68,11 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
   appButton: {
-    width: '85%',
-    height: '100%',
+    width: 0.42 * windowWidth,
+    height: 0.064 * windowHeight,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.coral,
+    backgroundColor: Colors.grey,
     borderRadius: 20,
   },
   appButtonText: {
