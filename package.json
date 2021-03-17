@@ -55,6 +55,7 @@
     "react-native-webview": "^11.2.3",
     "react-native-youtube": "^2.0.1",
     "react-native-youtube-iframe": "^1.4.1",
+    "react-navigation": "^4.4.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "recompose": "^0.27.1",

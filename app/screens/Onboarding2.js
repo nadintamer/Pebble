@@ -14,14 +14,7 @@ export default function Onboarding1({ navigation }) {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
-      <Text> ONBOARDING 1</Text>
-
-
-          <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Learn More</Text>
-            </TouchableOpacity>
-          </View>
+      <Text> ONBOARDING 2</Text>
 
     </SafeAreaView>
 

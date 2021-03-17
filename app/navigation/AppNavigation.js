@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import CustomIcon from '../components/CustomIcon'
 import * as Font from 'expo-font';
 
+import Onboarding1 from '../screens/Onboarding1.js';
 import HomeStackComponent from '../components/HomeStackComponent.js';
 import ExploreStackComponent from '../components/ExploreStackComponent.js';
 import TasksScreen from '../screens/TasksScreen.js';
@@ -38,6 +39,7 @@ export default function AppNavigation() {
 
   return (
     <NavigationContainer>
+
       <TabNav.Navigator
         initialRouteName='Home'
         tabBarOptions={{
@@ -63,6 +65,7 @@ export default function AppNavigation() {
         <TabNav.Screen name="Tasks" component={TasksScreen} initialParams={{ startingTab: 1 }}/>
         <TabNav.Screen name="Profile" component={ProfileStackComponent} />
       </TabNav.Navigator>
+
     </NavigationContainer>
   );
 }
