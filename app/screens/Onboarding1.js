@@ -18,7 +18,7 @@ export default function Onboarding1({ navigation }) {
 
 
           <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('WeekInfo')} style={styles.appButton}>
+            <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')} style={styles.appButton}>
               <Text style={styles.appButtonText}>Learn More</Text>
             </TouchableOpacity>
           </View>
