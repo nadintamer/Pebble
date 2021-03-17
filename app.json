@@ -28,11 +28,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-<<<<<<< HEAD
     "description": "Pebble is the pregnancy app for partners."
-=======
-    "description": "",
-    "owner": "jmyu"
->>>>>>> 7e7d598684b11605fd59259dfd68490b0f90618d
   }
 }
