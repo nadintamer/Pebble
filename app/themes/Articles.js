@@ -1,7 +1,7 @@
 const articleBodyText = {
   communication: {
     title: 'Communicating with Your Partner: Tips',
-    subtitle: 'Ensuring hhealthy communication through pregnancy and beyond',
+    subtitle: 'Ensuring healthy communication through pregnancy and beyond',
     body: `The best way to be a good parent to your child is to nurture fun, friendship, teamwork, and intimacy in your own relationship as a couple. This creates an environment that helps ensure a good outcome for your child.
     \n \t \u25CF Try not to keep your concerns to yourself. Share your thoughts, hopes, and fears with each other.
     \n \t \u25CF Talk about what it will be like to be a parent. Talk about the challenges you may confront, like work and child-care issues.
