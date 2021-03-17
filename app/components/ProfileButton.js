@@ -1,7 +1,10 @@
 import React from 'react';
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet, Dimensions } from 'react-native';
 
 import Colors from '../themes/Colors';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export default function ProfileButton(props) {
   const images = {
@@ -23,7 +26,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     width: '100%',
-    height: '100%',
+    height: windowHeight * 0.15,
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: Colors.settingsLightGrey,
@@ -33,14 +36,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.settingsDarkGrey,
-    width: 81,
-    height: 86,
+    height: windowHeight * 0.104,
+    width: windowWidth * 0.216,
     borderRadius: 20,
-    marginHorizontal: 15,
+    marginLeft: windowWidth * 0.05,
+    marginRight: 15,
   },
   text: {
     margin: 10,
     fontFamily: 'Nunito_700Bold',
-    fontSize: 16,
+    fontSize: 18,
   }
 });

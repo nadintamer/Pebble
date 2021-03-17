@@ -116,6 +116,7 @@ export default function ArticleScreen({ route, navigation }) {
         headerStyle: {
           backgroundColor: Colors.white,
           shadowColor: 'transparent',
+          height: 120
         },
         headerRight: () => (
           bookmarked ?
@@ -180,6 +181,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.23,
     width: windowWidth * 0.9,
     opacity: 0.75,
+    marginTop: 5
   },
   video: {
     alignItems: 'center',

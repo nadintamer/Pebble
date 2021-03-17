@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: windowHeight * 0.1,
+    height: windowHeight * 0.06,
     width: '100%',
   },
   progressText: {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     height: 240,
     width: '100%',
     borderRadius: 20,
-    marginTop: 20,
+    marginTop: 32,
   },
   textContainer: {
     width: '100%',

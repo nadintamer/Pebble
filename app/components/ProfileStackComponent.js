@@ -32,6 +32,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerRight: () => (
             <TouchableOpacity
@@ -53,6 +54,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -67,6 +69,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -81,6 +84,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -95,6 +99,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -109,6 +114,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -123,6 +129,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -138,6 +145,7 @@ export default function ProfileStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",

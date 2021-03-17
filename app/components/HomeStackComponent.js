@@ -27,6 +27,7 @@ export default function HomeStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: 'Nunito_700Bold',
@@ -42,6 +43,7 @@ export default function HomeStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",
@@ -56,6 +58,7 @@ export default function HomeStackComponent() {
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',
+            height: 120
           },
           headerTitleStyle: {
             fontFamily: "Nunito_700Bold",

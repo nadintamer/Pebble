@@ -67,6 +67,7 @@ export default function SavedCardsScreen({ navigation }) {
       <View style={{width: '90%', height: '100%' }}>
         {emptyList}
         <FlatList
+          style={{marginTop:  32}}
           data={bookmarks}
           keyExtractor={_keyExtractor}
           renderItem={renderItem}
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.15,
     width: '100%',
     borderRadius: 20,
-    marginTop: 32,
+    marginBottom: 32,
     zIndex: 1
   },
   actionBubble: {

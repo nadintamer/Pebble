@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   emergencyButton: {
     width: '90%',
     height: 52,
-    marginBottom: 20,
+    marginBottom: 32,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.coral,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   profileButton: {
     width: '90%',
     height: 126,
-    marginBottom: 15,
+    marginBottom: 32,
     justifyContent: 'center',
     alignItems: 'center',
   },

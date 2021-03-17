@@ -60,21 +60,10 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.2,
         width: windowWidth * 0.9,
-        marginTop: 30,
-        opacity: 0.7
+        opacity: 0.7,
+        marginTop: 5,
+        marginBottom: 22
     },
-    imageContainer: {
-        flex: 1,
-        /*
-        marginTop: (windowHeight * 0.104 - 110)/2.0,
-        marginBottom: (windowHeight * 0.104 - 110)/2.0,
-        */
-        marginTop: 10,
-        marginLeft: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 3
-      },
     subheading: {
         fontFamily: "NunitoSans_700Bold",
         fontSize: 18,

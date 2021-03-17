@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8E8E8',
     borderRadius: 10,
+    marginTop: 5
   },
   exploreCardRowContainer: {
     flexDirection: 'row',
@@ -167,7 +168,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontFamily: "NunitoSans_700Bold",
     fontSize: 22,
-    marginTop: 15,
+    marginTop: 32,
+    marginBottom: 10
   },
   textinput: {
     flex: 5,

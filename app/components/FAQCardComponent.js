@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 20,
     flex: 3,
-    marginTop: 10,
+    marginTop: 32,
   },
   textContainer: {
     width: '90%',

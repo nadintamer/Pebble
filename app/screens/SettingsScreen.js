@@ -124,9 +124,9 @@ export default function SettingsScreen({ navigation }) {
           <Text style={styles.descriptorText}>First Child?</Text>
           <View style={styles.toggleView}>
             <Switch
-              trackColor={{ false: "#767577", true: Colors.darkPurple }}
+              trackColor={{ false: "#8E91AD", true: Colors.darkPurple }}
               thumbColor={Colors.white}
-              ios_backgroundColor="#3e3e3e"
+              ios_backgroundColor="38E91AD"
               onValueChange={toggleSwitch}
               value={firstChild}
               style={styles.switch}
@@ -206,13 +206,13 @@ const styles = StyleSheet.create({
     padding: 8,
     fontFamily: 'Nunito_400Regular',
     fontSize: 16,
-    color: Colors.settingsDarkGrey,
+    color: "#707282",
   },
   descriptorText: {
     margin: 10,
     fontFamily: 'Nunito_700Bold',
     fontSize: 16,
-    color: Colors.grey,
+    color: "#707282",
   },
   bottomText: {
     alignSelf: 'center',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   datePicker: {
-    width: 100,
+    width: 70,
     color: 'white',
     tintColor: 'white',
     backgroundColor: 'white',
