@@ -17,19 +17,14 @@ export default function Onboarding1(props) {
 
       <View style={styles.imageContainer}>
         <Image
-          source={require("../../assets/images/onboard1.png")}
+          source={require("../../assets/images/onboard4.png")}
           style={{ width: 280, height: 280}}
         />
       </View>
 
-      <Text style={styles.heading}> Welcome to Pebble </Text>
-      <Text style={styles.description}> Let's walk you through the basics </Text>
+      <Text style={styles.heading}> Complete Customized Tasks </Text>
+      <Text style={styles.description}> Add the tasks you want to complete from the current week (Week X Tasks) to your running list of tasks (My Tasks).  </Text>
 
-      <View style={styles.appButtonContainer}>
-        <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Skip</Text>
-            </TouchableOpacity>
-      </View>
 
     </SafeAreaView>
 

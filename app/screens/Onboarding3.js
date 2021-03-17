@@ -17,19 +17,13 @@ export default function Onboarding1(props) {
 
       <View style={styles.imageContainer}>
         <Image
-          source={require("../../assets/images/onboard1.png")}
+          source={require("../../assets/images/onboard3.png")}
           style={{ width: 280, height: 280}}
         />
       </View>
 
-      <Text style={styles.heading}> Welcome to Pebble </Text>
-      <Text style={styles.description}> Let's walk you through the basics </Text>
-
-      <View style={styles.appButtonContainer}>
-        <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Skip</Text>
-            </TouchableOpacity>
-      </View>
+      <Text style={styles.heading}> Explore </Text>
+      <Text style={styles.description}> Search for topics and get recommended content relevant to you in Explore. </Text>
 
     </SafeAreaView>
 

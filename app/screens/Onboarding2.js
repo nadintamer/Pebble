@@ -1,25 +1,30 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import { Text, View, Image, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon';
 import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experimentation
+import HomeScreen from '../screens/HomeScreen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Onboarding2(props) {
+export default function Onboarding1(props) {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
-      <Text> ONBOARDING 2</Text>
-      <View style={styles.appButtonContainer}>
-        <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
-          <Text style={styles.appButtonText}>Learn More</Text>
-        </TouchableOpacity>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../assets/images/onboard2.png")}
+          style={{ width: 375, height: 375}}
+        />
       </View>
+
+      <Text style={styles.heading}> Learn by Week </Text>
+      <Text style={styles.description}> See an overview of the current week’s information and suggested tasks  in Home. </Text>
+
 
     </SafeAreaView>
 
@@ -34,85 +39,35 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: Colors.white,
   },
-  progressContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: windowHeight * 0.1,
-    width: '100%',
-  },
-  progressText: {
-    width: '90%',
-    color: '#707281',
-    fontFamily: 'Nunito_700Bold',
-    fontSize: 16,
-    marginBottom: 5,
-  },
-  progressBarContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  progressBar: {
-    width: windowWidth * 0.9,
-    height: 20,
-    borderRadius: 40,
-    backgroundColor: '#E8E9EF',
-  },
-  babyIcon: {
-    left: windowWidth * 0.9 - 28,
-    position: 'absolute',
-  },
-  actionCardContainer: {
-    width: '90%',
+  imageContainer: {
+    marginTop: 0.12 * windowHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  actionCard: {
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    flexDirection: 'column',
-    backgroundColor: Colors.lightPurple,
-    height: 240,
-    width: '100%',
-    borderRadius: 20,
-    marginTop: 20,
-  },
-  textContainer: {
-    width: '100%',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    marginTop: 20,
-    marginLeft: 20,
-  },
-  bulletRow: {
-    flexDirection: 'row',
-  },
-  bullet: {
-    marginRight: 18,
   },
   heading: {
     fontFamily: 'Nunito_700Bold',
     fontSize: 30,
-    marginBottom: 26,
+    /*marginTop: 0.08 * windowHeight,*/
   },
-  bodyText: {
+  description: {
     fontFamily: 'NunitoSans_400Regular',
     fontSize: 16,
-    marginBottom: 20,
+    marginTop: 0.05 * windowHeight,
+    marginBottom: 0.16 * windowHeight
   },
   appButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: 40,
-    marginTop: 6,
+    marginBottom: 0.08 * windowHeight
   },
   appButton: {
-    width: '85%',
-    height: '100%',
+    width: 0.42 * windowWidth,
+    height: 0.064 * windowHeight,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.coral,
+    backgroundColor: Colors.grey,
     borderRadius: 20,
   },
   appButtonText: {
