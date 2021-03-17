@@ -67,6 +67,7 @@ export default function SavedCardsScreen({ navigation }) {
       <View style={{width: '90%', height: '100%' }}>
         {emptyList}
         <FlatList
+          style={{marginTop:  32}}
           data={bookmarks}
           keyExtractor={_keyExtractor}
           renderItem={renderItem}

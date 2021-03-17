@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
         width: windowWidth * 0.9,
         opacity: 0.7,
         marginTop: 5,
-        marginBottom: 28
+        marginBottom: 22
     },
     imageContainer: {
         flex: 1,

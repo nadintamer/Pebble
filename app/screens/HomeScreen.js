@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     height: 240,
     width: '100%',
     borderRadius: 20,
-    marginTop: 20,
+    marginTop: 32,
   },
   textContainer: {
     width: '100%',

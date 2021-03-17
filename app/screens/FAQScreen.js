@@ -88,7 +88,7 @@ export default function FAQScreen() {
         />
       </View>
 
-      <View style={{ width: '90%', flex: 1 }}>
+      <View style={{ width: '90%', flex: 1}}>
         <FlatList
           data={searchResults}
           renderItem={renderItem}
@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8E8E8',
     borderRadius: 10,
-    marginBottom: 10,
     marginTop: 5
   },
   textInput: {

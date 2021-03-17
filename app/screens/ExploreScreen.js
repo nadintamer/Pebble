@@ -168,7 +168,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontFamily: "NunitoSans_700Bold",
     fontSize: 22,
-    marginTop: 15,
+    marginTop: 32,
+    marginBottom: 10
   },
   textinput: {
     flex: 5,
