@@ -1,24 +1,34 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
+import { Text, View, Image, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon';
 import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experimentation
+import HomeScreen from '../screens/HomeScreen';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Onboarding2(props) {
+export default function Onboarding1(props) {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
-      <Text> ONBOARDING 5</Text>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../../assets/images/onboard5.png")}
+          style={{ width: 280, height: 280}}
+        />
+      </View>
+
+      <Text style={styles.heading}> Extra Support </Text>
+      <Text style={styles.description}> Access personal info, saved content, FAQs, and the “emergency button” — a toolbox fo medical emergencies — through Profile. </Text>
+
       <View style={styles.appButtonContainer}>
         <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
-          <Text style={styles.appButtonText}>Get Started</Text>
-        </TouchableOpacity>
+              <Text style={styles.appButtonText}>Get Started</Text>
+            </TouchableOpacity>
       </View>
 
     </SafeAreaView>
@@ -34,10 +44,21 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     backgroundColor: Colors.white,
   },
+  imageContainer: {
+    marginTop: 0.12 * windowHeight,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
   heading: {
     fontFamily: 'Nunito_700Bold',
     fontSize: 30,
-    marginBottom: 26,
+    marginTop: 0.08 * windowHeight,
+  },
+  description: {
+    fontFamily: 'NunitoSans_400Regular',
+    fontSize: 16,
+    marginTop: 0.05 * windowHeight,
+    marginBottom: 0.16 * windowHeight
   },
   appButtonContainer: {
     justifyContent: 'center',
