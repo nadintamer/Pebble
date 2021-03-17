@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   profileButton: {
     width: '90%',
     height: 126,
-    marginBottom: 15,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },

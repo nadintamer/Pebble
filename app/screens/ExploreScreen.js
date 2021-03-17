@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#E8E8E8',
     borderRadius: 10,
+    marginTop: 5
   },
   exploreCardRowContainer: {
     flexDirection: 'row',

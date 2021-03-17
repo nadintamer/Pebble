@@ -60,8 +60,9 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.lightPurple,
         height: windowHeight * 0.2,
         width: windowWidth * 0.9,
-        marginTop: 30,
-        opacity: 0.7
+        opacity: 0.7,
+        marginTop: 5,
+        marginBottom: 28
     },
     imageContainer: {
         flex: 1,

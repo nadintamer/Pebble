@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.15,
     width: '100%',
     borderRadius: 20,
-    marginTop: 32,
+    marginBottom: 32,
     zIndex: 1
   },
   actionBubble: {

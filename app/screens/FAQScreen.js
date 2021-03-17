@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E8E8E8',
     borderRadius: 10,
     marginBottom: 10,
+    marginTop: 5
   },
   textInput: {
     flex: 5,

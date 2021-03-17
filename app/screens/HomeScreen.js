@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    height: windowHeight * 0.1,
+    height: windowHeight * 0.06,
     width: '100%',
   },
   progressText: {
