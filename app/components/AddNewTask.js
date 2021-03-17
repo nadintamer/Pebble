@@ -5,10 +5,13 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  Dimensions
 } from 'react-native';
 
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon'
+
+const windowHeight = Dimensions.get('window').height;
 
 export default function AddNewTask(props) {
   const [text, setText] = React.useState('');
@@ -37,7 +40,7 @@ const styles = StyleSheet.create({
   taskContainer: {
     flexDirection: 'row',
     width: '100%',
-    height: 84,
+    height: windowHeight * 0.104,
     backgroundColor: 'white',
     borderWidth: 2,
     borderColor: 'transparent',
