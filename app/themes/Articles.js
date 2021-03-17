@@ -1,7 +1,7 @@
 const articleBodyText = {
   communication: {
     title: 'Communicating with Your Partner: Tips',
-    subtitle: 'Ensuring healthy communication throughout pregnancy and beyond',
+    subtitle: 'Ensuring hhealthy communication through pregnancy and beyond',
     body: `The best way to be a good parent to your child is to nurture fun, friendship, teamwork, and intimacy in your own relationship as a couple. This creates an environment that helps ensure a good outcome for your child.
     \n \t \u25CF Try not to keep your concerns to yourself. Share your thoughts, hopes, and fears with each other.
     \n \t \u25CF Talk about what it will be like to be a parent. Talk about the challenges you may confront, like work and child-care issues.
@@ -50,7 +50,7 @@ const articleBodyText = {
   },
   emotionalWellness: {
     title: 'Emotional Health',
-    subtitle: 'It is important to invest time to maintain your emotional health and help your partner maintain theirs.',
+    subtitle: 'Investing time to maintain your emotional health and help your partner maintain theirs.',
     body: `Women and men can both experience mental health issues during the pregnancy, as well as after the birth. For some people, pregnancy can lead to conditions such as depression, anxiety, and bipolar disorder (less common)
     \n \t \u25CF Up to 1 in 10 women and 1 in 20 men experience antenatal depression. Antenatal anxiety is also common, and many people experience anxiety and depression at the same time. Certain factors can put you at greater risk of developing anxiety and depression during pregnancy. These include: past problems with your mental health, feeling you don’t have enough support, or problems with drugs or alcohol.
     \n \t \u25CF Anyone can have a mental health condition — it’s nothing to be ashamed about. To maintain your mental health, take long walks, practice meditation and breathing excercises, and visualize being a great parent for your child.`,

@@ -46,28 +46,14 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 20,
     marginBottom: 32,
-    zIndex: 1
-  },
-  actionBubble: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
-    backgroundColor: Colors.grey,
-    height: windowHeight * 0.104,
-    opacity: 0.2,
-    width: '25%',
-    borderRadius: 20,
-    marginTop: 20,
-    zIndex: 2
   },
   imageBackground: {
-    height: 84,
-    width: 84,
+    height: windowHeight * 0.104,
+    width: windowWidth * 0.216,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 3,
-    marginTop: 10,
-    marginLeft: 20,
+    marginLeft: windowWidth * 0.05,
     backgroundColor: Colors.lightPurple,
     borderRadius: 20,
   },
@@ -82,13 +68,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    marginLeft: 10,
-    marginRight: 10,
+    margin: 15,
     opacity: 0.8
   },
   subheading: {
     fontFamily: "NunitoSans_700Bold",
-    fontSize: 18,
+    fontSize: 16,
   },
   bodyText: {
     fontSize: 11,
