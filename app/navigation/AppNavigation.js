@@ -70,7 +70,7 @@ export default function AppNavigation() {
     !onboarded
     ?
     <Swiper style={styles.wrapper} >
-        <Onboarding1/>
+        <Onboarding1 setOpenedApp={setOpenedApp}/>
         <Onboarding2 setOpenedApp={setOpenedApp}/>
     </Swiper>
     :
