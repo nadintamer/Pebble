@@ -1,6 +1,5 @@
 import React from 'react';
 import AppNavigation from './app/navigation/AppNavigation.js';
-import OnboardingNavigation from './app/navigation/OnboardingNavigation.js';
 import { Text } from 'react-native';
 
 import {
@@ -52,7 +51,5 @@ export default function App() {
     return <Text>loading</Text>;
   }
 
-  /* return <AppNavigation />; */
-
-  return <OnboardingNavigation />;
+  return <AppNavigation />;
 }

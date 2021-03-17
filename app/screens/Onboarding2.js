@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, SafeAreaView, StyleSheet, Dimensions, Button, TouchableOpacity, ScrollView, AsyncStorage } from 'react-native';
 import { ProgressBar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -10,11 +10,16 @@ import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experiment
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Onboarding1({ navigation }) {
+export default function Onboarding2(props) {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
       <Text> ONBOARDING 2</Text>
+      <View style={styles.appButtonContainer}>
+        <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
+          <Text style={styles.appButtonText}>Learn More</Text>
+        </TouchableOpacity>
+      </View>
 
     </SafeAreaView>
 

@@ -99,7 +99,7 @@ export default function SearchScreen({ route, navigation }) {
           }}
         />
       </View>
-      <View style={{ width: '90%' }}>
+      <View style={{ width: '90%', flex: 1 }}>
         <FlatList
           data={searchResults}
           renderItem={renderItem}

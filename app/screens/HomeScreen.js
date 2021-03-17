@@ -47,11 +47,11 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.heading}>Info</Text>
             <View style={styles.bulletRow}>
               <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Communication Tips</Text>
+              <Text style={styles.bodyText}>Communicating with your Partner: Tips</Text>
             </View>
             <View style={styles.bulletRow}>
               <MaterialCommunityIcons name="circle-medium" size={24} color="black" style={styles.bullet}/>
-              <Text style={styles.bodyText}>Paternity leave</Text>
+              <Text style={styles.bodyText}>What You Should Know: Paternity Leave</Text>
             </View>
           </View>
           <View style={styles.appButtonContainer}>

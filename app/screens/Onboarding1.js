@@ -10,18 +10,11 @@ import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experiment
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export default function Onboarding1({ navigation }) {
+export default function Onboarding1() {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
       <Text> ONBOARDING 1</Text>
-
-
-          <View style={styles.appButtonContainer}>
-            <TouchableOpacity onPress={() => navigation.navigate('Onboarding2')} style={styles.appButton}>
-              <Text style={styles.appButtonText}>Learn More</Text>
-            </TouchableOpacity>
-          </View>
 
     </SafeAreaView>
 
