@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 5,
-    fontFamily: "Nunito_700Bold",
+    fontFamily: "Nunito_400Regular",
     borderColor: 'gray',
   },
   actionCard: {

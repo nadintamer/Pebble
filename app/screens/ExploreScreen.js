@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   textinput: {
     flex: 5,
     borderColor: 'gray',
-    fontFamily: "Nunito_700Bold",
+    fontFamily: "Nunito_400Regular",
     color: "black"
   },
   textView: {
