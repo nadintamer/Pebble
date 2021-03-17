@@ -82,6 +82,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito_700Bold',
     fontSize: 30,
     marginTop: 0.02 * windowHeight,
+    width: '89%',
+    textAlign: 'center',
   },
   description: {
     height: 90,

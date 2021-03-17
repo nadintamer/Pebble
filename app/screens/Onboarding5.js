@@ -23,7 +23,7 @@ export default function Onboarding1(props) {
       </View>
 
       <Text style={styles.heading}> Extra Support </Text>
-      <Text style={styles.description}> Access personal info, saved content, FAQs, and the “emergency button” — a toolbox of medical emergencies — through the Profile tab. </Text>
+      <Text style={styles.description}> Access extra support in the form of saved content, FAQs, and a medical emergency toolbox. </Text>
 
       <View style={styles.appButtonContainer}>
         <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>

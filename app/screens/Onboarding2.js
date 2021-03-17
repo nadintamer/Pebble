@@ -23,7 +23,7 @@ export default function Onboarding1(props) {
       </View>
 
       <Text style={styles.heading}> Learn by Week </Text>
-      <Text style={styles.description}> See an overview of the current week’s information and suggested tasks in Home. </Text>
+      <Text style={styles.description}> Learn through relevant, digestible content modules curated for each week </Text>
 
 
     </SafeAreaView>

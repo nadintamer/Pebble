@@ -32,22 +32,22 @@ export default function AppNavigation() {
     },
     onboarding2: {
       title: 'Learn by Week',
-      description: 'See an overview of the current week’s information and suggested tasks in the Home tab.',
+      description: 'Learn through relevant, digestible content modules curated for each week.',
       image: 'onboarding2',
     },
     onboarding3: {
       title: 'Explore',
-      description: 'Search for topics and get recommended content relevant to you in the Explore tab.',
+      description: 'Search for topics and get personalized, AI-recommended content.',
       image: 'onboarding3',
     },
     onboarding4: {
-      title: 'Complete Customized Tasks',
-      description: 'Add the tasks you want to complete from the current week (Week X Tasks) to your running list of tasks (My Tasks).',
+      title: 'Customized Tasks',
+      description: 'Choose tasks you want to save and complete from weekly suggestions .',
       image: 'onboarding4',
     },
     onboarding5: {
       title: 'Extra Support',
-      description: 'Access personal info, saved content, FAQs, and the “emergency button” — a toolbox of medical emergencies — through the Profile tab.',
+      description: 'Access specialized partner resources, FAQs, emergency toolboxes and more',
       image: 'onboarding5',
     },
   }
@@ -173,7 +173,8 @@ const styles = StyleSheet.create({
     marginBottom: 3
   },
   dot: {
-    borderColor: 'rgba(220, 220, 244, 1.0)',
+    /*borderColor: 'rgba(220, 220, 244, 1.0)',*/
+    borderColor: 'rgba(50, 49, 117, 1.0)',
     borderWidth: 2,
     width: 18,
     height: 18,

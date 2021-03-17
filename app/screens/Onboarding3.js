@@ -23,7 +23,7 @@ export default function Onboarding1(props) {
       </View>
 
       <Text style={styles.heading}> Explore </Text>
-      <Text style={styles.description}> Search for topics and get recommended content relevant to you in Explore. </Text>
+      <Text style={styles.description}> Search for topics and get personalized, AI-recommended content. </Text>
 
     </SafeAreaView>
 

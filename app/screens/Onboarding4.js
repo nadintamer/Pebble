@@ -23,7 +23,7 @@ export default function Onboarding1(props) {
       </View>
 
       <Text style={styles.heading}> Complete Customized Tasks </Text>
-      <Text style={styles.description}> Add the tasks you want to complete from the current week (Week X Tasks) to your running list of tasks (My Tasks).  </Text>
+      <Text style={styles.description}> Choose tasks you want to save and complete from weekly suggestions  </Text>
 
 
     </SafeAreaView>
