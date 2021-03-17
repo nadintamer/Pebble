@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   imageContainer: {
-    marginTop: 0.147 * windowHeight,
+    marginTop: 0.12 * windowHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
     fontFamily: 'NunitoSans_400Regular',
     fontSize: 16,
     marginTop: 0.05 * windowHeight,
-    marginBottom: 40
+    marginBottom: 0.16 * windowHeight
   },
   appButtonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: 40,
-    marginTop: 6,
+    marginBottom: 0.08 * windowHeight
   },
   appButton: {
     width: 0.42 * windowWidth,

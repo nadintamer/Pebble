@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, Image, Dimensions, AsyncStorage } from 'react-native';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -16,6 +16,10 @@ import HomeStackComponent from '../components/HomeStackComponent.js';
 import ExploreStackComponent from '../components/ExploreStackComponent.js';
 import TasksScreen from '../screens/TasksScreen.js';
 import ProfileStackComponent from '../components/ProfileStackComponent.js';
+import DotComponent from '../components/Dot.js';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const TabNav = createBottomTabNavigator();
 export default function AppNavigation() {
@@ -69,7 +73,12 @@ export default function AppNavigation() {
   return (
     !onboarded
     ?
-    <Swiper style={styles.wrapper} >
+    <Swiper 
+    paginationStyle={{ bottom: 0.22 * windowHeight}} 
+    dot={<View style={styles.dot}/>}
+    activeDot={<View style={styles.activeDot} />}
+    controlsProps={{  }}
+    >
         <Onboarding1 setOpenedApp={setOpenedApp}/>
         <Onboarding2 setOpenedApp={setOpenedApp}/>
     </Swiper>
@@ -112,4 +121,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  activeDot: {
+    backgroundColor:'rgba(50, 49, 117, 1.0)', width: 18, height: 18,borderRadius: 500, marginLeft: 25, marginRight: 25, marginTop: 3, marginBottom: 3
+  },
+  dot: {
+    backgroundColor:'rgba(220, 220, 244, 1.0)', width: 18, height: 18,borderRadius: 500, marginLeft: 25, marginRight: 25, marginTop: 3, marginBottom: 3
+  }
 });
