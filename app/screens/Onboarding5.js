@@ -23,7 +23,7 @@ export default function Onboarding1(props) {
       </View>
 
       <Text style={styles.heading}> Extra Support </Text>
-      <Text style={styles.description}> Access personal info, saved content, FAQs, and the “emergency button” — a toolbox fo medical emergencies — through Profile. </Text>
+      <Text style={styles.description}> Access personal info, saved content, FAQs, and the “emergency button” — a toolbox of medical emergencies — through the Profile tab. </Text>
 
       <View style={styles.appButtonContainer}>
         <TouchableOpacity onPress={() => props.setOpenedApp(true)} style={styles.appButton}>
@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
     marginTop: 0.08 * windowHeight,
   },
   description: {
+    width: '80%',
+    textAlign: 'center',
     fontFamily: 'NunitoSans_400Regular',
     fontSize: 16,
     marginTop: 0.05 * windowHeight,
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     height: 0.064 * windowHeight,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.grey,
+    backgroundColor: Colors.coral,
     borderRadius: 20,
   },
   appButtonText: {

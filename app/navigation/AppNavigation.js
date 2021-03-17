@@ -9,11 +9,7 @@ import Swiper from 'react-native-swiper'
 import CustomIcon from '../components/CustomIcon'
 import * as Font from 'expo-font';
 
-import Onboarding1 from '../screens/Onboarding1.js';
-import Onboarding2 from '../screens/Onboarding2.js';
-import Onboarding3 from '../screens/Onboarding3.js';
-import Onboarding4 from '../screens/Onboarding4.js';
-import Onboarding5 from '../screens/Onboarding5.js';
+import OnboardingScreen from '../screens/OnboardingScreen.js';
 
 import HomeStackComponent from '../components/HomeStackComponent.js';
 import ExploreStackComponent from '../components/ExploreStackComponent.js';
@@ -28,6 +24,33 @@ const TabNav = createBottomTabNavigator();
 export default function AppNavigation() {
   const [loading, setLoading] = useState(true);
   const [onboarded, setOnboarded] = useState(false);
+  const onboardingContent = {
+    onboarding1: {
+      title: 'Welcome to Pebble',
+      description: 'Let\'s walk you through the basics!',
+      image: 'onboarding1',
+    },
+    onboarding2: {
+      title: 'Learn by Week',
+      description: 'See an overview of the current week’s information and suggested tasks in the Home tab.',
+      image: 'onboarding2',
+    },
+    onboarding3: {
+      title: 'Explore',
+      description: 'Search for topics and get recommended content relevant to you in the Explore tab.',
+      image: 'onboarding3',
+    },
+    onboarding4: {
+      title: 'Complete Customized Tasks',
+      description: 'Add the tasks you want to complete from the current week (Week X Tasks) to your running list of tasks (My Tasks).',
+      image: 'onboarding4',
+    },
+    onboarding5: {
+      title: 'Extra Support',
+      description: 'Access personal info, saved content, FAQs, and the “emergency button” — a toolbox of medical emergencies — through the Profile tab.',
+      image: 'onboarding5',
+    },
+  }
 
   async function loadFont() {
     await Font.loadAsync({
@@ -60,7 +83,7 @@ export default function AppNavigation() {
   };
 
   useEffect(() => {
-    // getOpenedApp(); -- uncomment this line to only show onboarding screen once
+    // getOpenedApp(); -- uncomment this line to only show onboarding screen once (we show multiple times for demo)
     loadFont();
     setLoading(false);
   }, []);
@@ -76,17 +99,29 @@ export default function AppNavigation() {
   return (
     !onboarded
     ?
-    <Swiper 
-    paginationStyle={{ bottom: 0.22 * windowHeight}} 
-    dot={<View style={styles.dot}/>}
-    activeDot={<View style={styles.activeDot} />}
-    controlsProps={{  }}
+    <Swiper
+      paginationStyle={{ bottom: 0.15 * windowHeight }}
+      dot={<View style={styles.dot}/>}
+      activeDot={<View style={styles.activeDot} />}
+      controlsProps={{  }}
     >
-        <Onboarding1 setOpenedApp={setOpenedApp}/>
-        <Onboarding2 />
-        <Onboarding3 />
-        <Onboarding4 />
-        <Onboarding5 setOpenedApp={setOpenedApp}/>
+        <OnboardingScreen
+          info={onboardingContent.onboarding1}
+          setOpenedApp={setOpenedApp}
+        />
+        <OnboardingScreen
+          info={onboardingContent.onboarding2}
+        />
+        <OnboardingScreen
+          info={onboardingContent.onboarding3}
+        />
+        <OnboardingScreen
+          info={onboardingContent.onboarding4}
+        />
+        <OnboardingScreen
+          info={onboardingContent.onboarding5}
+          setOpenedApp={setOpenedApp}
+        />
     </Swiper>
     :
     <NavigationContainer>
@@ -128,9 +163,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeDot: {
-    backgroundColor:'rgba(50, 49, 117, 1.0)', width: 18, height: 18,borderRadius: 500, marginLeft: 25, marginRight: 25, marginTop: 3, marginBottom: 3
+    backgroundColor: 'rgba(50, 49, 117, 1.0)',
+    width: 18,
+    height: 18,
+    borderRadius: 500,
+    marginLeft: 25,
+    marginRight: 25,
+    marginTop: 3,
+    marginBottom: 3
   },
   dot: {
-    backgroundColor:'rgba(220, 220, 244, 1.0)', width: 18, height: 18,borderRadius: 500, marginLeft: 25, marginRight: 25, marginTop: 3, marginBottom: 3
+    borderColor: 'rgba(220, 220, 244, 1.0)',
+    borderWidth: 2,
+    width: 18,
+    height: 18,
+    borderRadius: 500,
+    marginLeft: 25,
+    marginRight: 25,
+    marginTop: 3,
+    marginBottom: 3
   }
 });
