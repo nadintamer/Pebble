@@ -14,7 +14,7 @@ export default function Onboarding2(props) {
   return (
     <SafeAreaView style={styles.homeContainer}>
 
-      <Text> ONBOARDING 2</Text>
+      <Text> ONBOARDING 3</Text>
       <View style={styles.appButtonContainer}>
       </View>
 

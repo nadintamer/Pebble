@@ -11,6 +11,9 @@ import * as Font from 'expo-font';
 
 import Onboarding1 from '../screens/Onboarding1.js';
 import Onboarding2 from '../screens/Onboarding2.js';
+import Onboarding3 from '../screens/Onboarding3.js';
+import Onboarding4 from '../screens/Onboarding4.js';
+import Onboarding5 from '../screens/Onboarding5.js';
 
 import HomeStackComponent from '../components/HomeStackComponent.js';
 import ExploreStackComponent from '../components/ExploreStackComponent.js';
@@ -80,7 +83,10 @@ export default function AppNavigation() {
     controlsProps={{  }}
     >
         <Onboarding1 setOpenedApp={setOpenedApp}/>
-        <Onboarding2 setOpenedApp={setOpenedApp}/>
+        <Onboarding2 />
+        <Onboarding3 />
+        <Onboarding4 />
+        <Onboarding5 setOpenedApp={setOpenedApp}/>
     </Swiper>
     :
     <NavigationContainer>
