@@ -314,7 +314,7 @@ export default function TasksScreen({ route, navigation }) {
             data={completedTasks}
             renderItem={renderCompletedTask}
             keyExtractor={(item, index) => keyExtractor(index)}
-            style={{ marginBottom: 44 }}
+            style={{marginBottom: 44 }}
         />
       }
     }
@@ -366,7 +366,7 @@ export default function TasksScreen({ route, navigation }) {
               source={showingCompleted ? require("../../assets/images/completed-open.png") : require("../../assets/images/completed-closed.png")}
               style={styles.completedToggle}
             />
-            <Text style={styles.subheading}>Completed Tasks</Text>
+            <Text style={styles.subheadingCompleted}>Completed Tasks</Text>
           </TouchableOpacity>
           <View style={{ flexGrow: 0 }}>
             {getCompletedTasks()}
@@ -413,7 +413,12 @@ const styles = StyleSheet.create({
   subheading: {
     fontFamily: "NunitoSans_700Bold",
     fontSize: 24,
-    marginTop: 15,
+    marginTop: 20,
+  },
+  subheadingCompleted: {
+    fontFamily: "NunitoSans_700Bold",
+    fontSize: 24,
+    marginTop: 44,
   },
   backTextWhite: {
     color: 'white',
@@ -451,7 +456,7 @@ const styles = StyleSheet.create({
   completedToggle: {
     width: 20,
     height: 20,
-    marginTop: 15,
+    marginTop: 44,
     marginRight: 10,
   },
   warning: {
