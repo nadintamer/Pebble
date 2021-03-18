@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   datePicker: {
-    width: 70,
+    width: 100,
     color: 'white',
     tintColor: 'white',
     backgroundColor: 'white',

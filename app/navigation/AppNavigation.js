@@ -42,12 +42,12 @@ export default function AppNavigation() {
     },
     onboarding4: {
       title: 'Customized Tasks',
-      description: 'Choose tasks you want to save and complete from weekly suggestions .',
+      description: 'Choose tasks you want to save and complete from weekly suggestions.',
       image: 'onboarding4',
     },
     onboarding5: {
       title: 'Extra Support',
-      description: 'Access specialized partner resources, FAQs, emergency toolboxes and more',
+      description: 'Access specialized partner resources, FAQs, emergency toolboxes and more.',
       image: 'onboarding5',
     },
   }
