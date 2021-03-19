@@ -1,13 +1,12 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, Text, StyleSheet } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import Colors from '../themes/Colors';
+
 import WeekInfoScreen from '../screens/WeekInfoScreen';
 import ArticleScreen from '../screens/ArticleScreen';
-
-
 import HomeScreen from '../screens/HomeScreen';
 
 const HomeStack = createStackNavigator();
@@ -32,7 +31,13 @@ export default function HomeStackComponent() {
           headerTitleStyle: {
             fontFamily: 'Nunito_700Bold',
             fontSize: 30,
-          }
+          },
+          headerRight: () => (
+            <Text style={styles.headerArrow}>31 →</Text>
+          ),
+          headerLeft: () => (
+            <Text style={styles.headerArrow}>← 29</Text>
+          )
         }}
       />
       <HomeStack.Screen
@@ -68,3 +73,12 @@ export default function HomeStackComponent() {
     </HomeStack.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  headerArrow: {
+    fontFamily: 'Nunito_400Regular',
+    fontSize: 18,
+    marginHorizontal: 18,
+    color: Colors.grey,
+  },
+})
