@@ -48,7 +48,7 @@ const articleBodyText = {
     \n \t \u25CF If you have seen a physician regularly and have pre-pregnancy or at least early-pregnancy cholesterol tests that the life insurance companies can review, this will help determine your rating since your levels may be elevated during pregnancy and while nursing. Some companies are more lenient on cholesterol requirements, but proof that your numbers are high strictly due to pregnancy will be helpful. Your medical records will provide this information. Many companies are willing to offer affordable life insurance coverage to you if you are carrying a single baby and have no complications. You may even be considered a Preferred risk class if you can meet certain criteria.
     \n \t \u25CF Further research can help you determine if life insurance would be a good idea for your baby `,
     icon: require('../../assets/images/life.png'),
-    videoId: '67iiYbGJoVk',
+    videoId: 'YPpdpjZ5yEw',
   },
   emotionalWellness: {
     title: 'Emotional Health',
