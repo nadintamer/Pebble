@@ -11,9 +11,6 @@ import FAQScreen from '../screens/FAQScreen';
 import ArticleScreen from '../screens/ArticleScreen';
 import SavedCardsScreen from '../screens/SavedCardsScreen';
 import Colors from '../themes/Colors';
-import MapScreen from '../screens/MapScreen';
-import TextScreen from '../screens/TextScreen';
-
 
 const ProfileStack = createStackNavigator();
 export default function ProfileStackComponent() {
@@ -111,37 +108,6 @@ export default function ProfileStackComponent() {
         component={ArticleScreen}
         options={{
           title: "",
-          headerStyle: {
-            backgroundColor: Colors.white,
-            shadowColor: 'transparent',
-            height: 120
-          },
-          headerTitleStyle: {
-            fontFamily: "Nunito_700Bold",
-            fontSize: 30,
-          }
-        }}/>
-      <ProfileStack.Screen
-        name="Map"
-        component={MapScreen}
-        options={{
-          title: "Map",
-          headerStyle: {
-            backgroundColor: Colors.white,
-            shadowColor: 'transparent',
-            height: 120
-          },
-          headerTitleStyle: {
-            fontFamily: "Nunito_700Bold",
-            fontSize: 30,
-          }
-        }}/>
-      
-        <ProfileStack.Screen
-        name="TextFamily"
-        component={TextScreen}
-        options={{
-          title: "TextFamily",
           headerStyle: {
             backgroundColor: Colors.white,
             shadowColor: 'transparent',

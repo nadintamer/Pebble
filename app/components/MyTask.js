@@ -16,8 +16,6 @@ const windowHeight = Dimensions.get('window').height;
 export default function MyTask(props) {
   const editItem = () => {
     props.setEditing(props.index, false);
-
-    // call callback function to update the todos state in TasksScreen.js
     props.editToDo(props.index, props.userInput)
   }
 

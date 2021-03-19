@@ -140,7 +140,6 @@ export default function AppNavigation() {
               Profile: 'penguin',
             };
 
-            // You can return any component that you like here!
             return <CustomIcon name={icons[route.name]} size={28} color={color} style={{ height: 28, width: 38 }} />;
           },
         })}
@@ -173,7 +172,6 @@ const styles = StyleSheet.create({
     marginBottom: 3
   },
   dot: {
-    /*borderColor: 'rgba(220, 220, 244, 1.0)',*/
     borderColor: 'rgba(50, 49, 117, 1.0)',
     borderWidth: 2,
     width: 18,

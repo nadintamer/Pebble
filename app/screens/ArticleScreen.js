@@ -15,9 +15,6 @@ export default function ArticleScreen({ route, navigation }) {
   const [bookmarked, setBookmarked] = useState(false);
   const [savingBookmark, setSavingBookmark] = useState(false);
 
-  //const [modalVisible, setModalVisible] = useState(false);
-
-
   const bookmarkPressed = () => {
     if (!bookmarked) {
       saveBookmark(articleInfo);
@@ -53,7 +50,6 @@ export default function ArticleScreen({ route, navigation }) {
       let mutableBookmarks = [...bookmarks, newBookmarkItem];
       await AsyncStorage.setItem('allBookmarkedItems', JSON.stringify(mutableBookmarks));
     } catch (error) {
-      // Error saving data
       console.log(error);
     }
   }
@@ -70,7 +66,6 @@ export default function ArticleScreen({ route, navigation }) {
     try {
       await AsyncStorage.setItem('allBookmarkedItems', JSON.stringify(mutableBookmarks));
     } catch (error) {
-      // Error saving data
       console.log(error);
     }
   }
@@ -224,9 +219,3 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   }
 });
-/* <YoutubePlayer
-        height={300}
-        play={playing}
-        videoId={"szcnG9AuSOc"}
-        onChangeState={onStateChange}
-      />*/

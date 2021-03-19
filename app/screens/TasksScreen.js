@@ -147,7 +147,6 @@ export default function TasksScreen({ route, navigation }) {
     setMyTasks(newMyTasks);
   };
 
-  // New editing ToDo list function
   const editTask = (index, newItem) => {
     setEditing(index, false);
     let newMyTasks = [...myTasks];
@@ -159,7 +158,7 @@ export default function TasksScreen({ route, navigation }) {
       setAddedTasks(newAddedTasks);
       setStorage(newAddedTasks, 'addedTasks');
     }
-    newMyTasks[index].text = newItem; // update individual item in the list
+    newMyTasks[index].text = newItem;
     setMyTasks(newMyTasks);
     setStorage(newMyTasks, 'myTasks');
   };
@@ -198,14 +197,12 @@ export default function TasksScreen({ route, navigation }) {
     }
   };
 
-  // Close a row before deleting
   const closeRow = (rowMap, rowKey) => {
     if (rowMap[rowKey]) {
       rowMap[rowKey].closeRow();
     }
   };
 
-  // Delete a row by swiping left
   const deleteTask = (rowMap, index) => {
     let item = myTasks[index].text;
 

@@ -5,7 +5,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Colors from '../themes/Colors';
 import CustomIcon from '../components/CustomIcon';
-import CalendarStrip from 'react-native-calendar-strip'; // scrollbar experimentation
 import HomeScreen from '../screens/HomeScreen';
 
 const windowWidth = Dimensions.get('window').width;

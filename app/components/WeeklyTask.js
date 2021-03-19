@@ -66,5 +66,3 @@ const styles = StyleSheet.create({
     opacity: 0.8
   }
 });
-
-//         <CustomIcon name={addIcon.name} size={addIcon.size} color={addIcon.color}/>

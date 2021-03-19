@@ -64,7 +64,6 @@ export default function ProfileScreen({ navigation }) {
       </View>
       <TouchableOpacity
         style={styles.infoIcon}
-        /*blurComponentIOS={blurComponentIOS}*/
         onPress={showDialog} >
           <Image
             source={require("../../assets/images/infoIcon.png")}

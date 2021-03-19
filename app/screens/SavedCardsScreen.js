@@ -112,7 +112,6 @@ const styles = StyleSheet.create({
     zIndex: 2
   },
   imageBackground: {
-    //flex: 1,
     height: 84,
     width: 84,
     justifyContent: 'center',

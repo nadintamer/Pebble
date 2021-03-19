@@ -1,4 +1,4 @@
-// // Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
+// Linking https://reactnativecode.com/open-phone-number-in-dial-screen/
 
 import React, { useState, useEffect } from 'react';
 import { Text, View, Image, TextInput, TouchableOpacity, Linking, SafeAreaView, Platform, StyleSheet, ScrollView, Dimensions } from 'react-native';
@@ -47,7 +47,7 @@ export default function EmergencyScreen( {navigation}) {
     let phoneNumber = '';
 
     if (Platform.OS === 'android') {
-      phoneNumber = 'sms:${5033172937}'; //hardcoded my number in here for now lmao
+      phoneNumber = 'sms:${5033172937}'; // hard-coded phone number
     }
     else {
       phoneNumber = 'telprompt:5033172937';
