@@ -8,7 +8,6 @@ import Colors from '../themes/Colors';
 import ExploreScreen from '../screens/ExploreScreen';
 import SearchScreen from '../screens/SearchScreen';
 import ArticleScreen from '../screens/ArticleScreen';
-import ResultsScreen from '../screens/ResultsScreen';
 const ExploreStack = createStackNavigator();
 
 export default function ExploreStackComponent() {
